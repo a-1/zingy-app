@@ -1,0 +1,10 @@
+{
+  "name": "zingy",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "latest"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
