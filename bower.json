@@ -1,0 +1,11 @@
+{
+  "name": "zingy",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "latest",
+    "lodash": "latest",
+    "requirejs": "latest",
+    "bootstrap": "latest",
+    "almond": "latest"
+  }
+}
