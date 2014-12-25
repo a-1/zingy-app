@@ -114,7 +114,7 @@ module.exports = function (grunt) {
                 tasks: ['jshint', 'copy:buildFromSrc']
             },
             less: {
-                files: ['src/app/**/*.less'],
+                files: ['src/app/**/*.less', 'src/assets/**/*.less'],
                 tasks: ['copy:buildFromSrc', 'less:dev']
             },
             tpl: {
