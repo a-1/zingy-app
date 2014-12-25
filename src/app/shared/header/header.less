@@ -1,0 +1,98 @@
+.navbar-default {
+  background-color: #000;
+  border-color: #000;
+}
+
+@media (min-width: 768px) {
+  .search {
+    left: 36%;
+    position: absolute;
+    top: 23%;
+    width: 41%;
+    z-index: 1;
+    display: block
+  }
+
+  .best-offers {
+    border-right: 2px dotted #b0b0b0;
+  }
+
+  .dash {
+    border-left: 2px dotted #b0b0b0;
+  }
+
+  .search-mob, .mobile-logo {
+    display: none
+  }
+
+  .border-right-dotted {
+    border-right: 1px dotted #878787;
+  }
+}
+
+@media (max-width: 765px) {
+
+  .search, .social, .snowlink, .f-like, .desktop-logo {
+    display: none
+  }
+
+  .best-offers {
+    border-right: 0px
+  }
+
+  .dash {
+    border-left: 0px
+  }
+
+  .search-mob {
+    left: 0;
+    position: relative;
+    top: 0;
+    width: 95%;
+    z-index: 1;
+    display: block;
+    float: left;
+    margin-bottom: 10px;
+  }
+
+  .clear-mob {
+    clear: both
+  }
+
+  .quick-setting {
+    border: 1px solid #4a413a;
+    background-color: #f9f9f9;
+    box-shadow: 2px 2px 4px #999;
+    position: relative;
+    right: 0px;
+    top: 0px;
+    width: auto;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .location-setting {
+    border: 1px solid #4a413a;
+    background-color: #f9f9f9;
+    box-shadow: 2px 2px 4px #999;
+    position: relative;
+    right: 0px;
+    top: -55px;
+    width: auto;
+    z-index: 1;
+    padding: 10px;
+    overflow: hidden
+  }
+
+  .mobile-logo {
+    left: 17px;
+    position: relative;
+    top: 19px;
+  }
+
+  .search-filters {
+    position: absolute !important;
+    top: 35px
+  }
+
+}

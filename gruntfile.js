@@ -28,8 +28,14 @@ module.exports = function (grunt) {
             updateLibs: {
                 files: [
                     //angular
-                    {src: 'bower_components/angular/angular.js', dest: 'src/vendor/angular/angular.js'},
-                    {src: 'bower_components/angular/angular.min.js', dest: 'src/vendor/angular/angular.min.js'},
+                    {
+                        src: 'bower_components/angular/angular.js',
+                        dest: 'src/vendor/angular/angular.js'
+                    },
+                    {
+                        src: 'bower_components/angular/angular.min.js',
+                        dest: 'src/vendor/angular/angular.min.js'
+                    },
                     {
                         src: 'bower_components/angular-route/angular-route.js',
                         dest: 'src/vendor/angular/angular-route.js'
@@ -58,6 +64,7 @@ module.exports = function (grunt) {
                     {expand: true, cwd: 'bower_components/bootstrap/', src: 'js/**', dest: 'src/vendor/bootstrap/'},
                     {expand: true, cwd: 'bower_components/bootstrap/', src: 'less/**', dest: 'src/vendor/bootstrap/'},
                     {expand: true, cwd: 'bower_components/bootstrap/', src: 'fonts/**', dest: 'src/vendor/bootstrap/'},
+                    {expand: true, cwd: 'bower_components/bootstrap/fonts', src: ['**'], dest: 'src/assets/fonts/'},
                     //ramda
                     {src: 'bower_components/ramda/ramda.js', dest: 'src/vendor/ramda/ramda.js'},
                     {src: 'bower_components/ramda/ramda.min.js', dest: 'src/vendor/ramda/ramda.min.js'},
@@ -111,7 +118,7 @@ module.exports = function (grunt) {
                 tasks: ['copy:buildFromSrc', 'less:dev']
             },
             tpl: {
-                files: ['src/index.tpl.html', 'src/main.tpl.less'],
+                files: ['src/index.tpl.html', 'src/main.tpl.less', 'src/app/**/*.html'],
                 tasks: ['copy:buildFromSrc', 'templatize']
             }
         },
@@ -212,6 +219,7 @@ module.exports = function (grunt) {
         }
 
     });
+
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');

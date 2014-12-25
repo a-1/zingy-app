@@ -9,7 +9,19 @@
 </head>
 <body>
 
-<div ng-view></div>
+<!-- Header -->
+<ng-include src="'app/shared/header/header.tpl.html'"></ng-include>
+<!--&lt;!&ndash; main-content &ndash;&gt;-->
+<br/>
+<br/>
+<br/>
+<br/>
+<section ng-view></section>
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<br/>
+<br/>
+<br/>
+<ng-include src="'app/shared/footer/footer.tpl.html'"></ng-include>
 
 <% if(isHybridApp) { %>
 <script type="text/javascript" src="cordova.js"></script>
@@ -21,4 +33,5 @@
 <% } %>
 
 </body>
+
 </html>
