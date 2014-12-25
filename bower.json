@@ -1,8 +1,11 @@
 {
-  "name": "zingy",
+  "name": "zingy-app",
   "version": "0.0.1",
   "dependencies": {
     "angular": "latest",
+    "angular-route": "latest",
+    "angular-touch": "latest",
+    "angular-animate": "latest",
     "ramda": "latest",
     "requirejs": "latest",
     "bootstrap": "latest",

@@ -9,7 +9,7 @@ module.exports = function (grunt) {
         isProduction: grunt.option('isProduction'),
 
         jshint: {
-            files: ['app/**/*.js'],
+            files: ['src/app/**/*.js'],
             options: {
                 jshintrc: '.jshintrc'
             }
@@ -30,6 +30,30 @@ module.exports = function (grunt) {
                     //angular
                     {src: 'bower_components/angular/angular.js', dest: 'src/vendor/angular/angular.js'},
                     {src: 'bower_components/angular/angular.min.js', dest: 'src/vendor/angular/angular.min.js'},
+                    {
+                        src: 'bower_components/angular-route/angular-route.js',
+                        dest: 'src/vendor/angular/angular-route.js'
+                    },
+                    {
+                        src: 'bower_components/angular-route/angular-route.min.js',
+                        dest: 'src/vendor/angular/angular-route.min.js'
+                    },
+                    {
+                        src: 'bower_components/angular-animate/angular-animate.js',
+                        dest: 'src/vendor/angular/angular-animate.js'
+                    },
+                    {
+                        src: 'bower_components/angular-animate/angular-animate.min.js',
+                        dest: 'src/vendor/angular/angular-animate.min.js'
+                    },
+                    {
+                        src: 'bower_components/angular-touch/angular-touch.js',
+                        dest: 'src/vendor/angular/angular-touch.js'
+                    },
+                    {
+                        src: 'bower_components/angular-touch/angular-touch.min.js',
+                        dest: 'src/vendor/angular/angular-touch.min.js'
+                    },
                     //bootstrap
                     {expand: true, cwd: 'bower_components/bootstrap/', src: 'js/**', dest: 'src/vendor/bootstrap/'},
                     {expand: true, cwd: 'bower_components/bootstrap/', src: 'less/**', dest: 'src/vendor/bootstrap/'},
@@ -44,10 +68,10 @@ module.exports = function (grunt) {
             },
             buildFromSrc: {
                 files: [
-                    {expand: true, src: ['src/**'], dest: 'build/'}
+                    {expand: true, cwd: 'src', src: ['**'], dest: 'build/'}
                 ]
             },
-            distFromSrc: {
+            distFromBuild: {
                 files: [
                     {expand: true, src: ['src/**'], dest: 'build/'}
                 ]
@@ -57,14 +81,14 @@ module.exports = function (grunt) {
         less: {
             options: {
                 sourceMap: true,
-                sourceMapFilename: 'build/app.css.map',
+                sourceMapFilename: 'build/assets/css/app.css.map',
                 sourceMapURL: 'app.css.map',
                 outputSourceFiles: true,
                 report: 'min'
             },
             dev: {
                 files: {
-                    "build/app.css": "build/assets/less/source.less"
+                    "build/assets/css/app.css": "build/assets/less/main.less"
                 }
             },
             prod: {
@@ -72,14 +96,24 @@ module.exports = function (grunt) {
                     compress: true
                 },
                 files: {
-                    "build/app.css": "build/assets/less/source.less"
+                    "build/assets/css/app.css": "build/assets/less/main.less"
                 }
             }
         },
 
         watch: {
-            files: ['app/**/*.js'],
-            tasks: ['jshint']
+            jshint: {
+                files: ['src/app/**/*.js', 'gruntfile.js'],
+                tasks: ['jshint', 'copy:buildFromSrc']
+            },
+            less: {
+                files: ['src/app/**/*.less'],
+                tasks: ['copy:buildFromSrc', 'less:dev']
+            },
+            tpl: {
+                files: ['src/index.tpl.html', 'src/main.tpl.less'],
+                tasks: ['copy:buildFromSrc', 'templatize']
+            }
         },
 
         templatize: {
@@ -88,8 +122,8 @@ module.exports = function (grunt) {
                 dest: 'build/index.html'
             },
             lessModules: {
-                src: 'src/assets/less/modules.less.tpl',
-                dest: 'build/assets/less/modules.less'
+                src: 'build/main.tpl.less',
+                dest: 'build/assets/less/main.less'
             }
         },
 
@@ -100,7 +134,7 @@ module.exports = function (grunt) {
             },
             main: {
                 src: 'src/app/**/*.html',
-                dest: 'build/app/templateCacheLoaded.js'
+                dest: 'build/app/templateCache.js'
             }
         },
 
@@ -123,12 +157,13 @@ module.exports = function (grunt) {
                 baseUrl: "./build/app",
                 mainConfigFile: "src/app/main.js",
                 name: "../vendor/almond/almond",
-                out: "build/optimized.js",
+                out: "build/app.js",
                 include: ['main'],
                 insertRequire: ['main'],
                 wrap: true,
                 almond: true,
                 optimize: "uglify2",
+                preserveLicenseComments: false,
                 skipDirOptimize: true,
                 keepBuildDir: true,
                 generateSourceMaps: true,
@@ -164,25 +199,37 @@ module.exports = function (grunt) {
                     dir: 'reports/coverage'
                 }
             }
+        },
+
+        connect: {
+            web: {
+                options: {
+                    port: 9000,
+                    base: 'build',
+                    keepalive: true
+                }
+            }
         }
 
     });
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
+    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-karma');
-
     grunt.registerMultiTask('templatize', function () {
         grunt.file.copy(this.data.src, this.data.dest, {process: grunt.template.process});
     });
 
-    grunt.registerTask('default', ['build']);
-    grunt.registerTask('build', ['build']);
+    grunt.registerTask('build', ['jshint', 'clean:build', 'copy:updateLibs', 'copy:buildFromSrc', 'templatize', 'less:dev']);
+    grunt.registerTask('dist', ['build', 'clean:dist', 'less:prod', 'html2js', 'requirejs']);
     grunt.registerTask('test', ['karma:unit']);
+    grunt.registerTask('web', ['connect:web']);
+    grunt.registerTask('default', ['build']);
 
 };

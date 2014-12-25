@@ -1,0 +1,4 @@
+@import "../../vendor/bootstrap/less/bootstrap.less";
+<% _.forEach(grunt.file.expand('src/app/**/*.less'), function(name) { %>
+@import "<%= name.replace(/src/g, '../..') %>";
+<% }); %>
