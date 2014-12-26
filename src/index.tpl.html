@@ -11,12 +11,10 @@
 
 <!-- Header -->
 <ng-include src="'app/shared/header/header.tpl.html'"></ng-include>
-<!--&lt;!&ndash; main-content &ndash;&gt;-->
+<!-- main-section -->
+<section id="mainSection" ng-view></section>
 
-<section ng-view></section>
-<!--&lt;!&ndash; Footer &ndash;&gt;-->
-
-<ng-include src="'app/shared/footer/footer.tpl.html'"></ng-include>
+<!--<ng-include src="'app/shared/footer/footer.tpl.html'"></ng-include>-->
 
 <% if(isHybridApp) { %>
 <script type="text/javascript" src="cordova.js"></script>

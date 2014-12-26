@@ -1,3 +1,9 @@
-<div class="well home">
-    {{title}}
+<div class="container">
+    <ng-include src="'app/home/banner/home.banner.tpl.html'"></ng-include>
+    <ng-include ng-if="isMobile" src="'app/search/bar/search.bar.tpl.html'"></ng-include>
+    <div class="row">
+        <ng-include src="'app/home/offers/home.offers.tpl.html'"></ng-include>
+        <ng-include src="'app/home/events/home.events.tpl.html'"></ng-include>
+    </div>
+
 </div>

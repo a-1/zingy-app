@@ -1,14 +1,16 @@
-<div class="panel-heading personl-details"  data-toggle='collapse'
+<div class="panel-heading personl-details" data-toggle='collapse'
      data-target='#personalDetails'
      data-parent='#accordion'>
-    <h4 class="panel-title"><a href="#personalDetails" class="jump"><i class="glyphicon glyphicon-chevron-up"></i> Personal & Contact Details </a> <i class="glyphicon glyphicon-ok-circle pull-right"></i></h4>
+    <h4 class="panel-title"><a href="#personalDetails" class="jump"><i class="glyphicon glyphicon-chevron-up"></i>
+        Personal & Contact Details </a> <i class="glyphicon glyphicon-ok-circle pull-right"></i></h4>
 </div>
 <div class="panel-collapse collapse in" id="personalDetails">
     <div class="panel-body">
         <form role="form">
             <div class="row">
                 <div class="col-sm-4 form-group">
-                    <input type="text" ng-model="personalDetails.firstName" class="form-control" placeholder="First Name"/>
+                    <input type="text" ng-model="personalDetails.firstName" class="form-control"
+                           placeholder="First Name"/>
                 </div>
                 <div class="col-sm-2 form-group">
                     <select class="form-control">
@@ -17,20 +19,24 @@
                     </select>
                 </div>
                 <div class="col-sm-3 form-group">
-                    <input type="text" ng-model="personalDetails.cellPhone" class="form-control" placeholder="Cell Phone"/>
+                    <input type="text" ng-model="personalDetails.cellPhone" class="form-control"
+                           placeholder="Cell Phone"/>
                 </div>
                 <div class="col-sm-3 form-group">
-                    <input type="text" ng-model="personalDetails.workPhone" class="form-control" placeholder="Work Phone"/>
+                    <input type="text" ng-model="personalDetails.workPhone" class="form-control"
+                           placeholder="Work Phone"/>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4 form-group">
-                    <input type="text" ng-model="personalDetails.lastName" class="form-control" placeholder="Last Name"/>
+                    <input type="text" ng-model="personalDetails.lastName" class="form-control"
+                           placeholder="Last Name"/>
                 </div>
                 <div class="col-sm-2 form-group">
                     <div class="input-group">
-                        <input type="text" placeholder="DOB" ng-model="personalDetails.birthDate" id="birthDate" class="form-control">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span> </div>
+                        <input type="text" placeholder="DOB" ng-model="personalDetails.birthDate" id="birthDate"
+                               class="form-control">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span></div>
                 </div>
                 <div class="col-sm-5 form-group">
                     <input type="email" ng-model="personalDetails.email" class="form-control" placeholder="Email"/>"{{personalDetails.email}}"
@@ -85,7 +91,7 @@
                 <div class="col-sm-5 form-group col-xs-offset-2">
                     <div class="input-group">
                         <input type="text" placeholder="Upload Profile Pic" id="birthDate" class="form-control">
-                        <span class="input-group-addon">Browse</span> </div>
+                        <span class="input-group-addon">Browse</span></div>
                 </div>
             </div>
             <div class="row border-bottom form-group">

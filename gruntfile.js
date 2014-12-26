@@ -60,6 +60,10 @@ module.exports = function (grunt) {
                         src: 'bower_components/angular-touch/angular-touch.min.js',
                         dest: 'src/vendor/angular/angular-touch.min.js'
                     },
+                    {
+                        src: 'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+                        dest: 'src/vendor/angular/ui-bootstrap-tpls.js'
+                    },
                     //bootstrap
                     {expand: true, cwd: 'bower_components/bootstrap/', src: 'js/**', dest: 'src/vendor/bootstrap/'},
                     {expand: true, cwd: 'bower_components/bootstrap/', src: 'less/**', dest: 'src/vendor/bootstrap/'},

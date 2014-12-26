@@ -1,6 +1,12 @@
-section {
-  min-height: 600px;
+@media (max-width: 768px) {
+
+  .container {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
 }
+
 
 .box {
   background-color: #FFFFFF;
@@ -121,13 +127,6 @@ section {
   color: #ff7301
 }
 
-.bell {
-  position: absolute;
-  right: 12%;
-  top: 38px;
-  z-index: 1
-}
-
 .search-group {
   width: 81%;
   margin-right: 5px;
@@ -183,12 +182,6 @@ section {
   margin: 59px 4px 0 0;
   padding: 0;
   cursor: pointer
-}
-
-.banner {
-  padding-left: 0px;
-  padding-right: 0px;
-  margin-top: 56px
 }
 
 .right-space {
@@ -596,6 +589,15 @@ label.overflow {
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
+h1, .h1 {
+  color: #6B6B6B;
+  font-family: Segoe UI;
+  font-size: 26px;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
 
 @media (min-width: 1200px) {
   .container {
