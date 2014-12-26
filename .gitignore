@@ -1,4 +1,3 @@
-lib-cov
 *.seed
 *.log
 *.csv
@@ -6,15 +5,15 @@ lib-cov
 *.out
 *.pid
 *.gz
-
 *.idea
+
+lib-cov
+npm-debug.log
+node_modules
+bower_components
 pids
 logs
 report
 build
 dist
 vendor
-
-npm-debug.log
-node_modules
-bower_components

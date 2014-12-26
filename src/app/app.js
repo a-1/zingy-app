@@ -1,9 +1,21 @@
 'use strict';
 
-define(['angular', './home/home','./results/results', 'angular-route'], function (angular) {
+
+define(function (require) {
+
+    var angular = require('angular');
+
+    var dependencies = [
+
+        //angular
+        'ngRoute',
+
+        //project modules
+        require('home/home').name
+    ];
 
     return angular
-        .module('app', ['ngRoute', 'home','results'])
+        .module('app', dependencies)
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider.otherwise('/');
         }]);

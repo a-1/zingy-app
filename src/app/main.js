@@ -28,7 +28,7 @@ require.config({
     }
 });
 
-require(['angular', 'app'], function (angular) {
+require(['angular', 'angular-route', 'angular-touch', 'angular-animate', 'templateCache', 'app'], function (angular) {
     angular.element(document).ready(function () {
         angular.bootstrap(document, ['app']);
     });

@@ -17,7 +17,6 @@ module.exports = function (config) {
         plugins: [
             'karma-junit-reporter',
             'karma-requirejs',
-
         ]
     });
 
