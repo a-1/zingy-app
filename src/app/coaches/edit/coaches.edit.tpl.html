@@ -1,0 +1,413 @@
+<section>
+    <!--Banner Carousel-->
+    <div class="container form-group banner border-btm">
+        <div class="col-sm-3 col-lg-3 form-group">&nbsp;</div>
+        <div class="col-sm-8 col-lg-8">
+            <p class="pagging">Hello Shantanu, Manage your Account details, prefrences & your listings on this page</p>
+        </div>
+
+    </div><!--Banner Carousel-->
+    <div class="container">
+        <!--Search Option for Mobile-->
+        <div class="search-mob">
+            <div class='input-group search-group pull-left'>
+                <span class='input-group-addon searchFilter'><i class='glyphicon glyphicon-align-justify'></i> <i class='glyphicon glyphicon-chevron-down'></i></span>
+                <input type='text' class='form-control typeahead' id='search' placeholder="Search for Coach / Facilities / Players / Facilities">
+            </div>
+            <div><button class="btn btn-primary pull-left">GO</button></div>
+            <div class="search-filters collapse">
+                <ul>
+                    <li><a href="#" class="all search-img"><span>All</span></a></li>
+                    <li><a href="#" class="coaches search-img"><span>Coaches</span></a></li>
+                    <li><a href="#" class="players search-img"><span>Players</span></a></li>
+                    <li><a href="#" class="facilities search-img"><span>Facilities</span></a></li>
+                    <li><a href="#" class="suppliers search-img"><span>Suppliers</span></a></li>
+                    <li><a href="#" class="events search-img"><span>Events</span></a></li>
+                </ul>
+            </div>
+        </div><!--Search Option for Mobile-->
+        <div class="row">
+            <div class="col-sm-3 col-lg-3 ">
+                <div class="welcome-block">Welcome to Zingy!</div>
+                <p>You have indicated your interest in listing your services as a “coach” with us. Please fill in the form below to create your listing. Once you click on the ‘Add my listing’ button, your listing information will be sent for
+                    verification. </p>
+                <p>After approval, your listing will appear under “coaches” category on Zingy for free. You will also appear on any relevant searches on Zingy.</p>
+                <p>Alternatively, you could also download the “coach listing form”, fill it up offline at your leisure and send it across to coach@zingy.in</p>
+                <!-- <div class="welcome-block">Quick Settings</div>
+                     <div class="settings form-group">
+                         <p><a href="#" class="coach coaches jump">COACH <i class="glyphicon glyphicon-chevron-down"></i></a></p>
+                         <div class="coach-info collapse">
+                             <p><input type="checkbox" id="deactive"/> <label for="deactive">Deactivate Listing</label></p>
+                             <p>Offer/Event/Deal <i class="glyphicon glyphicon-plus-sign"></i>  <i class="glyphicon glyphicon-cog"></i></p>
+                        </div>
+                     </div>
+                     <div class="settings form-group">
+                         <p><a href="#" class="coaches jump">SUPPLIER <i class="glyphicon glyphicon-chevron-down"></i></a></p>
+                     </div>-->
+            </div>
+            <div class="col-sm-7 col-lg-7">
+                <div id="accordion" class="panel-group arrows">
+                    <div class="panel panel-default">
+                        <div class="panel-heading personl-details"  data-toggle='collapse'
+                             data-target='#personalDetails'
+                             data-parent='#accordion'>
+                            <h4 class="panel-title"><a href="#personalDetails" class="jump"><i class="glyphicon glyphicon-chevron-up"></i> Personal & Contact Details </a> <i class="glyphicon glyphicon-ok-circle pull-right"></i></h4>
+                        </div>
+                        <div class="panel-collapse collapse in" id="personalDetails">
+                            <div class="panel-body">
+                                <form role="form">
+                                    <div class="row">
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" class="form-control" placeholder="First Name"/>
+                                        </div>
+                                        <div class="col-sm-2 form-group">
+                                            <select class="form-control">
+                                                <option>M</option>
+                                                <option>F</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-3 form-group">
+                                            <input type="text" class="form-control" placeholder="Cell Phone"/>
+                                        </div>
+                                        <div class="col-sm-3 form-group">
+                                            <input type="text" class="form-control" placeholder="Work Phone"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" class="form-control" placeholder="Last Name"/>
+                                        </div>
+                                        <div class="col-sm-2 form-group">
+                                            <div class="input-group">
+                                                <input type="text" placeholder="DOB" id="birthDate" class="form-control">
+                                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span> </div>
+                                        </div>
+                                        <div class="col-sm-5 form-group">
+                                            <input type="email" class="form-control" placeholder="Email"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4 form-group">
+                                            <input type="text" class="form-control" placeholder="Nationality"/>
+                                        </div>
+                                        <div class="col-sm-5 form-group col-xs-offset-2">
+                                            <input type="email" class="form-control" placeholder="Web-URL"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4 form-group">
+                                            <select class="form-control">
+                                                <option>Select Country</option>
+                                                <option>India</option>
+                                                <option>America</option>
+                                                <option>China</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-5 form-group col-xs-offset-2">
+                                            <input type="email" class="form-control" placeholder="Facebook-URL"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" class="form-control" placeholder="Address Line 1"/>
+                                        </div>
+                                        <div class="col-sm-5 form-group">
+                                            <input type="email" class="form-control" placeholder="Youtube-URL"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 form-group">
+                                            <input type="text" class="form-control" placeholder="Address Line 2"/>
+                                        </div>
+                                        <div class="col-sm-5 form-group">
+                                            <input type="email" class="form-control" placeholder="Any other-URL"/>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4 form-group">
+                                            <select class="form-control">
+                                                <option>Select City</option>
+                                                <option>Pune</option>
+                                                <option>Mumbai</option>
+                                                <option>Banglore</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-5 form-group col-xs-offset-2">
+                                            <div class="input-group">
+                                                <input type="text" placeholder="Upload Profile Pic" id="birthDate" class="form-control">
+                                                <span class="input-group-addon">Browse</span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="row border-bottom form-group">
+                                        <div class="col-sm-4 form-group">
+                                            <select class="form-control">
+                                                <option>Select State</option>
+                                                <option>Maharastra</option>
+                                                <option>Gujrat</option>
+                                                <option>Karnatak</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-2 form-group">
+                                            <input type="text" placeholder="PIN" class="form-control">
+                                        </div>
+                                        <div class="col-sm-5 form-group">
+                                            <div class="input-group">
+                                                <input type="text" placeholder="Upload Gallery Pic" class="form-control">
+                                                <span class="input-group-addon">Browse</span></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-12 form-group">
+                                            <button class="btn btn-primary">Save &amp; Continue</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading coaching" data-toggle='collapse'
+                             data-target='#aboutCoaching'
+                             data-parent='#accordion'>
+                            <h4 class="panel-title"><a href="#aboutCoaching" class="jump"><i class="glyphicon glyphicon-chevron-up"></i> About your Coaching</a> </h4>
+                        </div>
+                        <div class="panel-collapse collapse" id="aboutCoaching">
+                            <div class="panel-body">
+                                <ul class='nav nav-tabs client-hub responsive-tabs form-group'>
+                                    <li class='active'><a href='#sport1' data-toggle='tab'>SPORT1</a></li>
+                                    <li><a href="#" class="add-sport"><i class=" glyphicon glyphicon-plus-sign"></i> Add Sport</a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class='tab-content'>
+                                    <div class='tab-pane active' id='sport1'>
+                                        <div class="row form-group">
+                                            <div class="col-sm-5 form-group">
+                                                <input type="text" class="form-control" placeholder="Which Sport do you coach for?" />
+                                            </div>
+                                            <div class="col-sm-2 form-group">
+                                                <select class="form-control" >
+                                                    <option>01</option>
+                                                    <option>02</option>
+                                                    <option>03</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-5">
+                                                (Coaching Experience in Yrs)
+                                            </div>
+                                        </div>
+                                        <p>WHOME DO YOU COACH:</p>
+                                        <div class="row form-group">
+                                            <div class="col-sm-2">
+                                                <input type="checkbox" id="men"/> <label for="men">Men</label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <span class="pull-left right-space form-group">from age:</span>
+                                                <select class="form-control pull-left right-space form-group select-dd">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                                <span class="pull-left right-space form-group">to:</span>
+                                                <select class="form-control pull-left right-space form-group select-dd">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                                <span class="pull-left right-space left-spacing">Charges per class:</span> <input type="text" class="form-control pull-left right-space charge-textbox"/>  <span class="pull-left right-space">to:</span>  <input type="text" class="form-control pull-left right-space charge-textbox" /><span class="pull-left">Re</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-sm-2">
+                                                <input type="checkbox" id="Women"/> <label for="Women">Women</label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <span class="pull-left right-space form-group">from age:</span>
+                                                <select class="form-control pull-left right-space form-group select-dd">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                                <span class="pull-left right-space form-group">to:</span>
+                                                <select class="form-control pull-left right-space form-group select-dd">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                                <span class="pull-left right-space left-spacing">Charges per class:</span> <input type="text" class="form-control pull-left right-space charge-textbox"/>  <span class="pull-left right-space">to:</span>  <input type="text" class="form-control pull-left right-space charge-textbox" /><span class="pull-left">Re</span>
+                                            </div>
+
+                                        </div>
+                                        <div class="row form-group">
+                                            <div class="col-sm-2">
+                                                <input type="checkbox" id="Kids"/> <label for="Kids">Kids</label>
+                                            </div>
+                                            <div class="col-sm-10">
+                                                <span class="pull-left right-space form-group">from age:</span>
+                                                <select class="form-control pull-left right-space form-group select-dd">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                                <span class="pull-left right-space form-group">to:</span>
+                                                <select class="form-control pull-left right-space form-group select-dd">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                                <span class="pull-left right-space left-spacing">Charges per class:</span> <input type="text" class="form-control pull-left right-space charge-textbox"/>  <span class="pull-left right-space">to:</span>  <input type="text" class="form-control pull-left right-space charge-textbox" /><span class="pull-left">Re</span>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div> <!-- Tab panes -->
+                                <p>WHERE DO YOU COACH:  </p>
+                                <ul class='nav nav-tabs client-hub responsive-tabs form-group'>
+                                    <li class='active'><a href='#VENUE1' data-toggle='tab'>VENUE1</a></li>
+                                    <li><a href='#VENUE2' data-toggle='tab' class="inactive">VENUE2</a></li>
+                                    <li><a href="#" class="add-sport"><i class=" glyphicon glyphicon-plus-sign"></i> Add Sport</a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class='tab-content'>
+                                    <div class='tab-pane active' id='VENUE1'>
+                                        <p><input type="checkbox" id="Check"/> <label for="Check">(Check here if address is same as Personal & Contact details above.)</label></p>
+                                        <form role="form">
+                                            <div class="row form-group">
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" placeholder="Name/Label for the Venue"/>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" placeholder="Address Line1"/>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-sm-4">
+                                                    <select class="form-control form-group">
+                                                        <option>Select City</option>
+                                                        <option>Pune</option>
+                                                        <option>Mumbai</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <select class="form-control form-group">
+                                                        <option>Select State</option>
+                                                        <option>Maharastra</option>
+                                                        <option>Gujrat</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-2">
+                                                    <input type="text" class="form-control" placeholder="PIN"/>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-sm-6">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" placeholder="Upload Gallery Pic">
+                                                        <span class="input-group-addon">Browse</span> </div>
+                                                </div>
+                                            </div>
+                                            <p>YOUR PREFRENCES</p>
+                                            <div class="row form-group">
+                                                <div class="col-sm-5">Do you provide private coaching?</div>
+                                                <div class="col-sm-4"><input type="radio" id="yes" name="coaching"/> <label for="yes">Yes</label> <input type="radio" id="no" name="coaching"/> <label for="no">No</label></div>
+                                            </div>
+                                            <div class="row form-group border-bottom ">
+                                                <div class="col-sm-5">Do you provide fre trial classes?</div>
+                                                <div class="col-sm-4"><input type="radio" id="yes1" name="trial"/> <label for="yes1">Yes</label> <input type="radio" id="no1" name="trial"/> <label for="no1">No</label></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 form-group">
+                                                    <button class="btn btn-primary">Save &amp; Continue</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class='tab-pane collapse' id='VENUE2'>
+                                        VENUE2
+                                    </div>
+                                </div><!-- Tab panes -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading certification" data-toggle='collapse'
+                             data-target='#certificateAccolades'
+                             data-parent='#accordion'>
+                            <h4 class="panel-title"><a href="#certificateAccolades" class="jump"><i class="glyphicon glyphicon-chevron-up"></i> Certifications &amp; Accolades</a> </h4>
+                        </div>
+                        <div class="panel-collapse collapse" id="certificateAccolades">
+                            <div class="panel-body">
+                                <ul class='nav nav-tabs certificate client-hub responsive-tabs form-group'>
+                                    <li class='active'><a href='#Certification' data-toggle='tab' class="certificate">CERTIFICATION 1</a></li>
+                                    <li><a href="#" class="add-sport"><i class=" glyphicon glyphicon-plus-sign"></i> Add Certification</a></li>
+                                </ul>
+                                <!-- Tab panes -->
+                                <div class='tab-content'>
+                                    <div class='tab-pane active' id='Certification'>
+                                        <form role="form">
+                                            <div class="row form-group">
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" placeholder="Certification Name"/>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group">
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control" placeholder="Certification Body"/>
+                                                </div>
+                                            </div>
+                                            <div class="row form-group ">
+                                                <div class="col-sm-6">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" placeholder="Attach Certificate Image">
+                                                        <span class="input-group-addon">Browse</span> </div>
+                                                </div>
+                                            </div>
+                                            <p><input type="checkbox" id="expiry"> <label for="expiry">This certification has no expiry.</label></p>
+                                            <div class="row form-group border-bottom">
+                                                <div class="col-sm-3">Validity from:</div>
+                                                <div class="col-sm-3">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" >
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span> </div>
+                                                </div>
+                                                <div class="col-sm-1">to</div>
+                                                <div class="col-sm-3 form-group">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" >
+                                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span> </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-12 form-group">
+                                                    <button class="btn btn-primary">Save &amp; Continue</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div><!-- Tab panes -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-12">
+                        <p>ANY OTHER COMMENTS</p>
+                        <textarea class="form-group form-control"></textarea>
+                        <p><input type="checkbox" id="terms"/> <label for="terms">I agree to the terms & conditions and also have read the <a href="#"><i>privacy policy</i></a> </label></p>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-sm-6">
+                        <button class="btn btn-primary">Submit &amp; Add listing</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 col-lg-2 form-group snowlink">
+                <img src="assets/images/snowlink.jpg" class="img-responsive"/>
+            </div>
+        </div>
+
+    </div><!--container-->
+</section>

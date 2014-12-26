@@ -12,8 +12,8 @@ define(function (require) {
 
         //project modules
         require('home/home').name,
-        require('results/results').name
-
+        require('results/results').name,
+        require('coaches/coaches').name
     ];
 
     return angular
