@@ -1,0 +1,18 @@
+      <ul>
+                <li ng-repeat="localStoreName in storeNames" class="form-group result">
+
+                        <div class="col-sm-9 border-right-dotted">
+                            <h3>{{localStoreName.storeName}}</h3>
+                            <p><span class="city">{{localStoreName.storeLocation}} > </span>{{localStoreName.storeAddress}}</p>
+                            <p>Phone: {{localStoreName.phoneNbr}}</p>
+                            <p>Speciality: {{localStoreName.speciality}}</p>
+                        </div>
+
+                    <div class="col-sm-3">
+                        <p class="form-group"><span class="delivery">&nbsp;</span> <span class="map"></span> <span class="share"></span> <span class="gallery"></span></p>
+                        <p><br/><br/><img src="assets/images/review.png"> <a href="#">(223)</a></p>
+                        <p><span class="star-green"></span><span class="star-green"></span><span class="star-green"></span><span class="star-grey-green"></span><span class="star-grey"></span></p>
+                    </div>
+                </li>
+            </ul>
+
