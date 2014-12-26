@@ -11,7 +11,8 @@ define(function (require) {
         'ngRoute',
 
         //project modules
-        require('home/home').name
+        require('home/home').name,
+        require('results/results').name
     ];
 
     return angular
