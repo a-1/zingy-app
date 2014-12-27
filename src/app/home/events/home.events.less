@@ -1,21 +1,24 @@
+.current-events {
 
-.best-offers {
+  .event-box {
+    height: 43px;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 3px 3px 3px #333333;
+    margin-bottom: 10px;
+  }
 
-  .box {
-    background-color: #FFFFFF;
-    box-shadow: -1px 1px 3px #333333;
-    color: #934DC3;
-    font-family: tahoma;
-    font-size: 11px;
-    overflow: hidden;
+  .happening-box {
     width: 201px;
     float: left;
     margin-left: 10px;
+    text-align: center;
   }
 
-  .box-content {
-    padding: 5px;
-    text-align: left;
+  .happening-txt {
+    float: left;
+    padding: 1px 0 0 10px;
+    width: 150px;
   }
 
   .carousel-inner {
@@ -29,7 +32,7 @@
   }
 
   .carousel-control {
-    width: 4%;
+    width: 5%;
     opacity: 1;
     background-image: none;
   }
@@ -41,20 +44,17 @@
 }
 
 @media (min-width: 1200px) {
-  .best-offers {
-    border-right: 2px dotted #b0b0b0;
-
-    .box {
+  .current-events {
+    .happening-box {
       margin-left: 20px;
     }
-
   }
 }
 
 @media (max-width: 768px) {
-  .best-offers {
+  .current-events {
 
-    .box {
+    .happening-box {
       margin: auto;
       float: none;
     }

@@ -1,83 +1,10 @@
 @media (max-width: 768px) {
-
-  .container {
-    padding-left: 0;
-    padding-right: 0;
+  #mainSection {
+    .container {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
-
-}
-
-
-.box {
-  background-color: #FFFFFF;
-  box-shadow: -1px 1px 3px #333333;
-  color: #934DC3;
-  font-family: tahoma;
-  font-size: 11px;
-  overflow: hidden;
-  width: 201px
-}
-
-.box-content {
-  padding: 5px
-}
-
-.best-offers > ul {
-  margin: 0;
-  padding: 0
-}
-
-.best-offers ul, li {
-  list-style: none
-}
-
-.best-offers ul > li {
-  float: left;
-  margin-right: 10px;
-  width: 201px !important;
-}
-
-.karate-classes {
-  height: 43px;
-  background-color: #a88f32;
-  color: #fff;
-}
-
-.moto-class {
-  height: 43px;
-  background-color: #774381;
-  color: #fff;
-}
-
-.inter-pool {
-  height: 43px;
-  background-color: #e75a48;
-  color: #fff;
-}
-
-.happening-box {
-  width: 130px;
-  float: left;
-  margin-right: 20px
-}
-
-.happening-txt {
-  float: left;
-  padding: 1px 0 0 10px;
-  width: 89px;
-}
-
-.featrured-box {
-  background-color: #fff;
-  color: #5d5d5d;
-  padding: 10px;
-  overflow: hidden
-}
-
-.featured-content {
-  float: left;
-  padding-left: 10px;
-  width: 58%
 }
 
 .number {
@@ -161,28 +88,6 @@
   color: #fff !important
 }
 
-/* Elastislide Style */
-.liquid .previous {
-  display: block;
-  height: 35px;
-  width: 18px;
-  background-image: url('../images/arrow-right.png');
-  float: left;
-  margin: 59px 10px 0 5px;
-  padding: 0;
-  cursor: pointer
-}
-
-.liquid .next {
-  display: block;
-  height: 35px;
-  width: 18px;
-  background-image: url('../images/arrow-left.png');
-  float: right;
-  margin: 59px 4px 0 0;
-  padding: 0;
-  cursor: pointer
-}
 
 .right-space {
   margin-right: 5px
@@ -598,10 +503,28 @@ h1, .h1 {
   margin-bottom: 20px;
 }
 
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1070px;
-    height: 40px;
+@media (min-width: 768px) {
+  h1, .h1 {
+    font-size: 23px;
   }
+}
+
+@media (max-width: 480px) {
+  h1, .h1 {
+    font-size: 16px;
+  }
+}
+
+h4, .h4 {
+  color: #8D8D8D;
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
+
+p {
+  margin: 0 0 5px;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
 }

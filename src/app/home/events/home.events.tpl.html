@@ -1,104 +1,21 @@
-<div class="col-sm-6 col-lg-6 clear-mob">
-    <h1 class="pull-left">What’s happening around you..!</h1><a href="#" class="pull-right form-group">View all
-    events</a>
-
-    <div id="liquid2" class="liquid clear-both" style="height: 250px; overflow: hidden;">
-        <span class="previous"></span>
-
-        <div class="wrapper" style="height: 250px; overflow: hidden; float: left; width: 450px;">
-            <ul style="height: 250px; float: left; margin: 0px; padding: 0px; display: block;">
-                <li style="height: 250px; display: block; float: left; margin-right: 0px; margin-left: 0px;">
-                    <div class="happening-box">
-                        <div class="karate-classes"><img src="assets/images/karate.png" class="pull-left"><span
-                                class="happening-txt">Karate Classes</span></div>
-                        <p>Jog Highschool Pune From 7th May 14.<br> Only 10 seats left. Hurry seats filling up fast</p>
-
-                        <div class="share-div">
-                            <ul>
-                                <li><a href="#"><img src="assets/images/share.png"></a>
-                                    <ul class="collapse">
-                                        <li>
-                                            <div class="share-box" style="left:20px;top:137px">
-                                                <p><img src="assets/images/share.png" class="img-responsive"></p>
-
-                                                <div class="social-network">
-                                                    <div class="pull-left"><img src="assets/images/facebook.png"
-                                                                                class="pull-left"></div>
-                                                    <div class="like-box"><span class="count">4.0 K</span></div>
-                                                </div>
-                                                <div class="social-network">
-                                                    <div class="pull-left"><img src="assets/images/twitter.png"
-                                                                                class="pull-left"></div>
-                                                    <div class="like-box"><span class="count">507</span></div>
-                                                </div>
-                                                <div class="social-network">
-                                                    <div class="pull-left"><img src="assets/images/google+.png"
-                                                                                class="pull-left"></div>
-                                                    <div class="like-box"><span class="count">4.5 K</span></div>
-                                                </div>
-                                                <div class="social-network">
-                                                    <div class="pull-left"><img src="assets/images/rss.png"
-                                                                                class="pull-left"></div>
-                                                    <div class="like-box"><span class="count">78.8 K</span></div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li style="height: 250px; display: block; float: left; margin-right: 0px; margin-left: 0px;">
-                    <div class="happening-box">
-                        <div class="moto-class"><img src="assets/images/motor.png" class="pull-left"> <span
-                                class="happening-txt">Motocross Mania</span></div>
-                        <p>Sarag Baugh Ground Today at 5:30 pm<br> Brought to you by TOI Get a assured gift with every
-                            ticket <br>Purchase before April 28th</p>
-
-                        <p><a href="#"><img src="assets/images/share.png"></a></p>
-                    </div>
-                </li>
-                <li style="height: 250px; display: block; float: left; margin-right: 0px; margin-left: 0px;">
-                    <div class="happening-box">
-                        <div class="inter-pool"><img src="assets/images/inter-it.png" class="pull-left"> <span
-                                class="happening-txt">Inter IT Pool Tournaments</span></div>
-                        <p>Witness the clashes if the TI TITANS on the Pool table at Bostro Cafe Paud road</p>
-
-                        <p><a href="#"><img src="assets/images/share.png"></a></p>
-                    </div>
-                </li>
-                <li style="height: 250px; display: block; float: left; margin-right: 0px; margin-left: 0px;">
-                    <div class="happening-box">
-                        <div class="karate-classes"><img src="assets/images/karate.png" class="pull-left"><span
-                                class="happening-txt">Karate Classes</span></div>
-                        <p>Jog Highschool From 7th May 14.<br> Only 10 seats left. Hurry seats filling up fast</p>
-
-                        <p><a href="#"><img src="assets/images/share.png"></a></p>
-                    </div>
-                </li>
-                <li style="height: 250px; display: block; float: left; margin-right: 0px; margin-left: 0px;">
-                    <div class="happening-box">
-                        <div class="moto-class"><img src="assets/images/motor.png" class="pull-left"> <span
-                                class="happening-txt">Motocross Mania</span></div>
-                        <p>Sarag Baugh Ground Today at 5:30 pm<br> Brought to you by TOI Get a assured gift with every
-                            ticket <br>Purchase before April 28th</p>
-
-                        <p><a href="#"><img src="assets/images/share.png"></a></p>
-                    </div>
-                </li>
-                <li style="height: 250px; display: block; float: left; margin-right: 0px; margin-left: 0px;">
-                    <div class="happening-box">
-                        <div class="inter-pool"><img src="assets/images/inter-it.png" class="pull-left"> <span
-                                class="happening-txt">Inter IT Pool Tournaments</span></div>
-                        <p>Witness the clashes if the TI TITANS on the Pool table at Bostro Cafe Paud road alia</p>
-
-                        <p><a href="#"><img src="assets/images/share.png"></a></p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <span class="next"></span>
+<div class="col-lg-6 current-events form-group">
+    <div class="wrapper">
+        <h1 class="pull-left">What’s happening around you..!</h1>
+        <a href="#" class="pull-right form-group">View all events</a>
     </div>
-    <!--liquid2-->
+    <div class="clear-both">
+        <carousel>
+            <slide ng-repeat="slides in eventsSlides">
+                <div class="happening-box" ng-repeat="event in slides">
+                    <div class="event-box">
+                        <img ng-src="{{event.imgUrl}}" class="pull-left"/>
+                        <span class="happening-txt">{{event.title}}</span>
+                    </div>
+                    <p>{{event.description}}</p>
+
+                    <p><a href="#"><img src="assets/images/share.png"></a></p>
+                </div>
+            </slide>
+        </carousel>
+    </div>
 </div>

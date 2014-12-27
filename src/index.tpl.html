@@ -8,23 +8,14 @@
     <link href="assets/css/app.css" rel="stylesheet">
 </head>
 <body>
-
-<!-- Header -->
-<ng-include src="'app/shared/header/header.tpl.html'"></ng-include>
-<!-- main-section -->
+<header ng-include="'app/shared/header/header.tpl.html'"></header>
 <section id="mainSection" ng-view></section>
+<footer ng-include="'app/shared/footer/footer.tpl.html'"></footer>
 
-<!--<ng-include src="'app/shared/footer/footer.tpl.html'"></ng-include>-->
-
-<% if(isHybridApp) { %>
-<script type="text/javascript" src="cordova.js"></script>
-<% } %>
 <% if(isProduction) { %>
 <script type="text/javascript" src="app.js"></script>
 <% } else { %>
 <script type="text/javascript" src="vendor/require/require.js" data-main="app/main"></script>
 <% } %>
-
 </body>
-
 </html>
