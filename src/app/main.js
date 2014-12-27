@@ -17,6 +17,9 @@ require.config({
         'ui-bootstrap': {
             deps: ['angular']
         },
+        'satellizer': {
+            deps: ['angular']
+        },
         'templateCache': {
             deps: ['angular']
         }
@@ -28,6 +31,7 @@ require.config({
         'angular-animate': '../vendor/angular/angular-animate',
         'ui-bootstrap': '../vendor/angular/ui-bootstrap-tpls',
         'ramda': '../vendor/ramda/ramda',
+        'satellizer': '../vendor/satellizer/satellizer',
         'templateCache': 'templateCache'
     }
 });
@@ -38,6 +42,7 @@ require([
         'angular-touch',
         'angular-animate',
         'ui-bootstrap',
+        'satellizer',
         'templateCache',
         'app'],
     function (angular) {

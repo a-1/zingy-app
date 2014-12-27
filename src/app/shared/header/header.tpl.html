@@ -8,16 +8,19 @@
                     <span class="icon-bar"></span>
                 </button>
                 <p class="desktop-logo"><img src="assets/images/logo.png" class="logo"/></p>
-
                 <p class="mobile-logo"><img src="assets/images/small_logo.png" class="logo"/></p>
 
-                <div class="bell"><a href="#"><img src="assets/images/bell.png" class="img-responsive"/></a></div>
+                <div class="bell" ng-if="!isAuthenticated()"><a href="#/account/login"><img src="assets/images/bell.png"
+                                                                                            class="img-responsive"/></a>
+                </div>
                 <ng-include ng-if="!isMobile" src="'app/search/bar/search.bar.tpl.html'"></ng-include>
             </div>
             <div class="navbar-collapse" collapse="isCollapsed">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Pune <span class="location">(Change Location)</span></a></li>
-                    <li><a href="#">Shantanu Rao <span class="glyphicon glyphicon-cog"></span></a></li>
+                    <li ng-if="isAuthenticated()"><a href="#/account/settings">{{user.displayName}} <span
+                            class="glyphicon glyphicon-cog"></span></a></li>
+                    <li ng-if="isAuthenticated()"><a href ng-click="logout()">Logout</a></li>
                 </ul>
             </div>
         </div>

@@ -72,6 +72,12 @@ module.exports = function (grunt) {
                     //ramda
                     {src: 'bower_components/ramda/ramda.js', dest: 'src/vendor/ramda/ramda.js'},
                     {src: 'bower_components/ramda/ramda.min.js', dest: 'src/vendor/ramda/ramda.min.js'},
+                    //satellizer
+                    {src: 'bower_components/satellizer/satellizer.js', dest: 'src/vendor/satellizer/satellizer.js'},
+                    {
+                        src: 'bower_components/satellizer/satellizer.min.js',
+                        dest: 'src/vendor/satellizer/satellizer.min.js'
+                    },
                     //require & almond
                     {src: 'bower_components/almond/almond.js', dest: 'src/vendor/almond/almond.js'},
                     {src: 'bower_components/requirejs/require.js', dest: 'src/vendor/require/require.js'}

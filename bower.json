@@ -10,6 +10,7 @@
     "ramda": "latest",
     "requirejs": "latest",
     "bootstrap": "latest",
-    "almond": "latest"
+    "almond": "latest",
+    "satellizer": "latest"
   }
 }

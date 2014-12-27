@@ -8,6 +8,7 @@ define(['angular',
 
     return angular
         .module('account', [
+            'accountService',
             'account.login.ctrl',
             'account.signup.ctrl',
             'account.settings.ctrl'])

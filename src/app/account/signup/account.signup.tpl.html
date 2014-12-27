@@ -1,3 +1,44 @@
-<div class="well home">
-    {{title}}
+<div class="account-box">
+    <div class="jumbotron">
+        <h2 class="form-group">Sign Up</h2>
+
+        <form role="form">
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <button class="btn btn-block btn-google-plus" ng-click="authenticate('google')">
+                        <span><i class="google"></i>Sign up with Google</span>
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <button class="btn btn-block btn-facebook" ng-click="authenticate('facebook')">
+                        <span><i class="fb"></i> Sign up with Facebook</span>
+                    </button>
+                </div>
+            </div>
+            <p class="form-group">OR</p>
+
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <input type="text" class="form-control" placeholder="Name">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <input type="email" class="form-control" placeholder="Email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <input type="password" class="form-control" placeholder="Passowrd">
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12">
+                    <button type="button" class="btn btn-block btn-primary">Sign Up</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

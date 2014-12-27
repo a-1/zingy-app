@@ -1,12 +1,16 @@
 'use strict';
 
-define(['angular', 'ramda'], function (angular, R) {
+define(['angular'], function (angular) {
 
     return angular
         .module('account.signup.ctrl', [])
-        .controller('account.signup.ctrl', ['$scope', function ($scope) {
-            $scope.multiply = R.multiply(2);
-            $scope.title = 'Signup';
+        .controller('account.signup.ctrl', ['$scope', '$auth', function ($scope, $auth) {
+
+            $scope.authenticate = function (provider) {
+                $auth.authenticate(provider);
+            };
+
         }]);
+
 
 });
