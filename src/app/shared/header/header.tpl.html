@@ -7,11 +7,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <p class="desktop-logo"><img src="assets/images/logo.png" class="logo"/></p>
-                <p class="mobile-logo"><img src="assets/images/small_logo.png" class="logo"/></p>
+                <p class="desktop-logo">
+                    <a href="#/"><img src="assets/images/logo.png" class="logo"/></a>
+                </p>
 
-                <div class="bell" ng-if="!isAuthenticated()"><a href="#/account/login"><img src="assets/images/bell.png"
-                                                                                            class="img-responsive"/></a>
+                <p class="mobile-logo">
+                    <a href="#/"><img src="assets/images/small_logo.png" class="logo"/></a>
+                </p>
+
+                <div class="bell" ng-if="!isAuthenticated()">
+                    <a href="#/account/login"><img src="assets/images/bell.png"/></a>
                 </div>
                 <ng-include ng-if="!isMobile" src="'app/search/bar/search.bar.tpl.html'"></ng-include>
             </div>
