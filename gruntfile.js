@@ -53,6 +53,22 @@ module.exports = function (grunt) {
                         dest: 'src/vendor/angular/angular-animate.min.js'
                     },
                     {
+                        src: 'bower_components/angular-messages/angular-messages.js',
+                        dest: 'src/vendor/angular/angular-messages.js'
+                    },
+                    {
+                        src: 'bower_components/angular-messages/angular-messages.min.js',
+                        dest: 'src/vendor/angular/angular-messages.min.js'
+                    },
+                    {
+                        src: 'bower_components/angular-resource/angular-resource.js',
+                        dest: 'src/vendor/angular/angular-resource.js'
+                    },
+                    {
+                        src: 'bower_components/angular-resource/angular-resource.min.js',
+                        dest: 'src/vendor/angular/angular-resource.min.js'
+                    },
+                    {
                         src: 'bower_components/angular-touch/angular-touch.js',
                         dest: 'src/vendor/angular/angular-touch.js'
                     },

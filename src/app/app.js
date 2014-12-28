@@ -9,6 +9,10 @@ define(function (require) {
 
         //angular
         'ngRoute',
+        'ngTouch',
+        'ngAnimate',
+        'ngMessages',
+        'ngResource',
         'ui.bootstrap',
         'satellizer',
 
@@ -19,6 +23,7 @@ define(function (require) {
         require('account/account').name,
         require('results/results').name,
         require('coaches/coaches').name,
+        require('enthusiasts/enthusiasts').name,
         require('shared/header/header').name
 
     ];
@@ -34,6 +39,10 @@ define(function (require) {
                 //default route
                 $routeProvider.otherwise('/');
             }])
+        .config(['$resourceProvider', function ($resourceProvider) {
+            // Don't strip trailing slashes from calculated URLs
+            $resourceProvider.defaults.stripTrailingSlashes = true;
+        }])
         .run(['$rootScope', '$window', function ($rootScope, $window) {
             var onResize = function () {
                 $rootScope.$apply(function () {

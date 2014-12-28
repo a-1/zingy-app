@@ -14,6 +14,12 @@ require.config({
         'angular-animate': {
             deps: ['angular']
         },
+        'angular-messages': {
+            deps: ['angular']
+        },
+        'angular-resource': {
+            deps: ['angular']
+        },
         'ui-bootstrap': {
             deps: ['angular']
         },
@@ -29,6 +35,8 @@ require.config({
         'angular-route': '../vendor/angular/angular-route',
         'angular-touch': '../vendor/angular/angular-touch',
         'angular-animate': '../vendor/angular/angular-animate',
+        'angular-messages': '../vendor/angular/angular-messages',
+        'angular-resource': '../vendor/angular/angular-resource',
         'ui-bootstrap': '../vendor/angular/ui-bootstrap-tpls',
         'ramda': '../vendor/ramda/ramda',
         'satellizer': '../vendor/satellizer/satellizer',
@@ -41,6 +49,8 @@ require([
         'angular-route',
         'angular-touch',
         'angular-animate',
+        'angular-messages',
+        'angular-resource',
         'ui-bootstrap',
         'satellizer',
         'templateCache',
