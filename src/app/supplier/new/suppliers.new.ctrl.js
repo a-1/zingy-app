@@ -11,7 +11,7 @@ define(['angular'], function (angular) {
 
             $scope.saveSupplierDetails = function () {
                 $scope.supplier.$save(function () {
-                    $location.path('/supplier');
+                    $location.path('/suppliers');
                 });
             };
 
