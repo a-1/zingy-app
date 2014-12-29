@@ -108,13 +108,16 @@
                 </div>
                 <div class="col-sm-5 form-group">
                     <div class="input-group">
-                        <input type="text" placeholder="Upload Gallery Pic" class="form-control">
-                        <span class="input-group-addon">Browse</span></div>
+                        <input type="file" accept="image/*" image="image2"
+                               resize-max-height="300"
+                               resize-max-width="250" class="form-control"
+                               resize-quality="0.7"  placeholder="Upload Gallery Pic"/>
+                        <button type="submit" ng-click="uploadFileAws(image2.resized)" >Add</button>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <button class="btn btn-primary">Save &amp; Continue</button>
+                    <button class="btn btn-primary" ng-click="uploadFileAws()">Save &amp; Continue</button>
                 </div>
             </div>
         </form>

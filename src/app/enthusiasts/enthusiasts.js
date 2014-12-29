@@ -13,15 +13,7 @@ define([
         .module('enthusiasts', ['Enthusiast', 'enthusiasts.ctrl', 'enthusiasts.new.ctrl', 'enthusiasts.details.ctrl', 'enthusiasts.update.ctrl'])
         .config(['$routeProvider', function ($routeProvider) {
 
-            $routeProvider.when('/enthusiasts', {
-                controller: 'enthusiasts.ctrl',
-                templateUrl: 'app/enthusiasts/enthusiasts.tpl.html',
-                resolve: {
-                    enthusiasts: ['Enthusiast', function (Enthusiast) {
-                        return Enthusiast.query();
-                    }]
-                }
-            }).when('/enthusiasts/new', {
+            $routeProvider.when('/enthusiasts/new', {
                 controller: 'enthusiasts.new.ctrl',
                 templateUrl: 'app/enthusiasts/new/enthusiasts.new.tpl.html'
             }).when('/enthusiasts/:id', {

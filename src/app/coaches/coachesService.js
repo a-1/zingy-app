@@ -31,9 +31,10 @@ define(['angular'], function (angular) {
                 editPersonalDetails: function (personalDetails) {
                     return personalDetails;
                 },
-                getPersonalDetails: function () {
+                getPersonalDetails: ['$http', function ($http, id) {
+                    $http.post('http://localhost:3000/api/coach', id);
                     return personalDetails;
-                }
+                }]
             };
         });
 

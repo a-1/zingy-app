@@ -20,10 +20,11 @@ define(function (require) {
         require('home/home').name,
         require('events/events').name,
         require('offers/offers').name,
+        require('enthusiasts/enthusiasts').name,
         require('account/account').name,
+        require('supplier/suppliers').name,
         require('results/results').name,
         require('coaches/coaches').name,
-        require('enthusiasts/enthusiasts').name,
         require('shared/header/header').name
 
     ];
