@@ -8,6 +8,7 @@
     "angular-animate": "latest",
     "angular-messages": "latest",
     "angular-resource": "latest",
+    "angular-sanitize": "latest",
     "angular-bootstrap": "latest",
     "ramda": "latest",
     "requirejs": "latest",

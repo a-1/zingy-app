@@ -69,6 +69,14 @@ module.exports = function (grunt) {
                         dest: 'src/vendor/angular/angular-resource.min.js'
                     },
                     {
+                        src: 'bower_components/angular-sanitize/angular-sanitize.js',
+                        dest: 'src/vendor/angular/angular-sanitize.js'
+                    },
+                    {
+                        src: 'bower_components/angular-sanitize/angular-sanitize.min.js',
+                        dest: 'src/vendor/angular/angular-sanitize.min.js'
+                    },
+                    {
                         src: 'bower_components/angular-touch/angular-touch.js',
                         dest: 'src/vendor/angular/angular-touch.js'
                     },
@@ -146,6 +154,10 @@ module.exports = function (grunt) {
             tpl: {
                 files: ['src/index.tpl.html', 'src/main.tpl.less', 'src/app/**/*.html'],
                 tasks: ['copy:buildFromSrc', 'templatize']
+            },
+            libs: {
+                files: ['src/vendor/**.*'],
+                tasks: ['copy:buildFromSrc']
             }
         },
 
@@ -232,16 +244,6 @@ module.exports = function (grunt) {
                     dir: 'reports/coverage'
                 }
             }
-        },
-
-        connect: {
-            web: {
-                options: {
-                    port: 9000,
-                    base: 'build',
-                    keepalive: true
-                }
-            }
         }
 
     });
@@ -249,7 +251,6 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -263,7 +264,6 @@ module.exports = function (grunt) {
     grunt.registerTask('build', ['jshint', 'clean:build', 'copy:updateLibs', 'copy:buildFromSrc', 'templatize', 'less:dev']);
     grunt.registerTask('dist', ['build', 'clean:dist', 'less:prod', 'html2js', 'requirejs']);
     grunt.registerTask('test', ['karma:unit']);
-    grunt.registerTask('web', ['connect:web']);
-    grunt.registerTask('default', ['build']);
+    grunt.registerTask('default', ['build', 'watch']);
 
 };

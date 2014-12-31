@@ -50,16 +50,16 @@ define(['angular'], function (angular) {
                     title: 'Inter IT Pool Tournaments',
                     imgUrl: 'assets/images/inter-it.png',
                     description: 'Witness the clashes if the TI TITANS on the Pool table at Bostro Cafe Paud road'
-                },
+                }
             ];
 
             return {
                 fetch: function () {
 
                     return $q(function (resolve) {
-                        setTimeout(function () {
+                        // setTimeout(function () {
                             resolve(events);
-                        }, 1000);
+                        // }, 1000);
                     });
 
                 }

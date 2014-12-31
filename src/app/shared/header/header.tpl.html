@@ -8,24 +8,52 @@
                     <span class="icon-bar"></span>
                 </button>
                 <p class="desktop-logo">
-                    <a href="#/"><img src="assets/images/logo.png" class="logo"/></a>
+                    <a href="/"><img src="assets/images/logo.png" class="logo"/></a>
                 </p>
 
                 <p class="mobile-logo">
-                    <a href="#/"><img src="assets/images/small_logo.png" class="logo"/></a>
+                    <a href="/"><img src="assets/images/small_logo.png" class="logo"/></a>
                 </p>
 
                 <div class="bell" ng-if="!isAuthenticated()">
-                    <a href="#/account/login"><img src="assets/images/bell.png"/></a>
+                    <a href="/account/login"><img src="assets/images/bell.png"/></a>
                 </div>
                 <ng-include ng-if="!isMobile" src="'app/search/bar/search.bar.tpl.html'"></ng-include>
             </div>
             <div class="navbar-collapse" collapse="isCollapsed">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Pune <span class="location">(Change Location)</span></a></li>
-                    <li ng-if="isAuthenticated()"><a href="#/account/settings">{{user.displayName}} <span
-                            class="glyphicon glyphicon-cog"></span></a></li>
-                    <li ng-if="isAuthenticated()"><a href ng-click="logout()">Logout</a></li>
+                    <li dropdown>
+                        <a href dropdown-toggle>Pune <span class="location">(Change Location)</span></a>
+
+                        <div class="quick-setting dropdown-menu">
+                            <select>
+                                <option value="pune">Pune</option>
+                                <option value="mumbai">Mumbai</option>
+                                <option value="banglore">Banglore</option>
+                                <option value="chennai">Chennai</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li ng-if="isAuthenticated()" dropdown>
+                        <a href dropdown-toggle>{{account.displayName}} <span
+                                class="glyphicon glyphicon-cog"></span></a>
+
+                        <div class="quick-setting dropdown-menu">
+                            <ul>
+                                <li><a href="/account/settings" class="all search-img"><span>Manage Account</span></a>
+                                </li>
+                                <li><a href="/account/enthusiasts"
+                                       class="coaches search-img"><span>Enlist as Enthusiast</span></a></li>
+                                <li><a href="#" class="players search-img"><span>Enlist as Player</span></a></li>
+                                <li><a href="#" class="coaches search-img"><span>Enlist as Coach</span></a></li>
+                                <li><a href="#" class="facilities search-img"><span>Add Facilities</span></a></li>
+                                <li><a href="#" class="suppliers search-img"><span>Add Suppliers</span></a></li>
+                                <li><a href="#" class="events search-img"><span>Add an Event</span></a></li>
+                                <li><a href="#" class="all search-img"><span>Float an Offer</span></a></li>
+                                <li><a href class="pull-right" ng-click="logout()"><span>Logout</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>

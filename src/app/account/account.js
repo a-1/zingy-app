@@ -4,15 +4,19 @@ define(['angular',
     './accountService',
     './login/account.login.ctrl',
     './signup/account.signup.ctrl',
-    './settings/account.settings.ctrl'], function (angular) {
+    './settings/account.settings.ctrl',
+    '../enthusiasts/enthusiast'
+], function (angular) {
 
     return angular
         .module('account', [
             'accountService',
             'account.login.ctrl',
             'account.signup.ctrl',
-            'account.settings.ctrl'])
-        .config(['$routeProvider', '$authProvider', function ($routeProvider, $authProvider) {
+            'account.settings.ctrl',
+            'Enthusiast'
+        ])
+        .config(['$routeProvider', function ($routeProvider) {
 
             //routes
             $routeProvider.when('/account/login', {
@@ -21,55 +25,120 @@ define(['angular',
             }).when('/account/signup', {
                 controller: 'account.signup.ctrl',
                 templateUrl: 'app/account/signup/account.signup.tpl.html'
-            }).when('/account/settings', {
+            });
+
+            //enthusiasts
+            $routeProvider.when('/account/enthusiasts', {
                 controller: 'account.settings.ctrl',
-                templateUrl: 'app/account/settings/account.settings.tpl.html'
+                templateUrl: 'app/account/settings/account.settings.tpl.html',
+                resolve: {
+                    settings: ['Enthusiast', function (Enthusiast) {
+                        return {
+                            entity: new Enthusiast(),
+                            entityType: 'Sport Enthusiast',
+                            operation: 'save',
+                            formTemplate: 'app/account/settings/form/account.settings.form.enthusiasts.tpl.html'
+                        };
+                    }]
+                }
+            }).when('/account/enthusiasts/:id', {
+                controller: 'account.settings.ctrl',
+                templateUrl: 'app/account/settings/account.settings.tpl.html',
+                resolve: {
+                    settings: ['$q', '$route', 'Enthusiast', function ($q, $route, Enthusiast) {
+                        var dfd = $q.defer();
+
+                        Enthusiast.get({id: $route.current.params.id}).$promise.then(function (entity) {
+                            dfd.resolve({
+                                entity: entity,
+                                entityType: 'Sport Enthusiast',
+                                operation: 'update',
+                                formTemplate: 'app/account/settings/form/account.settings.form.enthusiasts.tpl.html'
+                            });
+                        }, function () {
+                            dfd.reject(null);
+                        });
+
+                        return dfd.promise;
+                    }]
+                }
             });
 
-            //auth config
-            $authProvider.loginOnSignup = true;
-            $authProvider.loginRedirect = '/';
-            $authProvider.logoutRedirect = '/';
-            $authProvider.signupRedirect = '/account/login';
-            $authProvider.loginUrl = 'api//auth/login';
-            $authProvider.signupUrl = 'api/auth/signup';
-            $authProvider.loginRoute = '/account/login';
-            $authProvider.signupRoute = '/account/signup';
-            $authProvider.tokenName = 'token';
-            $authProvider.tokenPrefix = 'zingy'; // Local Storage name prefix
-            $authProvider.unlinkUrl = 'api/auth/unlink/';
-            $authProvider.authHeader = 'Authorization';
 
-            // Facebook
-            $authProvider.facebook({
-                clientId: '542735292530166',
-                url: 'http://localhost:3000/api/auth/facebook',
-                authorizationEndpoint: 'https://www.facebook.com/dialog/oauth',
-                redirectUri: window.location.origin + '/' || window.location.protocol + '//' + window.location.host + '/',
-                scope: 'email',
-                scopeDelimiter: ',',
-                requiredUrlParams: ['display', 'scope'],
-                display: 'popup',
-                type: '2.0',
-                popupOptions: {width: 481, height: 269}
+            //coach
+            $routeProvider.when('/account/coaches', {
+                controller: 'account.settings.ctrl',
+                templateUrl: 'app/account/settings/account.settings.tpl.html',
+                resolve: {
+                    settings: ['Enthusiast', function (Enthusiast) {
+                        return {
+                            entity: new Enthusiast(),
+                            entityType: 'Coach',
+                            operation: 'save',
+                            formTemplate: 'app/account/settings/form/account.settings.form.enthusiasts.tpl.html'
+                        };
+                    }]
+                }
+            }).when('/account/coaches/:id', {
+                controller: 'account.settings.ctrl',
+                templateUrl: 'app/account/settings/account.settings.tpl.html',
+                resolve: {
+                    settings: ['$q', '$route', 'Enthusiast', function ($q, $route, Enthusiast) {
+                        var dfd = $q.defer();
+
+                        Enthusiast.get({id: $route.current.params.id}).$promise.then(function (entity) {
+                            dfd.resolve({
+                                entity: entity,
+                                entityType: 'Coach',
+                                operation: 'update',
+                                formTemplate: 'app/account/settings/form/account.settings.form.enthusiasts.tpl.html'
+                            });
+                        }, function () {
+                            dfd.reject(null);
+                        });
+
+                        return dfd.promise;
+                    }]
+                }
             });
 
+            //player
+            $routeProvider.when('/account/players', {
+                controller: 'account.settings.ctrl',
+                templateUrl: 'app/account/settings/account.settings.tpl.html',
+                resolve: {
+                    settings: ['Enthusiast', function (Enthusiast) {
+                        return {
+                            entity: new Enthusiast(),
+                            entityType: 'Player',
+                            operation: 'save',
+                            formTemplate: 'app/account/settings/form/account.settings.form.enthusiasts.tpl.html'
+                        };
+                    }]
+                }
+            }).when('/account/players/:id', {
+                controller: 'account.settings.ctrl',
+                templateUrl: 'app/account/settings/account.settings.tpl.html',
+                resolve: {
+                    settings: ['$q', '$route', 'Enthusiast', function ($q, $route, Enthusiast) {
+                        var dfd = $q.defer();
 
-            // Google
-            $authProvider.google({
-                clientId: '127859079827-frmqmjp13dj5c3u93rkri0mebg4tdj3g.apps.googleusercontent.com',
-                url: 'http://localhost:3000/api/auth/google',
-                authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
-                redirectUri: window.location.origin || window.location.protocol + '//' + window.location.host,
-                scope: ['profile', 'email'],
-                scopePrefix: 'openid',
-                scopeDelimiter: ' ',
-                requiredUrlParams: ['scope'],
-                optionalUrlParams: ['display'],
-                display: 'popup',
-                type: '2.0',
-                popupOptions: {width: 580, height: 400}
+                        Enthusiast.get({id: $route.current.params.id}).$promise.then(function (entity) {
+                            dfd.resolve({
+                                entity: entity,
+                                entityType: 'Player',
+                                operation: 'update',
+                                formTemplate: 'app/account/settings/form/account.settings.form.enthusiasts.tpl.html'
+                            });
+                        }, function () {
+                            dfd.reject(null);
+                        });
+
+                        return dfd.promise;
+                    }]
+                }
             });
+
 
         }]);
 

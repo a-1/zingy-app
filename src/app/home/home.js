@@ -15,6 +15,9 @@ define(['angular', './home.ctrl'], function (angular) {
                     }],
                     events: ['eventsService', function (eventsService) {
                         return eventsService.fetch();
+                    }],
+                    account: ['accountService', function (accountService) {
+                        return accountService.fetch();
                     }]
                 }
             });

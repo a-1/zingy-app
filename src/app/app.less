@@ -92,7 +92,7 @@
   font-size: 20px;
   color: #eb4800;
   font-weight: normal;
-  margin-top: 0px;
+  margin-top: 0;
 }
 
 .city {
@@ -130,24 +130,6 @@ label.overflow {
 
 .sort {
   padding: 10px
-}
-
-.quick-setting ul {
-  margin: 0;
-  padding: 0
-}
-
-.quick-setting li {
-  padding: 5px 9px
-}
-
-.quick-setting li.alternate {
-  background-color: #dfdfdf
-}
-
-.quick-setting li a {
-  display: block;
-  color: #333;
 }
 
 .f-like {
@@ -451,6 +433,25 @@ label.overflow {
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
+
+.form-group {
+
+  input.ng-invalid.ng-touched {
+    border: 1px solid #BD0F0F;
+  }
+
+  .errorMessages.ng-inactive {
+    display: block;
+  }
+
+  .errorMessages {
+    transition: 1s linear all;
+    color: #BD0F0F;
+    padding-left: 4px;
+  }
+
+}
+
 
 h1, .h1 {
   color: #6B6B6B;

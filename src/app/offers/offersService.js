@@ -85,9 +85,9 @@ define(['angular'], function (angular) {
                 fetch: function () {
 
                     return $q(function (resolve) {
-                        setTimeout(function () {
+                        //setTimeout(function () {
                             resolve(offers);
-                        }, 1000);
+                        //}, 1000);
                     });
 
                 }

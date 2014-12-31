@@ -20,6 +20,9 @@ require.config({
         'angular-resource': {
             deps: ['angular']
         },
+        'angular-sanitize': {
+            deps: ['angular']
+        },
         'ui-bootstrap': {
             deps: ['angular']
         },
@@ -37,6 +40,7 @@ require.config({
         'angular-animate': '../vendor/angular/angular-animate',
         'angular-messages': '../vendor/angular/angular-messages',
         'angular-resource': '../vendor/angular/angular-resource',
+        'angular-sanitize': '../vendor/angular/angular-sanitize',
         'ui-bootstrap': '../vendor/angular/ui-bootstrap-tpls',
         'ramda': '../vendor/ramda/ramda',
         'satellizer': '../vendor/satellizer/satellizer',
@@ -51,6 +55,7 @@ require([
         'angular-animate',
         'angular-messages',
         'angular-resource',
+        'angular-sanitize',
         'ui-bootstrap',
         'satellizer',
         'templateCache',

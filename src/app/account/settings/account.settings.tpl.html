@@ -1,3 +1,48 @@
-<div class="well home">
-    {{title}}
+<div class="account-settings">
+    <div class="container form-group banner border-btm">
+        <div class="col-sm-3 col-lg-3 form-group">&nbsp;</div>
+        <div class="col-sm-8 col-lg-8">
+            <p class="pagging">Hello {{account.displayName}}, Manage your Account details, prefrences & your listings on
+                this
+                page</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-lg-3 account-settings-options">
+                <div class="welcome-block">Account Settings</div>
+                <div class="panel-heading personl-details">
+                    <a href="{{quickSettings.enthusiast.url}}">
+                        <h4 class="panel-title">{{quickSettings.enthusiast.title}}</h4>
+                    </a>
+                </div>
+                <div class="panel-content" ng-if="entityType === 'Sport Enthusiast'"
+                     ng-bind-html="listingMessage"></div>
+                <div class="panel-heading certification">
+                    <a href="{{quickSettings.player.url}}">
+                        <h4 class="panel-title">{{quickSettings.player.title}}</h4>
+                    </a>
+                </div>
+                <div class="panel-content" ng-if="entityType === 'Player'" ng-bind-html="listingMessage"></div>
+                <div class="panel-heading coaching">
+                    <a href="{{quickSettings.coach.url}}">
+                        <h4 class="panel-title">{{quickSettings.coach.title}}</h4>
+                    </a>
+                </div>
+                <div class="panel-content" ng-if="entityType === 'Coach'" ng-bind-html="listingMessage"></div>
+
+            </div>
+            <div class="col-sm-7 col-lg-7">
+                <div id="accordion" class="panel-group arrows">
+                    <div class="panel panel-default">
+                        <ng-include src="formTemplate"></ng-include>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2 col-lg-2 form-group snowlink">
+                Ad
+            </div>
+        </div>
+    </div>
 </div>
+

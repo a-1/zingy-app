@@ -4,33 +4,18 @@ define(['angular'], function (angular) {
 
     return angular
         .module('accountService', [])
-        .service('accountService', ['$http', function ($http) {
+        .service('accountService', ['$rootScope', '$http', '$auth', function ($rootScope, $http, $auth) {
             return {
-                getProfile: function () {
-                    return $http.get('http://localhost:3000/api/me');
-                },
-                updateProfile: function (profileData) {
-                    return $http.put('http://localhost:3000/api/me', profileData);
+                fetch: function () {
+                    if ($auth.isAuthenticated()) {
+                        return $http.get('http://localhost:3000/api/account').then(function (data) {
+                            $rootScope.account = data.data;
+                            return data;
+                        });
+                    }
+                    return null;
                 }
             };
-        }])
-        .run(['$rootScope', '$auth', 'accountService', function ($rootScope, $auth, accountService) {
-
-            $rootScope.$on('$locationChangeStart', function () {
-                if ($auth.isAuthenticated() && !$rootScope.user) {
-                    accountService.getProfile().then(function (data) {
-                        $rootScope.user = data.data;
-                    });
-                }
-            });
-
-            $rootScope.isAuthenticated = $auth.isAuthenticated;
-
-            $rootScope.logout = function () {
-                $rootScope.user = null;
-                return $auth.logout();
-            };
-
         }]);
 
 });

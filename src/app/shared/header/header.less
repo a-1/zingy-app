@@ -2,11 +2,22 @@
   .navbar-collapse {
     width: 169px;
     height: 40px;
+    margin-top: 7px;
   }
 }
 
 .navbar-default .navbar-toggle {
   border-color: @navbar-default-color;
+}
+
+.navbar-nav {
+  li {
+    .dropdown-menu {
+      margin-top: 4px;
+      border-top-right-radius: 4px;
+      border-top-left-radius: 4px;
+    }
+  }
 }
 
 .navbar-toggle {
@@ -110,4 +121,40 @@
   right: 12%;
   top: 38px;
   z-index: 1
+}
+
+.quick-setting {
+  width: 200px;
+  background-color: #eaeaea;
+  padding: 12px;
+  border-radius: 5px;
+  float: left;
+  margin-top: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+
+  span {
+    margin-left: 40px;
+    top: -5px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0
+  }
+
+  li {
+    list-style-type: none;
+    white-space: nowrap;
+    padding: 0 4px
+  }
+
+  li a {
+    display: block;
+    color: #333;
+  }
+
+  select {
+    width: 100%;
+  }
+
 }

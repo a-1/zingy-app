@@ -8,15 +8,15 @@
             <slide ng-repeat="slides in offersSlides">
                 <div class="box" ng-repeat="offer in slides">
                     <img ng-src="{{offer.imgUrl}}" class="img-responsive">
-
                     <div class="box-content">
                         <h4>{{offer.shop}}</h4>
-
                         <p>{{offer.offers[0].title}}</p>
-
                         <p>{{offer.offers[1].title}}</p>
 
-                        <p class="pull-right"><a href=""><img src="assets/images/share.png" class="img-responsive"></a>
+                        <p class="pull-right">
+                            <a href="">
+                                <img src="assets/images/share.png" class="img-responsive"/>
+                            </a>
                         </p>
                     </div>
                 </div>
