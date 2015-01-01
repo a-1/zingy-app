@@ -4,16 +4,16 @@ define(['angular'], function (angular) {
 
     return angular
         .module('header.ctrl', [])
-        .controller('header.ctrl', ['$scope', '$auth', function ($scope, $auth) {
+        .controller('header.ctrl', ['$scope', 'accountService', function ($scope, accountService) {
+            //quick-settings collapse
             $scope.isCollapsed = true;
 
-            $scope.isAuthenticated = function () {
-                return $auth.isAuthenticated();
-            };
+            $scope.user = accountService.account.user;
+            $scope.quickSettings = accountService.account.quickSettings;
 
-            $scope.logout = function () {
-                $auth.logout();
-            };
+            $scope.isAuthenticated = accountService.isAuthenticated;
+
+            $scope.logout = accountService.logout;
 
         }]);
 

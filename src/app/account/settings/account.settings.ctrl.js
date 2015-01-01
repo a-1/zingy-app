@@ -4,13 +4,19 @@ define(['angular'], function (angular) {
 
     return angular
         .module('account.settings.ctrl', [])
-        .controller('account.settings.ctrl', ['$scope', '$location', '$sce', 'settings', function ($scope, $location, $sce, settings) {
+        .controller('account.settings.ctrl', ['$scope', '$location', '$window', '$sce', 'accountService', 'settings', function ($scope, $location, $window, $sce, accountService, settings) {
             $scope.entity = settings.entity;
             $scope.entityType = settings.entityType;
             $scope.formTemplate = settings.formTemplate;
 
+            //account
+            $scope.user = accountService.account.user;
+            $scope.quickSettings = accountService.account.quickSettings;
+
             var success = function () {
-                $location.path('/account/settings');
+                accountService.reset();
+                $window.alert('Your listing for ' + $scope.entityType + ' saved successfully');
+                $location.path('/account/manage');
             };
 
             var error = function (data) {
@@ -34,30 +40,48 @@ define(['angular'], function (angular) {
                 }
             };
 
-
-            var prepareUrl = function (account, url) {
-                return account && account.length ? url + '/' + account : url;
-            };
-
-            $scope.quickSettings = {
-                enthusiast: {
-                    url: prepareUrl($scope.account && $scope.account.enthusiast, '/account/enthusiasts'),
-                    title: $scope.account && $scope.account.enthusiast && $scope.account.enthusiast.length ? 'Personal & Contact Details' : 'Enlist as Enthusiast'
-                },
-                coach: {
-                    url: prepareUrl($scope.account && $scope.account.coach, '/account/coaches'),
-                    title: $scope.account && $scope.account.coach && $scope.account.coach.length ? 'Coaching Details' : 'Enlist as Coach'
-                },
-                player: {
-                    url: prepareUrl($scope.account && $scope.account.player, '/account/players'),
-                    title: $scope.account && $scope.account.player && $scope.account.player.length ? 'Player Details' : 'Enlist as Player'
+            $scope.remove = function (id) {
+                if ($window.confirm('Are you sure you want to remove this ' + $scope.entityType + ' listing ?')) {
+                    $scope.entity.$delete({id: id}).then(success, error);
                 }
             };
 
-            $scope.listingMessage = $sce.trustAsHtml('<p>You have indicated your interest in listing your services as a' + $scope.entityType + 'with us. ' +
+            $scope.listingMessage = $sce.trustAsHtml('<p>You have indicated your interest in listing your services as a "' + $scope.entityType + '" with us. ' +
             'Please fill in the form create your listing. Your listing information will be verified after submmision.</p>' +
-            '<p>After approval, your listing will appear under ' + $scope.entityType + ' category on Zingy for free and will ' +
+            '<p>After approval, your listing will appear under "' + $scope.entityType + '" category on Zingy for free and will ' +
             'also appear on any relevant searches on Zingy.</p>');
+
+
+            //datepicker options
+            $scope.datePickerOptions = {
+                showWeeks: false,
+                formatYear: 'yy',
+                startingDay: 1,
+                showButtonBar: false
+            };
+            $scope.openDatePicker = function ($event, dateType) {
+                $event.preventDefault();
+                $event.stopPropagation();
+                $scope[dateType] = true;
+            };
+            $scope.datePickerDateChanged = function (dateType) {
+                $scope[dateType] = false;
+            };
+
+
+            //TODO move to service  - states list
+            $scope.states = [
+                {name: 'Maharashtra', value: 'maharashtra'},
+                {name: 'Karnatak', value: 'karnatak'}
+            ];
+
+
+            //TODO move to service  - cities list
+            $scope.cities = [
+                {name: 'Pune', value: 'pune'},
+                {name: 'Mumbai', value: 'mumbai'},
+                {name: 'Banglore', value: 'banglore'}
+            ];
 
 
         }]);

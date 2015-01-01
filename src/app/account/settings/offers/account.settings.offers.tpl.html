@@ -1,0 +1,295 @@
+<div class="panel-heading offers">
+    <h4 class="panel-title">Do you have exciting Offer for sport enthusiasts ?</h4>
+</div>
+
+<div class="panel-body">
+    <form name="offerForm" role="form" ng-submit="submit(offerForm)">
+        <div class="row">
+            <div class="col-sm-5 form-group">
+                <input type="text"
+                       name="provider"
+                       class="form-control"
+                       placeholder="Offer Provider"
+                       ng-model="entity.provider"
+                       minlength="3"
+                       maxlength="40"
+                       required/>
+
+                <div ng-if="offerForm.provider.$dirty" ng-messages="offerForm.provider.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{offerForm.provider.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-7 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" placeholder="Upload Offer Pic" class="form-control">
+                    <span class="input-group-addon">Browse</span></div>
+                <div class="infoMessages">
+                    <div>(size 200px x 100px, format: jpg/png/gif)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8 form-group">
+                <input type="text"
+                       name="heading"
+                       class="form-control"
+                       placeholder="Offer Heading"
+                       ng-model="entity.heading"
+                       minlength="5"
+                       maxlength="70"
+                       required/>
+
+                <div ng-if="offerForm.heading.$dirty" ng-messages="offerForm.heading.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{offerForm.heading.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8 form-group">
+                <textarea name="description"
+                          class="form-control"
+                          placeholder="Offer Description"
+                          ng-model="entity.description"
+                          minlength="5"
+                          maxlength="200"
+                          required> </textarea>
+
+                <div ng-if="offerForm.description.$dirty" ng-messages="offerForm.description.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{offerForm.description.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 form-group">
+                <div class="input-group">
+                    <input type="text"
+                           name="startDate"
+                           class="form-control"
+                           datepicker-popup="dd-MMMM-yyyy"
+                           show-button-bar="false"
+                           ng-model="entity.startDate"
+                           is-open="startDatePickerOpened"
+                           placeholder="Offer Start Date"
+                           datepicker-options="datePickerOptions"
+                           ng-change="datePickerDateChanged('startDatePickerOpened')"
+                           ng-required="true"/>
+
+                    <div ng-if="offerForm.startDate.$dirty" ng-messages="offerForm.startDate.$error"
+                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                        <div ng-message="server">{{offerForm.startDate.$error.serverMessage}}</div>
+                    </div>
+                    <span class="input-group-addon" ng-click="openDatePicker($event, 'startDatePickerOpened')"><i
+                            class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+            </div>
+            <div class="col-sm-5 form-group pull-right">
+                <div class="input-group">
+                    <input type="text"
+                           name="endDate"
+                           class="form-control"
+                           datepicker-popup="dd-MMMM-yyyy"
+                           show-button-bar="false"
+                           ng-model="entity.endDate"
+                           is-open="endDatePickerOpened"
+                           placeholder="Offer End Date"
+                           datepicker-options="datePickerOptions"
+                           ng-change="datePickerDateChanged('endDatePickerOpened')"
+                           ng-required="true"/>
+
+                    <div ng-if="offerForm.endDate.$dirty" ng-messages="offerForm.endDate.$error"
+                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                        <div ng-message="server">{{offerForm.endDate.$error.serverMessage}}</div>
+                    </div>
+                    <span class="input-group-addon" ng-click="openDatePicker($event, 'endDatePickerOpened')"><i
+                            class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <input type="text"
+                       name="streetOne"
+                       class="form-control"
+                       placeholder="Address Line 1"
+                       ng-model="entity.streetOne"
+                       minlength="5"
+                       maxlength="70"
+                       required/>
+
+                <div ng-if="offerForm.streetOne.$dirty" ng-messages="offerForm.streetOne.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{offerForm.streetOne.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <input type="text"
+                       name="streetTwo"
+                       class="form-control"
+                       placeholder="Address Line 2"
+                       ng-model="entity.streetTwo"/>
+
+                <div ng-if="offerForm.streetTwo.$dirty" ng-messages="offerForm.streetTwo.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{offerForm.streetTwo.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 form-group">
+                <select name="city"
+                        class="form-control"
+                        ng-model="entity.city"
+                        ng-options="city.value as city.name for city in cities"
+                        required>
+                    <option value="">Select City</option>
+                </select>
+
+                <div ng-if="offerForm.city.$dirty" ng-messages="offerForm.city.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{offerForm.city.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 form-group">
+                <select name="state"
+                        class="form-control"
+                        ng-model="entity.state"
+                        ng-options="state.value as state.name for state in states"
+                        required>
+                    <option value="">Select State</option>
+                </select>
+
+                <div ng-if="offerForm.state.$dirty" ng-messages="offerForm.state.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{offerForm.state.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="text"
+                       name="pin"
+                       class="form-control"
+                       placeholder="PIN"
+                       ng-model="entity.pin"
+                       maxlength="6"
+                       minlength="6"
+                       required/>
+
+                <div ng-if="offerForm.pin.$dirty" ng-messages="offerForm.pin.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{offerForm.pin.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <input type="email"
+                       name="email"
+                       class="form-control"
+                       placeholder="Contact Email"
+                       ng-model="entity.email"
+                       required/>
+
+                <div ng-if="offerForm.email.$dirty" ng-messages="offerForm.email.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{offerForm.email.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="tel"
+                       name="phoneOne"
+                       class="form-control"
+                       placeholder="Contact Phone 1"
+                       ng-model="entity.phoneOne"
+                       minlength="10"
+                       required/>
+
+                <div ng-if="offerForm.phoneOne.$dirty" ng-messages="offerForm.phoneOne.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{offerForm.phoneOne.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="tel"
+                       name="phoneTwo"
+                       class="form-control"
+                       placeholder="Contact Phone 2"
+                       ng-model="entity.phoneTwo"
+                       minlength="10"/>
+
+                <div ng-if="offerForm.phoneTwo.$dirty" ng-messages="offerForm.phoneTwo.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{offerForm.phoneTwo.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row border-bottom form-group">
+            <div class="col-sm-8 form-group">
+                <input type="url"
+                       name="url"
+                       class="form-control"
+                       placeholder="Offer url"
+                       ng-model="entity.url"
+                       required/>
+
+                <div ng-if="offerForm.url.$dirty" ng-messages="offerForm.url.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{offerForm.url.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <button type="submit" class="btn btn-primary">{{entity._id ? 'Update' : 'Save'}}</button>
+                <button type="submit" ng-if="entity._id" ng-click="remove(entity._id)"
+                        class="btn btn-danger pull-right">Remove Listing
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div ng-if="user.offers && user.offers.length">
+    <div class="panel-heading manage-listing">
+        <h4 class="panel-title">Manage Offers</h4>
+    </div>
+    <div class="panel-body manage-list">
+        <ul class="border-bottom">
+            <li ng-repeat="offer in user.offers">
+                <div class="row">
+                    <div class="col-lg-6 form-group">
+                        <h4>{{offer.provider}}</h4>
+                        <h6>{{offer.heading}}</h6>
+                    </div>
+                    <div class="col-lg-3 form-group">
+                        <a href="/account/offers/{{offer._id}}" class="btn btn-sm btn-warning">Edit</a>
+                    </div>
+                    <div class="col-lg-3 form-group">
+                        <button ng-click="remove(offer._id)" class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="form-group">
+            <a href="/account/offers/" class="btn btn-sm btn-info pull-right">Add</a>
+        </div>
+    </div>
+</div>
+
+

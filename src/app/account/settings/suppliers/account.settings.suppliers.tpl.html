@@ -1,0 +1,57 @@
+<div class="panel-heading suppliers">
+    <h4 class="panel-title">Are you a Sport accessories supplier ?</h4>
+</div>
+
+<div class="panel-body">
+    <form name="supplierForm" role="form" ng-submit="submit(supplierForm)">
+        <div class="row">
+            <div class="col-sm-5 form-group">
+                <input
+                        type="text"
+                        name="title"
+                        class="form-control"
+                        placeholder="Supplier Name"
+                        ng-model="entity.title"
+                        minlength="5"
+                        required/>
+
+                <div ng-if="supplierForm.title.$dirty" ng-messages="supplierForm.title.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{supplierForm.title.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div ng-if="user.suppliers && user.suppliers.length">
+    <div class="panel-heading manage-listing">
+        <h4 class="panel-title">Manage Suppliers</h4>
+    </div>
+    <div class="panel-body manage-list">
+        <ul class="border-bottom">
+            <li ng-repeat="supplier in user.suppliers">
+                <div class="row">
+                    <div class="col-lg-6 form-group">
+                        {{supplier.title}}
+                    </div>
+                    <div class="col-lg-3 form-group">
+                        <a href="/account/suppliers/{{supplier._id}}" class="btn btn-sm btn-warning">Edit</a>
+                    </div>
+                    <div class="col-lg-3 form-group">
+                        <button ng-click="remove(supplier._id)" class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="form-group">
+            <a href="/account/suppliers/" class="btn btn-sm btn-info pull-right">Add</a>
+        </div>
+    </div>
+</div>

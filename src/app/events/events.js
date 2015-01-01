@@ -1,8 +1,8 @@
 'use strict';
 
-define(['angular', './eventsService'], function (angular) {
+define(['angular', './event', './eventsService'], function (angular) {
 
     return angular
-        .module('events', ['eventsService']);
+        .module('events', ['event', 'eventsService']);
 
 });

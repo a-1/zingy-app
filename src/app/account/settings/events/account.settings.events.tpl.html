@@ -1,0 +1,57 @@
+<div class="panel-heading events">
+    <h4 class="panel-title">Do you provide Sport Facility ?</h4>
+</div>
+
+<div class="panel-body">
+    <form name="eventForm" role="form" ng-submit="submit(eventForm)">
+        <div class="row">
+            <div class="col-sm-5 form-group">
+                <input
+                        type="text"
+                        name="title"
+                        class="form-control"
+                        placeholder="Event Name ?"
+                        ng-model="entity.title"
+                        minlength="5"
+                        required/>
+
+                <div ng-if="eventForm.title.$dirty" ng-messages="eventForm.title.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.title.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div ng-if="user.events && user.events.length">
+    <div class="panel-heading manage-listing">
+        <h4 class="panel-title">Manage Events</h4>
+    </div>
+    <div class="panel-body manage-list">
+        <ul class="border-bottom">
+            <li ng-repeat="event in user.events">
+                <div class="row">
+                    <div class="col-lg-6 form-group">
+                        {{event.title}}
+                    </div>
+                    <div class="col-lg-3 form-group">
+                        <a href="/account/events/{{event._id}}" class="btn btn-sm btn-warning">Edit</a>
+                    </div>
+                    <div class="col-lg-3 form-group">
+                        <button ng-click="remove(event._id)" class="btn btn-sm btn-danger">Remove</button>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <div class="form-group">
+            <a href="/account/events" class="btn btn-sm btn-info pull-right">Add</a>
+        </div>
+    </div>
+</div>

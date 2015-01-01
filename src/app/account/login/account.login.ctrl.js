@@ -4,17 +4,9 @@ define(['angular'], function (angular) {
 
     return angular
         .module('account.login.ctrl', [])
-        .controller('account.login.ctrl', ['$scope', '$auth', function ($scope, $auth) {
+        .controller('account.login.ctrl', ['$scope', 'accountService', function ($scope, accountService) {
 
-            $scope.authenticate = function (provider) {
-                $auth.authenticate(provider).then(function (successResponse) {
-                    console.log('success');
-                    console.log(successResponse);
-                }, function (errorResponse) {
-                    console.log('error');
-                    console.log(errorResponse);
-                });
-            };
+            $scope.authenticate = accountService.authenticate;
 
         }]);
 

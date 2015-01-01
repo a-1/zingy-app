@@ -6,7 +6,6 @@ define(function (require) {
     var angular = require('angular');
 
     var dependencies = [
-
         //angular
         'ngRoute',
         'ngTouch',
@@ -21,15 +20,24 @@ define(function (require) {
         require('../components/components').name,
 
         //project modules
+        //services first
+        require('enthusiasts/enthusiasts').name,
+        require('players/players').name,
+        require('coaches/coaches').name,
+        require('facilities/facilities').name,
+        require('suppliers/suppliers').name,
         require('events/events').name,
         require('offers/offers').name,
         require('account/account').name,
-        //require('enthusiasts/enthusiasts').name,
-        //require('supplier/suppliers').name,
-        //require('results/results').name,
-        //require('coaches/coaches').name
+
+        //shared modules
         require('shared/header/header').name,
+
+        //require('results/results').name,
+
+        // home
         require('home/home').name
+
     ];
 
     return angular
@@ -37,47 +45,18 @@ define(function (require) {
         .constant('config', {
             apiBaseURL: 'http://localhost:3000/api'
         })
-        .config([
-            '$resourceProvider',
-            '$authProvider',
-            '$routeProvider',
-            '$locationProvider', function ($resourceProvider, $authProvider, $routeProvider, $locationProvider) {
+        .config(['$resourceProvider', '$routeProvider', '$locationProvider', function ($resourceProvider, $routeProvider, $locationProvider) {
 
-                //html5 PushState
-                $locationProvider.html5Mode(true);
-                //default route
-                $routeProvider.otherwise('/');
+            // strip trailing slashes from calculated URLs
+            $resourceProvider.defaults.stripTrailingSlashes = true;
 
-                // Don't strip trailing slashes from calculated URLs
-                $resourceProvider.defaults.stripTrailingSlashes = true;
+            //default route
+            $routeProvider.otherwise('/');
 
-                //auth config
-                $authProvider.loginOnSignup = true;
-                $authProvider.loginRedirect = '/';
-                $authProvider.logoutRedirect = '/';
-                $authProvider.signupRedirect = '/account/login';
-                $authProvider.loginUrl = 'api//auth/login';
-                $authProvider.signupUrl = 'api/auth/signup';
-                $authProvider.loginRoute = '/account/login';
-                $authProvider.signupRoute = '/account/signup';
-                $authProvider.tokenName = 'token';
-                $authProvider.tokenPrefix = 'zingy'; // Local Storage name prefix
-                $authProvider.unlinkUrl = 'api/auth/unlink/';
-                $authProvider.authHeader = 'Authorization';
+            //html5 PushState
+            $locationProvider.html5Mode(true);
 
-                // Facebook
-                $authProvider.facebook({
-                    clientId: '542735292530166',
-                    url: 'http://localhost:3000/api/auth/facebook'
-                });
-
-                // Google
-                $authProvider.google({
-                    clientId: '127859079827-frmqmjp13dj5c3u93rkri0mebg4tdj3g.apps.googleusercontent.com',
-                    url: 'http://localhost:3000/api/auth/google'
-                });
-
-            }])
+        }])
         .run(['$rootScope', '$window', function ($rootScope, $window) {
             var onResize = function () {
                 $rootScope.$apply(function () {

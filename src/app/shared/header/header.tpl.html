@@ -35,21 +35,26 @@
                         </div>
                     </li>
                     <li ng-if="isAuthenticated()" dropdown>
-                        <a href dropdown-toggle>{{account.displayName}} <span
+                        <a href dropdown-toggle>{{user.displayName}} <span
                                 class="glyphicon glyphicon-cog"></span></a>
-
                         <div class="quick-setting dropdown-menu">
                             <ul>
-                                <li><a href="/account/settings" class="all search-img"><span>Manage Account</span></a>
+                                <li><a href="/account/manage" class="all search-img"><span>Manage Account</span></a>
                                 </li>
-                                <li><a href="/account/enthusiasts"
-                                       class="coaches search-img"><span>Enlist as Enthusiast</span></a></li>
-                                <li><a href="#" class="players search-img"><span>Enlist as Player</span></a></li>
-                                <li><a href="#" class="coaches search-img"><span>Enlist as Coach</span></a></li>
-                                <li><a href="#" class="facilities search-img"><span>Add Facilities</span></a></li>
-                                <li><a href="#" class="suppliers search-img"><span>Add Suppliers</span></a></li>
-                                <li><a href="#" class="events search-img"><span>Add an Event</span></a></li>
-                                <li><a href="#" class="all search-img"><span>Float an Offer</span></a></li>
+                                <li><a href="{{quickSettings.enthusiasts.url}}" class="all search-img"><span>{{quickSettings.enthusiasts.title}}</span></a>
+                                </li>
+                                <li><a href="{{quickSettings.players.url}}" class="players search-img"><span>{{quickSettings.players.title}}</span></a>
+                                </li>
+                                <li><a href="{{quickSettings.coaches.url}}" class="coaches search-img"><span>{{quickSettings.coaches.title}}</span></a>
+                                </li>
+                                <li><a href="{{quickSettings.facilities.url}}" class="facilities search-img"><span>{{quickSettings.facilities.title}}</span></a>
+                                </li>
+                                <li><a href="{{quickSettings.suppliers.url}}" class="suppliers search-img"><span>{{quickSettings.suppliers.title}}</span></a>
+                                </li>
+                                <li><a href="{{quickSettings.events.url}}" class="events search-img"><span>{{quickSettings.events.title}}</span></a>
+                                </li>
+                                <li><a href="{{quickSettings.offers.url}}" class="all search-img"><span>{{quickSettings.offers.title}}r</span></a>
+                                </li>
                                 <li><a href class="pull-right" ng-click="logout()"><span>Logout</span></a></li>
                             </ul>
                         </div>

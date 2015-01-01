@@ -1,0 +1,204 @@
+<div class="panel-heading coaching">
+    <h4 class="panel-title">About your Coaching</a></h4>
+</div>
+<div class="panel-collapse" id="aboutCoaching">
+    <div class="panel-body">
+        <form name="coachForm" role="form" ng-submit="submit(coachForm)">
+            <ul class='nav nav-tabs client-hub responsive-tabs form-group'>
+                <li class='active'><a href='#sport1' data-toggle='tab'>SPORT1</a></li>
+                <li><a href="#" class="add-sport"><i class=" glyphicon glyphicon-plus-sign"></i> Add Sport</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class='tab-content'>
+                <div class='tab-pane active' id='sport1'>
+                    <div class="row form-group">
+                        <div class="col-sm-5 form-group">
+
+                            <input
+                                    type="text"
+                                    name="sport"
+                                    class="form-control"
+                                    placeholder="Which Sport do you coach for?"
+                                    ng-model="entity.sport"
+                                    minlength="5"
+                                    required/>
+
+                            <div ng-if="coachForm.sport.$dirty" ng-messages="coachForm.sport.$error"
+                                 class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                <div ng-message="server">{{coachForm.sport.$error.serverMessage}}</div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-2 form-group">
+                            <select class="form-control">
+                                <option>01</option>
+                                <option>02</option>
+                                <option>03</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-5">
+                            (Coaching Experience in Yrs)
+                        </div>
+                    </div>
+                    <p>WHOME DO YOU COACH:</p>
+
+                    <div class="row form-group">
+                        <div class="col-sm-2">
+                            <input type="checkbox" id="men"/> <label for="men">Men</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <span class="pull-left right-space form-group">from age:</span>
+                            <select class="form-control pull-left right-space form-group select-dd">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <span class="pull-left right-space form-group">to:</span>
+                            <select class="form-control pull-left right-space form-group select-dd">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <span class="pull-left right-space left-spacing">Charges per class:</span> <input
+                                type="text"
+                                class="form-control pull-left right-space charge-textbox"/>
+                            <span class="pull-left right-space">to:</span> <input type="text"
+                                                                                  class="form-control pull-left right-space charge-textbox"/><span
+                                class="pull-left">Re</span>
+                        </div>
+
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-2">
+                            <input type="checkbox" id="Women"/> <label for="Women">Women</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <span class="pull-left right-space form-group">from age:</span>
+                            <select class="form-control pull-left right-space form-group select-dd">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <span class="pull-left right-space form-group">to:</span>
+                            <select class="form-control pull-left right-space form-group select-dd">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <span class="pull-left right-space left-spacing">Charges per class:</span> <input
+                                type="text"
+                                class="form-control pull-left right-space charge-textbox"/>
+                            <span class="pull-left right-space">to:</span> <input type="text"
+                                                                                  class="form-control pull-left right-space charge-textbox"/><span
+                                class="pull-left">Re</span>
+                        </div>
+
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-sm-2">
+                            <input type="checkbox" id="Kids"/> <label for="Kids">Kids</label>
+                        </div>
+                        <div class="col-sm-10">
+                            <span class="pull-left right-space form-group">from age:</span>
+                            <select class="form-control pull-left right-space form-group select-dd">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <span class="pull-left right-space form-group">to:</span>
+                            <select class="form-control pull-left right-space form-group select-dd">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <span class="pull-left right-space left-spacing">Charges per class:</span> <input
+                                type="text"
+                                class="form-control pull-left right-space charge-textbox"/>
+                            <span class="pull-left right-space">to:</span> <input type="text"
+                                                                                  class="form-control pull-left right-space charge-textbox"/><span
+                                class="pull-left">Re</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- Tab panes -->
+            <p>WHERE DO YOU COACH: </p>
+            <ul class='nav nav-tabs client-hub responsive-tabs form-group'>
+                <li class='active'><a href='#VENUE1' data-toggle='tab'>VENUE1</a></li>
+                <li><a href='#VENUE2' data-toggle='tab' class="inactive">VENUE2</a></li>
+                <li><a href="#" class="add-sport"><i class=" glyphicon glyphicon-plus-sign"></i> Add Sport</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class='tab-content'>
+                <div class='tab-pane active' id='VENUE1'>
+                    <p><input type="checkbox" id="Check"/> <label for="Check">(Check here if address is same as Personal
+                        &
+                        Contact details above.)</label></p>
+
+                    <form role="form">
+                        <div class="row form-group">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Name/Label for the Venue"/>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" placeholder="Address Line1"/>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-sm-4">
+                                <select class="form-control form-group">
+                                    <option>Select City</option>
+                                    <option>Pune</option>
+                                    <option>Mumbai</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <select class="form-control form-group">
+                                    <option>Select State</option>
+                                    <option>Maharastra</option>
+                                    <option>Gujrat</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" placeholder="PIN"/>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-sm-6">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Upload Gallery Pic">
+                                    <span class="input-group-addon">Browse</span></div>
+                            </div>
+                        </div>
+                        <p>YOUR PREFRENCES</p>
+
+                        <div class="row form-group">
+                            <div class="col-sm-5">Do you provide private coaching?</div>
+                            <div class="col-sm-4"><input type="radio" id="yes" name="coaching"/> <label
+                                    for="yes">Yes</label> <input type="radio" id="no" name="coaching"/> <label
+                                    for="no">No</label></div>
+                        </div>
+                        <div class="row form-group border-bottom ">
+                            <div class="col-sm-5">Do you provide fre trial classes?</div>
+                            <div class="col-sm-4"><input type="radio" id="yes1" name="trial"/> <label
+                                    for="yes1">Yes</label>
+                                <input type="radio" id="no1" name="trial"/> <label for="no1">No</label></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 form-group">
+                                <button class="btn btn-primary">Save &amp; Continue</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class='tab-pane collapse' id='VENUE2'>
+                    VENUE2
+                </div>
+            </div>
+        </form>
+        <!-- Tab panes -->
+    </div>
+</div>

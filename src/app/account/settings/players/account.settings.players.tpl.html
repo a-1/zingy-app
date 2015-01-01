@@ -1,0 +1,31 @@
+<div class="panel-heading playing">
+    <h4 class="panel-title">About your sports</h4>
+</div>
+<div>
+    <div class="panel-body">
+        <form name="playerForm" role="form" ng-submit="submit(playerForm)">
+            <div class="row">
+                <div class="col-sm-5 form-group">
+                    <input
+                            type="text"
+                            name="sport"
+                            class="form-control"
+                            placeholder="Which Sport you Play ?"
+                            ng-model="entity.sport"
+                            minlength="5"
+                            required/>
+
+                    <div ng-if="playerForm.sport.$dirty" ng-messages="playerForm.sport.$error"
+                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                        <div ng-message="server">{{playerForm.sport.$error.serverMessage}}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

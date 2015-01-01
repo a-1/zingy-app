@@ -2,42 +2,70 @@
     <div class="container form-group banner border-btm">
         <div class="col-sm-3 col-lg-3 form-group">&nbsp;</div>
         <div class="col-sm-8 col-lg-8">
-            <p class="pagging">Hello {{account.displayName}}, Manage your Account details, prefrences & your listings on
-                this
-                page</p>
+            <p class="pagging">Hello {{user.displayName}}, Manage your Account details, prefrences & your listings on
+                this page</p>
         </div>
     </div>
     <div class="container">
         <div class="row">
             <div class="col-sm-3 col-lg-3 account-settings-options">
-                <div class="welcome-block">Account Settings</div>
-                <div class="panel-heading personl-details">
-                    <a href="{{quickSettings.enthusiast.url}}">
-                        <h4 class="panel-title">{{quickSettings.enthusiast.title}}</h4>
+                <div class="welcome-block">
+                    <a href="/account/manage">
+                        <h4 class="panel-title">Account Settings</h4>
+                    </a>
+                </div>
+                <div class="panel-heading enthusiast">
+                    <a href="{{quickSettings.enthusiasts.url}}">
+                        <h4 class="panel-title">{{quickSettings.enthusiasts.title}}</h4>
                     </a>
                 </div>
                 <div class="panel-content" ng-if="entityType === 'Sport Enthusiast'"
                      ng-bind-html="listingMessage"></div>
-                <div class="panel-heading certification">
-                    <a href="{{quickSettings.player.url}}">
-                        <h4 class="panel-title">{{quickSettings.player.title}}</h4>
+
+                <div class="panel-heading playing">
+                    <a href="{{quickSettings.players.url}}">
+                        <h4 class="panel-title">{{quickSettings.players.title}}</h4>
                     </a>
                 </div>
                 <div class="panel-content" ng-if="entityType === 'Player'" ng-bind-html="listingMessage"></div>
+
                 <div class="panel-heading coaching">
-                    <a href="{{quickSettings.coach.url}}">
-                        <h4 class="panel-title">{{quickSettings.coach.title}}</h4>
+                    <a href="{{quickSettings.coaches.url}}">
+                        <h4 class="panel-title">{{quickSettings.coaches.title}}</h4>
                     </a>
                 </div>
                 <div class="panel-content" ng-if="entityType === 'Coach'" ng-bind-html="listingMessage"></div>
 
+                <div class="panel-heading facilities">
+                    <a href="/{{quickSettings.facilities.url}}">
+                        <h4 class="panel-title">{{quickSettings.facilities.title}}</h4>
+                    </a>
+                </div>
+                <div class="panel-content" ng-if="entityType === 'Facility'" ng-bind-html="listingMessage"></div>
+
+                <div class="panel-heading suppliers">
+                    <a href="{{quickSettings.suppliers.url}}">
+                        <h4 class="panel-title">{{quickSettings.suppliers.title}}</h4>
+                    </a>
+                </div>
+                <div class="panel-content" ng-if="entityType === 'Supplier'" ng-bind-html="listingMessage"></div>
+
+                <div class="panel-heading events">
+                    <a href="{{quickSettings.events.url}}">
+                        <h4 class="panel-title">{{quickSettings.events.title}}</h4>
+                    </a>
+                </div>
+                <div class="panel-content" ng-if="entityType === 'Event'" ng-bind-html="listingMessage"></div>
+
+                <div class="panel-heading offers">
+                    <a href="{{quickSettings.offers.url}}">
+                        <h4 class="panel-title">{{quickSettings.offers.title}}</h4>
+                    </a>
+                </div>
+                <div class="panel-content" ng-if="entityType === 'Offer'" ng-bind-html="listingMessage"></div>
             </div>
             <div class="col-sm-7 col-lg-7">
-                <div id="accordion" class="panel-group arrows">
-                    <div class="panel panel-default">
-                        <ng-include src="formTemplate"></ng-include>
-                    </div>
-                </div>
+                <ng-include src="formTemplate"></ng-include>
             </div>
             <div class="col-sm-2 col-lg-2 form-group snowlink">
                 Ad
