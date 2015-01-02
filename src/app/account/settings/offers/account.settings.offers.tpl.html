@@ -267,25 +267,40 @@
 
 <div ng-if="user.offers && user.offers.length">
     <div class="panel-heading manage-listing">
-        <h4 class="panel-title">Manage Offers</h4>
+        <h4 class="panel-title">Manage Offers <span class="pull-right">{{user.offers.length}} offers listed</span></h4>
     </div>
-    <div class="panel-body manage-list">
-        <ul class="border-bottom">
-            <li ng-repeat="offer in user.offers">
-                <div class="row">
-                    <div class="col-lg-6 form-group">
-                        <h4>{{offer.provider}}</h4>
-                        <h6>{{offer.heading}}</h6>
-                    </div>
-                    <div class="col-lg-3 form-group">
-                        <a href="/account/offers/{{offer._id}}" class="btn btn-sm btn-warning">Edit</a>
-                    </div>
-                    <div class="col-lg-3 form-group">
-                        <button ng-click="remove(offer._id)" class="btn btn-sm btn-danger">Remove</button>
-                    </div>
+    <div class="panel-body">
+        <div ng-repeat="offer in user.offers">
+            <div class="row form-group result manage-list">
+                <div class="col-sm-9 border-right-dotted">
+                    <h3>{{offer.provider}}</h3>
+                    <h6>{{offer.heading}}</h6>
+
+                    <p>Validity: {{offer.startDate | date}} - {{offer.endDate | date}}</p>
+                    <h6>Address :-</h6>
+
+                    <p>{{offer.streetOne}}</p>
+
+                    <p ng-if="offer.streetTwo">{{offer.streetTwo}}</p>
+
+                    <p>{{offer.city}} {{offer.state}} {{offer.pin}}</p>
+
+                    <p>Phone: {{offer.phoneOne}}<span ng-if="offer.phoneTwo"> / {{offer.phoneTwo}}</span></p>
+
+                    <p>Website: {{offer.url}}</p>
                 </div>
-            </li>
-        </ul>
+                <div class="col-sm-3">
+                    <ul class="nav">
+                        <li>
+                            <a href="/account/offers/{{offer._id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        </li>
+                        <li>
+                            <a href ng-click="remove(offer._id)"><span class="glyphicon glyphicon-remove"></span> Remove</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <a href="/account/offers/" class="btn btn-sm btn-info pull-right">Add</a>
         </div>

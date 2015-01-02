@@ -51,7 +51,6 @@ define(['angular'], function (angular) {
             '<p>After approval, your listing will appear under "' + $scope.entityType + '" category on Zingy for free and will ' +
             'also appear on any relevant searches on Zingy.</p>');
 
-
             //datepicker options
             $scope.datePickerOptions = {
                 showWeeks: false,
@@ -68,7 +67,6 @@ define(['angular'], function (angular) {
                 $scope[dateType] = false;
             };
 
-
             //TODO move to service  - states list
             $scope.states = [
                 {name: 'Maharashtra', value: 'maharashtra'},
@@ -82,7 +80,6 @@ define(['angular'], function (angular) {
                 {name: 'Mumbai', value: 'mumbai'},
                 {name: 'Banglore', value: 'banglore'}
             ];
-
 
         }]);
 
