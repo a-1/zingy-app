@@ -10,19 +10,23 @@ define(['angular'], function (angular) {
                 quickSettings: {}
             };
 
+            var prepareUrl = function (entity, url) {
+                return account.user[entity] && account.user[entity]._id ? url + '/' + account.user[entity]._id : url;
+            };
+
             var updateAccountSettings = function () {
                 angular.extend(account.quickSettings, {
                     enthusiasts: {
                         url: prepareUrl('enthusiast', '/account/enthusiasts'),
-                        title: account.user.enthusiast && account.user.enthusiast.length ? 'Personal Details' : 'Enlist as Enthusiast'
+                        title: account.user.enthusiast && account.user.enthusiast._id ? 'Personal Details' : 'Enlist as Enthusiast'
                     },
                     coaches: {
                         url: prepareUrl('coach', '/account/coaches'),
-                        title: account.user.coach && account.user.coach.length ? 'Coaching Details' : 'Enlist as Coach'
+                        title: account.user.coach && account.user.coach._id ? 'Coaching Details' : 'Enlist as Coach'
                     },
                     players: {
                         url: prepareUrl('player', '/account/players'),
-                        title: account.user.player && account.user.player.length ? 'Player Details' : 'Enlist as Player'
+                        title: account.user.player && account.user.player._id ? 'Player Details' : 'Enlist as Player'
                     },
                     facilities: {
                         url: 'account/facilities',
@@ -41,10 +45,6 @@ define(['angular'], function (angular) {
                         title: 'Float an Offer'
                     }
                 });
-            };
-
-            var prepareUrl = function (entity, url) {
-                return account.user[entity] && account.user[entity].length ? url + '/' + account.user[entity] : url;
             };
 
             return {

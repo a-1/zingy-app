@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular'], function (angular) {
+define(['angular', 'ramda'], function (angular, R) {
 
     return angular
         .module('account.settings.ctrl', [])
@@ -38,6 +38,10 @@ define(['angular'], function (angular) {
                     } else {
                         $scope.entity.$update({id: $scope.entity._id}).then(success, error);
                     }
+                } else {
+                    if ($scope.entityType === 'Player') {
+                        $scope.entity.sports[0].active = true;
+                    }
                 }
             };
 
@@ -51,6 +55,29 @@ define(['angular'], function (angular) {
             'Please fill in the form create your listing. Your listing information will be verified after submmision.</p>' +
             '<p>After approval, your listing will appear under "' + $scope.entityType + '" category on Zingy for free and will ' +
             'also appear on any relevant searches on Zingy.</p>');
+
+
+            //tabs
+            if ($scope.entityType === 'Player') {
+                $scope.entity.sports = $scope.entity.sports && $scope.entity.sports.length ? $scope.entity.sports : [{}];
+                $scope.entity.sports[0].active = true;
+            }
+
+            $scope.addTab = function (form, catagory) {
+                if (!form.$valid) {
+                    $window.alert('Please validate all fields in other tabs first');
+                    $scope.entity[catagory][0].active = true;
+                } else {
+                    $scope.entity[catagory].push({active: true});
+                }
+            };
+
+            $scope.removeTab = function (index, catagory) {
+                if (index > -1) {
+                    $scope.entity[catagory].splice(index, 1);
+                }
+                $scope.entity[catagory] = $scope.entity[catagory] && $scope.entity[catagory].length ? $scope.entity[catagory] : [{active: true}];
+            };
 
             //datepicker options
             $scope.datePickerOptions = {
@@ -68,6 +95,12 @@ define(['angular'], function (angular) {
                 $scope[dateType] = false;
             };
 
+            //TODO move to service  - genders list
+            $scope.genders = [
+                'Male',
+                'Female'
+            ];
+
             //TODO move to service  - states list
             $scope.states = [
                 'Maharashtra',
@@ -80,6 +113,115 @@ define(['angular'], function (angular) {
                 'Pune',
                 'Mumbai',
                 'Banglore'
+            ];
+
+            //TODO move to  service - frequencies list
+            $scope.playingFrequencies = [
+                'Everyday',
+                'Weekends',
+                'Weekday'
+            ];
+
+            //TODO move to  service - years of experience list
+            $scope.experienceYears = R.range(1, 51);
+
+            //TODO move to service  - sports list
+            $scope.sports = [
+                '​Aerobics​​',
+                '​Australian football​​',
+                '​Backcountry skiing​​',
+                '​Badminton​​',
+                '​Baseball​​',
+                '​Basketball​​',
+                '​Beach volleyball​​',
+                '​Biathlon​​',
+                '​Biking​​',
+                '​Boxing​​',
+                '​Calisthenics​​',
+                '​Circuit training​​',
+                '​Cricket​​',
+                '​Cross skating​​',
+                '​Cross-country skiing​​',
+                '​Curling​​',
+                '​Dancing​​',
+                '​Diving​​',
+                '​Downhill skiing​​',
+                '​Elliptical​​',
+                '​Ergometer​​',
+                '​Fencing​​',
+                '​Fitness walking​​',
+                '​Football​​',
+                '​Frisbee​​',
+                '​Gardening​​',
+                '​Golf​​',
+                '​Gymnastics​​',
+                '​Handball​​',
+                '​Handcycling​​',
+                '​Hiking​​',
+                '​Hockey​​',
+                '​Horseback riding​​',
+                '​Ice skating​​',
+                '​Indoor skating​​',
+                '​Indoor volleyball​​',
+                '​Inline skating​​',
+                '​Jogging​​',
+                '​Jumping rope​​',
+                '​Kayaking​​',
+                '​Kettlebell​​',
+                '​Kickboxing​​',
+                '​Kite skiing​​',
+                '​Kitesurfing​​',
+                '​Martial arts​​',
+                '​Mixed martial arts​​',
+                '​Mountain biking​​',
+                '​Nordic walking​​',
+                '​Open water swimming​​',
+                '​Other​​',
+                '​P90x​​',
+                '​Paddle boarding​​',
+                '​Paragliding​​',
+                '​Pilates​​',
+                '​Polo​​',
+                '​Pool Swimming​​',
+                '​Racquetball​​',
+                '​Road biking​​',
+                '​Rock climbing​​',
+                '​Roller skiing​​',
+                '​Rowing​​',
+                '​Rowing machine​​',
+                '​Rugby​​',
+                '​Running​​',
+                '​Sand running​​',
+                '​Scuba diving​​',
+                '​Skateboarding​​',
+                '​Skating​​',
+                '​Skiing​​',
+                '​Sledding​​',
+                '​Snowboarding​​',
+                '​Snowshoeing​​',
+                '​Soccer​​',
+                '​Spinning​​',
+                '​Squash​​',
+                '​Stair climbing​​',
+                '​Stair climbing machine​​',
+                '​Stationary biking​​',
+                '​Strength training​​',
+                '​Surfing​​',
+                '​Swimming​​',
+                '​Table tennis​​',
+                '​Tennis​​',
+                '​Treadmill running​​',
+                '​Treadmill walking​​',
+                '​Utility biking​​',
+                '​Volleyball​​',
+                '​Walking​​',
+                '​Wakeboarding​​',
+                '​Water polo​​',
+                '​Weight lifting​​',
+                '​Wheelchair​​',
+                '​Windsurfing​​',
+                '​Yoga​​',
+                '​Zumba'
             ];
 
         }]);
