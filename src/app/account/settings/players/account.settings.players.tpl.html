@@ -4,26 +4,252 @@
 <div>
     <div class="panel-body">
         <form name="playerForm" role="form" ng-submit="submit(playerForm)">
-            <div class="row">
-                <div class="col-sm-5 form-group">
-                    <input
-                            type="text"
-                            name="sport"
-                            class="form-control"
-                            placeholder="Which Sport you Play ?"
-                            ng-model="entity.sport"
-                            minlength="5"
-                            required/>
 
-                    <div ng-if="playerForm.sport.$dirty" ng-messages="playerForm.sport.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{playerForm.sport.$error.serverMessage}}</div>
-                    </div>
+            <div class="row border-bottom form-group">
+
+                <div class="col-sm-12 form-group">
+                    <tabset>
+                        <tab ng-if="entity.sports.length" ng-repeat="sport in entity.sports"
+                             heading="{{sport.name || 'Sport '+($index+1)}}" active="sport.active">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-sm-7 form-group">
+                                        <select name="{{'name'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.name"
+                                                ng-options="sport as sport for sport in sports"
+                                                required>
+                                            <option value="">Which Sport Activity you like ?</option>
+                                        </select>
+
+                                        <div ng-if="playerForm['name'+$index].$dirty"
+                                             ng-messages="playerForm['name'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{playerForm['name'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 form-group">
+                                        <select name="{{'experienceYears'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.experienceYears"
+                                                ng-options="experienceYear as experienceYear for experienceYear in experienceYears"
+                                                required>
+                                            <option value="">Years of experience</option>
+                                        </select>
+
+                                        <div ng-if="playerForm['experienceYears'+$index].$dirty"
+                                             ng-messages="playerForm['experienceYears'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{playerForm['experienceYears'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <p>How frequently you play:</p>
+                                        <select name="{{'playingFrequency'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.playingFrequency"
+                                                ng-options="playingFrequency as playingFrequency for playingFrequency in playingFrequencies"
+                                                required>
+                                            <option value="">When do you play ?</option>
+                                        </select>
+
+                                        <div ng-if="playerForm['playingFrequency'+$index].$dirty"
+                                             ng-messages="playerForm['playingFrequency'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{playerForm['playingFrequency'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-5 form-group">
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   name="startTime"
+                                                   class="form-control"
+                                                   timepicker-popup="h:mm a"
+                                                   ng-model="sport.startTime"
+                                                   is-open="startTimePickerOpened"
+                                                   placeholder="Playing Start Time"
+                                                   ng-change="dateTimePickerChanged('startTimePickerOpened')"
+                                                   ng-required="true"/>
+
+                                            <div ng-if="playerForm['startTime'+$index].$dirty"
+                                                 ng-messages="playerForm['startTime'+$index].$error"
+                                                 class="errorMessages"
+                                                 ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                                <div ng-message="server">
+                                                    {{playerForm['startTime'+$index].$error.serverMessage}}
+                                                </div>
+                                            </div>
+                                            <span class="input-group-addon"
+                                                  ng-click="openDateTimePicker($event, 'startTimePickerOpened')"><i
+                                                    class="glyphicon glyphicon-dashboard"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 form-group">
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   name="endTime"
+                                                   class="form-control"
+                                                   timepicker-popup="h:mm a"
+                                                   ng-model="sport.endTime"
+                                                   is-open="endTimePickerOpened"
+                                                   placeholder="Playing End Time"
+                                                   ng-change="dateTimePickerChanged('endTimePickerOpened')"
+                                                   ng-required="true"/>
+
+                                            <div ng-if="playerForm['endTime'+$index].$dirty"
+                                                 ng-messages="playerForm['endTime'+$index].$error"
+                                                 class="errorMessages"
+                                                 ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                                <div ng-message="server">
+                                                    {{playerForm['endTime'+$index].$error.serverMessage}}
+                                                </div>
+                                            </div>
+                                            <span class="input-group-addon"
+                                                  ng-click="openDateTimePicker($event, 'endTimePickerOpened')"><i
+                                                    class="glyphicon glyphicon-dashboard"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <p>Where do you play:</p>
+                                        <input type="text"
+                                               name="streetOne"
+                                               class="form-control"
+                                               placeholder="Address Line 1"
+                                               ng-model="sport.streetOne"
+                                               minlength="5"
+                                               maxlength="70"
+                                               required/>
+
+                                        <div ng-if="playerForm['streetOne'+$index].$dirty"
+                                             ng-messages="playerForm['streetOne'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{playerForm['streetOne'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <input type="text"
+                                               name="streetTwo"
+                                               class="form-control"
+                                               placeholder="Address Line 2"
+                                               ng-model="sport.streetTwo"/>
+
+                                        <div ng-if="playerForm['streetTwo'+$index].$dirty"
+                                             ng-messages="playerForm['streetTwo'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{playerForm['streetTwo'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4 form-group">
+                                        <select name="city"
+                                                class="form-control"
+                                                ng-model="sport.city"
+                                                ng-options="city as city for city in cities"
+                                                required>
+                                            <option value="">Select City</option>
+                                        </select>
+
+                                        <div ng-if="playerForm['city'+$index].$dirty"
+                                             ng-messages="playerForm['city'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{playerForm['city'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        <select name="state"
+                                                class="form-control"
+                                                ng-model="sport.state"
+                                                ng-options="state as state for state in states"
+                                                required>
+                                            <option value="">Select State</option>
+                                        </select>
+
+                                        <div ng-if="playerForm['state'+$index].$dirty"
+                                             ng-messages="playerForm['state'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{playerForm['state'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        <input type="text"
+                                               name="pin"
+                                               class="form-control"
+                                               placeholder="PIN"
+                                               ng-model="sport.pin"
+                                               maxlength="6"
+                                               minlength="6"
+                                               required/>
+
+                                        <div ng-if="playerForm['pin'+$index].$dirty"
+                                             ng-messages="playerForm['pin'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">{{playerForm['pin'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <button type="submit" ng-click="removeTab($index, 'sports')"
+                                                class="btn btn-danger pull-right">Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </tab>
+                        <tab select="addTab(playerForm, 'sports')">
+                            <tab-heading>
+                                <span class="add-sport"><i class="glyphicon glyphicon-plus-sign"></i> Add Sport</span>
+                            </tab-heading>
+                        </tab>
+                    </tabset>
                 </div>
+
             </div>
+
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">{{entity._id ? 'Update' : 'Save'}}</button>
+                    <button type="submit" ng-if="entity._id" ng-click="remove(entity._id)"
+                            class="btn btn-danger pull-right">Remove Listing
+                    </button>
                 </div>
             </div>
         </form>
