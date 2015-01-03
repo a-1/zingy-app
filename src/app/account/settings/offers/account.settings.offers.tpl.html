@@ -22,10 +22,13 @@
             </div>
             <div class="col-sm-7 form-group pull-right">
                 <div class="input-group">
-                    <input type="text" placeholder="Upload Offer Pic" class="form-control">
-                    <span class="input-group-addon">Browse</span></div>
+                    <input type="file" accept="image/*" name="imgUrl" image="image2"
+                           resize-max-height="300" ng-model="entity.imgUrl"
+                           resize-max-width="250" class="form-control file"
+                           resize-quality="0.7"  placeholder="Upload Gallery Pic" />
+                </div>
                 <div class="infoMessages">
-                    <div>(size 200px x 100px, format: jpg/png/gif)</div>
+                    <div>(size 200px x 100px, format: jpg/png/ gif)</div>
                 </div>
             </div>
         </div>
@@ -255,7 +258,7 @@
 
         <div class="row">
             <div class="col-sm-12 form-group">
-                <button type="submit" class="btn btn-primary">{{entity._id ? 'Update' : 'Save'}}</button>
+                <button type="submit" class="btn btn-primary" ng-click="uploadFileAws(image2.resized)">{{entity._id ? 'Update' : 'Save'}}</button>
                 <button type="submit" ng-if="entity._id" ng-click="remove(entity._id)"
                         class="btn btn-danger pull-right">Remove Listing
                 </button>

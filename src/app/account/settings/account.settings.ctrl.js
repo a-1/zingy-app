@@ -28,9 +28,10 @@ define(['angular'], function (angular) {
                     }
                 });
             };
-
+            $scope.uploadFileAws = function(data){
+                $scope.entity.imgUrl = data.dataURL;
+            };
             $scope.submit = function (form) {
-                $scope.form = form;
                 if (form.$valid) {
                     if (settings.operation === 'save') {
                         $scope.entity.$save().then(success, error);

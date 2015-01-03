@@ -32,6 +32,7 @@ define(function (require) {
 
         //shared modules
         require('shared/header/header').name,
+        require('shared/directives/imageupload').name,
 
         //require('results/results').name,
 
