@@ -38,10 +38,6 @@ define(['angular', 'ramda'], function (angular, R) {
                     } else {
                         $scope.entity.$update({id: $scope.entity._id}).then(success, error);
                     }
-                } else {
-                    if ($scope.entityType === 'Player') {
-                        $scope.entity.sports[0].active = true;
-                    }
                 }
             };
 
@@ -58,10 +54,11 @@ define(['angular', 'ramda'], function (angular, R) {
 
 
             //tabs
-            if ($scope.entityType === 'Player') {
+            if ($scope.entityType === 'Player' || $scope.entityType === 'Coach') {
                 $scope.entity.sports = $scope.entity.sports && $scope.entity.sports.length ? $scope.entity.sports : [{}];
                 $scope.entity.sports[0].active = true;
             }
+
 
             $scope.addTab = function (form, catagory) {
                 if (!form.$valid) {
@@ -73,7 +70,7 @@ define(['angular', 'ramda'], function (angular, R) {
             };
 
             $scope.removeTab = function (index, catagory) {
-                if (index > -1) {
+                if (index > 0) {
                     $scope.entity[catagory].splice(index, 1);
                 }
                 $scope.entity[catagory] = $scope.entity[catagory] && $scope.entity[catagory].length ? $scope.entity[catagory] : [{active: true}];
@@ -124,6 +121,12 @@ define(['angular', 'ramda'], function (angular, R) {
 
             //TODO move to  service - years of experience list
             $scope.experienceYears = R.range(1, 51);
+
+            //TODO move to  service - years of menAges list
+            $scope.adultAges = R.range(11, 101);
+
+            //TODO move to  service - years of menAges list
+            $scope.kidsAges = R.range(1, 11);
 
             //TODO move to service  - sports list
             $scope.sports = [

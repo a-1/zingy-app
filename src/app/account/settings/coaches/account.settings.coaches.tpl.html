@@ -1,204 +1,578 @@
 <div class="panel-heading coaching">
-    <h4 class="panel-title">About your Coaching</a></h4>
+    <h4 class="panel-title">About your Coaching</h4>
 </div>
 <div class="panel-collapse" id="aboutCoaching">
     <div class="panel-body">
         <form name="coachForm" role="form" ng-submit="submit(coachForm)">
-            <ul class='nav nav-tabs client-hub responsive-tabs form-group'>
-                <li class='active'><a href='#sport1' data-toggle='tab'>SPORT1</a></li>
-                <li><a href="#" class="add-sport"><i class=" glyphicon glyphicon-plus-sign"></i> Add Sport</a></li>
-            </ul>
-            <!-- Tab panes -->
-            <div class='tab-content'>
-                <div class='tab-pane active' id='sport1'>
-                    <div class="row form-group">
-                        <div class="col-sm-5 form-group">
+            <div class="row border-bottom form-group">
+                <div class="col-sm-12 form-group">
+                    <tabset>
+                        <tab ng-if="entity.sports.length" ng-repeat="sport in entity.sports"
+                             heading="{{sport.name || 'Sport '+($index+1)}}" active="sport.active">
+                            <div class="panel-body">
 
-                            <input
-                                    type="text"
-                                    name="sport"
-                                    class="form-control"
-                                    placeholder="Which Sport do you coach for?"
-                                    ng-model="entity.sport"
-                                    minlength="5"
-                                    required/>
+                                <div class="row">
+                                    <div class="col-sm-1 form-group pull-right">
+                                        <a href ng-click="removeTab($index, 'sports')"><span
+                                                class="glyphicon glyphicon-remove"></span></a>
+                                    </div>
+                                </div>
 
-                            <div ng-if="coachForm.sport.$dirty" ng-messages="coachForm.sport.$error"
-                                 class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                                <div ng-message="server">{{coachForm.sport.$error.serverMessage}}</div>
+                                <div class="row">
+                                    <div class="col-sm-7 form-group">
+                                        <select name="{{'name'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.name"
+                                                ng-options="sport as sport for sport in sports"
+                                                required>
+                                            <option value="">Which Sport do you coach for ?</option>
+                                        </select>
+
+                                        <div ng-if="coachForm['name'+$index].$dirty"
+                                             ng-messages="coachForm['name'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['name'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 form-group">
+                                        <select name="{{'experienceYears'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.experienceYears"
+                                                ng-options="experienceYear as experienceYear for experienceYear in experienceYears"
+                                                required>
+                                            <option value="">Years of experience</option>
+                                        </select>
+
+                                        <div ng-if="coachForm['experienceYears'+$index].$dirty"
+                                             ng-messages="coachForm['experienceYears'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['experienceYears'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-5">
+                                        Whom do you coach:
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-3 form-group">
+                                        <input id="men"
+                                               name="men"
+                                               type="checkbox"
+                                               ng-model="sport.coachingMen"/> <label for="men">Men</label>
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <select name="{{'menFromAge'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.menFromAge"
+                                                ng-options="adultAge as adultAge for adultAge in adultAges"
+                                                ng-required="sport.coachingMen"
+                                                ng-disabled="!sport.coachingMen">
+                                            <option value="">Age from</option>
+                                        </select>
+
+                                        <div ng-if="coachForm['menFromAge'+$index].$dirty"
+                                             ng-messages="coachForm['menFromAge'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['menFromAge'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <select name="{{'menToAge'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.menToAge"
+                                                ng-options="adultAge as adultAge for adultAge in adultAges"
+                                                ng-required="sport.coachingMen"
+                                                ng-disabled="!sport.coachingMen">
+                                            <option value="">Age To</option>
+                                        </select>
+
+                                        <div ng-if="coachForm['menToAge'+$index].$dirty"
+                                             ng-messages="coachForm['menToAge'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['menToAge'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <input type="number"
+                                               name="{{'menCharges'+$index}}"
+                                               class="form-control"
+                                               placeholder="&#8377; / class"
+                                               ng-model="sport.menCharges"
+                                               min="0"
+                                               max="50000"
+                                               ng-required="sport.coachingMen"
+                                               ng-disabled="!sport.coachingMen"/>
+
+                                        <div ng-if="coachForm['menCharges'+$index].$dirty"
+                                             ng-messages="coachForm['menCharges'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['menCharges'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-3 form-group">
+                                        <input id="women"
+                                               name="women"
+                                               type="checkbox"
+                                               ng-model="sport.coachingWomen"/> <label for="men">Women</label>
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <select name="{{'womenFromAge'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.womenFromAge"
+                                                ng-options="adultAge as adultAge for adultAge in adultAges"
+                                                ng-required="sport.coachingWomen"
+                                                ng-disabled="!sport.coachingWomen">
+                                            <option value="">Age from</option>
+                                        </select>
+
+                                        <div ng-if="coachForm['womenFromAge'+$index].$dirty"
+                                             ng-messages="coachForm['womenFromAge'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['womenFromAge'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <select name="{{'womenToAge'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.womenToAge"
+                                                ng-options="adultAge as adultAge for adultAge in adultAges"
+                                                ng-required="sport.coachingWomen"
+                                                ng-disabled="!sport.coachingWomen">
+                                            <option value="">Age To</option>
+                                        </select>
+
+                                        <div ng-if="coachForm['womenToAge'+$index].$dirty"
+                                             ng-messages="coachForm['womenToAge'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['womenToAge'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <input type="number"
+                                               name="{{'womenCharges'+$index}}"
+                                               class="form-control"
+                                               placeholder="&#8377; / class"
+                                               ng-model="sport.womenCharges"
+                                               min="0"
+                                               max="50000"
+                                               ng-required="sport.coachingWomen"
+                                               ng-disabled="!sport.coachingWomen"/>
+
+                                        <div ng-if="coachForm['womenCharges'+$index].$dirty"
+                                             ng-messages="coachForm['womenCharges'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['womenCharges'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-3 form-group">
+                                        <input id="kids"
+                                               name="kids"
+                                               type="checkbox"
+                                               ng-model="sport.coachingKids"/> <label for="kids">Kids</label>
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <select name="{{'kidsFromAge'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.kidsFromAge"
+                                                ng-options="kidsAge as kidsAge for kidsAge in kidsAges"
+                                                ng-required="sport.coachingKids"
+                                                ng-disabled="!sport.coachingKids">
+                                            <option value="">Age from</option>
+                                        </select>
+
+                                        <div ng-if="coachForm['kidsFromAge'+$index].$dirty"
+                                             ng-messages="coachForm['kidsFromAge'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['kidsFromAge'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <select name="{{'kidsToAge'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.kidsToAge"
+                                                ng-options="kidsAge as kidsAge for kidsAge in kidsAges"
+                                                ng-required="sport.coachingKids"
+                                                ng-disabled="!sport.coachingKids">
+                                            <option value="">Age To</option>
+                                        </select>
+
+                                        <div ng-if="coachForm['kidsToAge'+$index].$dirty"
+                                             ng-messages="coachForm['kidsToAge'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['kidsToAge'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 form-group">
+                                        <input type="number"
+                                               name="{{'kidsCharges'+$index}}"
+                                               class="form-control"
+                                               placeholder="&#8377; / class"
+                                               ng-model="sport.kidsCharges"
+                                               min="0"
+                                               max="50000"
+                                               ng-required="sport.coachingKids"
+                                               ng-disabled="!sport.coachingKids"/>
+
+                                        <div ng-if="coachForm['kidsCharges'+$index].$dirty"
+                                             ng-messages="coachForm['kidsCharges'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['kidsCharges'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <p>When do you provide your coaching:</p>
+                                        <select name="{{'coachingFrequency'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.coachingFrequency"
+                                                ng-options="coachingFrequency as coachingFrequency for coachingFrequency in playingFrequencies"
+                                                required>
+                                            <option value="">When do you provide coaching ?</option>
+                                        </select>
+
+                                        <div ng-if="coachForm['coachingFrequency'+$index].$dirty"
+                                             ng-messages="coachForm['coachingFrequency'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['coachingFrequency'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-5 form-group">
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   name="{{coachForm['startTime'+$index]}}"
+                                                   class="form-control"
+                                                   timepicker-popup="h:mm a"
+                                                   ng-model="sport.startTime"
+                                                   is-open="startTimePickerOpened"
+                                                   placeholder="Coaching Start Time"
+                                                   ng-change="dateTimePickerChanged('startTimePickerOpened')"
+                                                   ng-required="true"/>
+
+                                            <div ng-if="coachForm['startTime'+$index].$dirty"
+                                                 ng-messages="coachForm['startTime'+$index].$error"
+                                                 class="errorMessages"
+                                                 ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                                <div ng-message="server">
+                                                    {{coachForm['startTime'+$index].$error.serverMessage}}
+                                                </div>
+                                            </div>
+                                            <span class="input-group-addon"
+                                                  ng-click="openDateTimePicker($event, 'startTimePickerOpened')"><i
+                                                    class="glyphicon glyphicon-dashboard"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 form-group">
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   name="{{coachForm['endTime'+$index]}}"
+                                                   class="form-control"
+                                                   timepicker-popup="h:mm a"
+                                                   ng-model="sport.endTime"
+                                                   is-open="endTimePickerOpened"
+                                                   placeholder="Coaching End Time"
+                                                   ng-change="dateTimePickerChanged('endTimePickerOpened')"
+                                                   ng-required="true"/>
+
+                                            <div ng-if="coachForm['endTime'+$index].$dirty"
+                                                 ng-messages="coachForm['endTime'+$index].$error"
+                                                 class="errorMessages"
+                                                 ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                                <div ng-message="server">
+                                                    {{coachForm['endTime'+$index].$error.serverMessage}}
+                                                </div>
+                                            </div>
+                                            <span class="input-group-addon"
+                                                  ng-click="openDateTimePicker($event, 'endTimePickerOpened')"><i
+                                                    class="glyphicon glyphicon-dashboard"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <p>Where do you coach:</p>
+                                        <input type="text"
+                                               name="{{coachForm['streetOne'+$index]}}"
+                                               class="form-control"
+                                               placeholder="Address Line 1"
+                                               ng-model="sport.streetOne"
+                                               minlength="5"
+                                               maxlength="70"
+                                               required/>
+
+                                        <div ng-if="coachForm['streetOne'+$index].$dirty"
+                                             ng-messages="coachForm['streetOne'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['streetOne'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <input type="text"
+                                               name="{{coachForm['streetTwo'+$index]}}"
+                                               class="form-control"
+                                               placeholder="Address Line 2"
+                                               ng-model="sport.streetTwo"/>
+
+                                        <div ng-if="coachForm['streetTwo'+$index].$dirty"
+                                             ng-messages="coachForm['streetTwo'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['streetTwo'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-4 form-group">
+                                        <select name="{{coachForm['city'+$index]}}"
+                                                class="form-control"
+                                                ng-model="sport.city"
+                                                ng-options="city as city for city in cities"
+                                                required>
+                                            <option value="">Select City</option>
+                                        </select>
+
+                                        <div ng-if="coachForm['city'+$index].$dirty"
+                                             ng-messages="coachForm['city'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['city'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        <select name="{{coachForm['state'+$index]}}"
+                                                class="form-control"
+                                                ng-model="sport.state"
+                                                ng-options="state as state for state in states"
+                                                required>
+                                            <option value="">Select State</option>
+                                        </select>
+
+                                        <div ng-if="coachForm['state'+$index].$dirty"
+                                             ng-messages="coachForm['state'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['state'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4 form-group">
+                                        <input type="text"
+                                               name="{{coachForm['pin'+$index]}}"
+                                               class="form-control"
+                                               placeholder="PIN"
+                                               ng-model="sport.pin"
+                                               maxlength="6"
+                                               minlength="6"
+                                               required/>
+
+                                        <div ng-if="coachForm['pin'+$index].$dirty"
+                                             ng-messages="coachForm['pin'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">{{coachForm['pin'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <p>Certifications & Accolades:</p>
+                                        <input type="text"
+                                               name="{{coachForm['certificationName'+$index]}}"
+                                               class="form-control"
+                                               placeholder="Certification Name"
+                                               ng-model="sport.certificationName"
+                                               minlength="1"
+                                               maxlength="20"/>
+
+                                        <div ng-if="coachForm['certificationName'+$index].$dirty"
+                                             ng-messages="coachForm['certificationName'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['certificationName'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <input type="text"
+                                               name="{{coachForm['certificationBody'+$index]}}"
+                                               class="form-control"
+                                               placeholder="Certification Body"
+                                               ng-model="sport.certificationBody"/>
+
+                                        <div ng-if="coachForm['certificationBody'+$index].$dirty"
+                                             ng-messages="coachForm['certificationBody'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['certificationBody'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-2 form-group">
+                                        <p>Validity:</p>
+                                    </div>
+                                    <div class="col-sm-5 form-group">
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   name="{{coachForm['certificationValidFrom'+$index]}}"
+                                                   class="form-control"
+                                                   datepicker-popup="dd-MMMM-yyyy"
+                                                   show-button-bar="false"
+                                                   ng-model="sport.certificationValidFrom"
+                                                   is-open="validFromPickerOpened"
+                                                   placeholder="Certificate Valid From"
+                                                   datepicker-options="datePickerOptions"
+                                                   ng-change="dateTimePickerChanged('validFromPickerOpened')"
+                                                   ng-required="true"/>
+
+                                            <div ng-if="coachForm['certificationValidFrom'+$index].$dirty"
+                                                 ng-messages="coachForm['certificationValidFrom'+$index].$error"
+                                                 class="errorMessages"
+                                                 ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                                <div ng-message="server">
+                                                    {{coachForm['certificationValidFrom'+$index].$error.serverMessage}}
+                                                </div>
+                                            </div>
+                                            <span class="input-group-addon"
+                                                  ng-click="openDateTimePicker($event, 'validFromPickerOpened')"><i
+                                                    class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 form-group pull-right">
+                                        <div class="input-group">
+                                            <input type="text"
+                                                   name="{{coachForm['certificationValidTo'+$index]}}"
+                                                   class="form-control"
+                                                   datepicker-popup="dd-MMMM-yyyy"
+                                                   show-button-bar="false"
+                                                   ng-model="sport.certificationValidTo"
+                                                   is-open="validToPickerOpened"
+                                                   placeholder="Certificate Valid To"
+                                                   datepicker-options="datePickerOptions"
+                                                   ng-change="dateTimePickerChanged('validToPickerOpened')"
+                                                   ng-required="true"/>
+
+                                            <div ng-if="coachForm['certificationValidTo'+$index].$dirty"
+                                                 ng-messages="coachForm['certificationValidTo'+$index].$error"
+                                                 class="errorMessages"
+                                                 ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                                <div ng-message="server">
+                                                    {{coachForm['certificationValidTo'+$index].$error.serverMessage}}
+                                                </div>
+                                            </div>
+                                            <span class="input-group-addon"
+                                                  ng-click="openDateTimePicker($event, 'validToPickerOpened')"><i
+                                                    class="glyphicon glyphicon-calendar"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-10 form-group">
+                                        <div class="input-group">
+                                            <input type="text" placeholder="Upload Certificate Pic - 200x100px"
+                                                   class="form-control">
+                                            <span class="input-group-addon">Browse</span></div>
+                                    </div>
+                                </div>
+
                             </div>
-
-                        </div>
-                        <div class="col-sm-2 form-group">
-                            <select class="form-control">
-                                <option>01</option>
-                                <option>02</option>
-                                <option>03</option>
-                            </select>
-                        </div>
-                        <div class="col-sm-5">
-                            (Coaching Experience in Yrs)
-                        </div>
-                    </div>
-                    <p>WHOME DO YOU COACH:</p>
-
-                    <div class="row form-group">
-                        <div class="col-sm-2">
-                            <input type="checkbox" id="men"/> <label for="men">Men</label>
-                        </div>
-                        <div class="col-sm-10">
-                            <span class="pull-left right-space form-group">from age:</span>
-                            <select class="form-control pull-left right-space form-group select-dd">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>
-                            <span class="pull-left right-space form-group">to:</span>
-                            <select class="form-control pull-left right-space form-group select-dd">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>
-                            <span class="pull-left right-space left-spacing">Charges per class:</span> <input
-                                type="text"
-                                class="form-control pull-left right-space charge-textbox"/>
-                            <span class="pull-left right-space">to:</span> <input type="text"
-                                                                                  class="form-control pull-left right-space charge-textbox"/><span
-                                class="pull-left">Re</span>
-                        </div>
-
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-sm-2">
-                            <input type="checkbox" id="Women"/> <label for="Women">Women</label>
-                        </div>
-                        <div class="col-sm-10">
-                            <span class="pull-left right-space form-group">from age:</span>
-                            <select class="form-control pull-left right-space form-group select-dd">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>
-                            <span class="pull-left right-space form-group">to:</span>
-                            <select class="form-control pull-left right-space form-group select-dd">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>
-                            <span class="pull-left right-space left-spacing">Charges per class:</span> <input
-                                type="text"
-                                class="form-control pull-left right-space charge-textbox"/>
-                            <span class="pull-left right-space">to:</span> <input type="text"
-                                                                                  class="form-control pull-left right-space charge-textbox"/><span
-                                class="pull-left">Re</span>
-                        </div>
-
-                    </div>
-                    <div class="row form-group">
-                        <div class="col-sm-2">
-                            <input type="checkbox" id="Kids"/> <label for="Kids">Kids</label>
-                        </div>
-                        <div class="col-sm-10">
-                            <span class="pull-left right-space form-group">from age:</span>
-                            <select class="form-control pull-left right-space form-group select-dd">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>
-                            <span class="pull-left right-space form-group">to:</span>
-                            <select class="form-control pull-left right-space form-group select-dd">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                            </select>
-                            <span class="pull-left right-space left-spacing">Charges per class:</span> <input
-                                type="text"
-                                class="form-control pull-left right-space charge-textbox"/>
-                            <span class="pull-left right-space">to:</span> <input type="text"
-                                                                                  class="form-control pull-left right-space charge-textbox"/><span
-                                class="pull-left">Re</span>
-                        </div>
-
-                    </div>
+                        </tab>
+                        <tab select="addTab(coachForm, 'sports')">
+                            <tab-heading>
+                                <span class="add-sport"><i class="glyphicon glyphicon-plus-sign"></i> Add Sport</span>
+                            </tab-heading>
+                        </tab>
+                    </tabset>
                 </div>
+
             </div>
-            <!-- Tab panes -->
-            <p>WHERE DO YOU COACH: </p>
-            <ul class='nav nav-tabs client-hub responsive-tabs form-group'>
-                <li class='active'><a href='#VENUE1' data-toggle='tab'>VENUE1</a></li>
-                <li><a href='#VENUE2' data-toggle='tab' class="inactive">VENUE2</a></li>
-                <li><a href="#" class="add-sport"><i class=" glyphicon glyphicon-plus-sign"></i> Add Sport</a></li>
-            </ul>
-            <!-- Tab panes -->
-            <div class='tab-content'>
-                <div class='tab-pane active' id='VENUE1'>
-                    <p><input type="checkbox" id="Check"/> <label for="Check">(Check here if address is same as Personal
-                        &
-                        Contact details above.)</label></p>
 
-                    <form role="form">
-                        <div class="row form-group">
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" placeholder="Name/Label for the Venue"/>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control" placeholder="Address Line1"/>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-sm-4">
-                                <select class="form-control form-group">
-                                    <option>Select City</option>
-                                    <option>Pune</option>
-                                    <option>Mumbai</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-4">
-                                <select class="form-control form-group">
-                                    <option>Select State</option>
-                                    <option>Maharastra</option>
-                                    <option>Gujrat</option>
-                                </select>
-                            </div>
-                            <div class="col-sm-2">
-                                <input type="text" class="form-control" placeholder="PIN"/>
-                            </div>
-                        </div>
-                        <div class="row form-group">
-                            <div class="col-sm-6">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Upload Gallery Pic">
-                                    <span class="input-group-addon">Browse</span></div>
-                            </div>
-                        </div>
-                        <p>YOUR PREFRENCES</p>
-
-                        <div class="row form-group">
-                            <div class="col-sm-5">Do you provide private coaching?</div>
-                            <div class="col-sm-4"><input type="radio" id="yes" name="coaching"/> <label
-                                    for="yes">Yes</label> <input type="radio" id="no" name="coaching"/> <label
-                                    for="no">No</label></div>
-                        </div>
-                        <div class="row form-group border-bottom ">
-                            <div class="col-sm-5">Do you provide fre trial classes?</div>
-                            <div class="col-sm-4"><input type="radio" id="yes1" name="trial"/> <label
-                                    for="yes1">Yes</label>
-                                <input type="radio" id="no1" name="trial"/> <label for="no1">No</label></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-12 form-group">
-                                <button class="btn btn-primary">Save &amp; Continue</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class='tab-pane collapse' id='VENUE2'>
-                    VENUE2
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    <button type="submit"
+                            class="btn btn-primary">{{entity._id ? 'Update listing' : 'Enlist as Coach'}}
+                    </button>
+                    <button type="submit"
+                            ng-if="entity._id"
+                            ng-click="remove(entity._id)" class="btn btn-danger pull-right">Remove Listing
+                    </button>
                 </div>
             </div>
         </form>
-        <!-- Tab panes -->
+
     </div>
 </div>
