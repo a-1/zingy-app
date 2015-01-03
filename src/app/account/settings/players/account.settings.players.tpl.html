@@ -12,6 +12,14 @@
                         <tab ng-if="entity.sports.length" ng-repeat="sport in entity.sports"
                              heading="{{sport.name || 'Sport '+($index+1)}}" active="sport.active">
                             <div class="panel-body">
+
+                                <div class="row">
+                                    <div class="col-sm-1 form-group pull-right">
+                                        <a href ng-click="removeTab($index, 'sports')"><span
+                                                class="glyphicon glyphicon-remove"></span></a>
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class="col-sm-7 form-group">
                                         <select name="{{'name'+$index}}"
@@ -225,13 +233,6 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-sm-12 form-group">
-                                        <button type="submit" ng-click="removeTab($index, 'sports')"
-                                                class="btn btn-danger pull-right">Remove
-                                        </button>
-                                    </div>
-                                </div>
                             </div>
                         </tab>
                         <tab select="addTab(playerForm, 'sports')">
@@ -246,8 +247,12 @@
 
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <button type="submit" class="btn btn-primary">{{entity._id ? 'Update' : 'Save'}}</button>
-                    <button type="submit" ng-if="entity._id" ng-click="remove(entity._id)"
+                    <button type="submit"
+                            class="btn btn-primary">{{entity._id ? 'Update listing' : 'Enlist as Player'}}
+                    </button>
+                    <button type="submit"
+                            ng-if="entity._id"
+                            ng-click="remove(entity._id)"
                             class="btn btn-danger pull-right">Remove Listing
                     </button>
                 </div>
