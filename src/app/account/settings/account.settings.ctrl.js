@@ -41,8 +41,12 @@ define(['angular', 'ramda'], function (angular, R) {
             };
 
             $scope.remove = function (id) {
-                if ($window.confirm('Are you sure you want to remove this ' + $scope.entityType + ' listing ?')) {
-                    $scope.entity.$delete({id: id});
+                if ($window.confirm('Are you sure you want to remove ' + $scope.entityType + ' listing ?')) {
+                    $scope.entity.$delete({id: id}).then(function () {
+                        accountService.reset();
+                        $window.alert('Your listing for ' + $scope.entityType + ' got successfully removed');
+                        $location.path('/account/manage');
+                    });
                 }
             };
 

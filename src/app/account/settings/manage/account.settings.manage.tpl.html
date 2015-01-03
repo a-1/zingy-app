@@ -1,9 +1,199 @@
-<div class="panel-heading manage">
-    <h4 class="panel-title">Manage your Account Settings</h4>
-</div>
-<div>
-    <div class="panel-body">
-        <p class="pagging">Hello {{account.displayName}}, Manage your Account details, prefrences & your listings on
-            this page</p>
+<div class="account-settings-options">
+    <div class="row">
+        <div class="col-sm-12 form-group">
+            <div class="panel-heading enthusiast">
+                <a href="{{quickSettings.enthusiasts.url}}">
+                    <h4 class="panel-title">{{quickSettings.enthusiasts.title}}</h4>
+                </a>
+            </div>
+            <div class="panel-collapse">
+                <div class="panel-body">
+                    <div ng-if="user.enthusiast._id">
+                        <p>Thanks for listing yourself as the "Sport Enthusiasts".</p>
+
+                        <p><a href="{{quickSettings.enthusiasts.url}}">Click Here</a> to manage your Personal and
+                            Contact details.</p>
+                    </div>
+                    <div ng-if="!user.enthusiast._id">
+                        <p>Enlist yourself as "Sport Enthusiasts" and keep up-to date current sports events /
+                            offers.</p>
+
+                        <p><a href="{{quickSettings.enthusiasts.url}}">Click Here</a> to list yourself as "Sport
+                            Enthusiast".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <div class="row">
+        <div class="col-sm-12 form-group">
+            <div class="panel-heading playing">
+                <a href="{{quickSettings.players.url}}">
+                    <h4 class="panel-title">{{quickSettings.players.title}}</h4>
+                </a>
+            </div>
+            <div class="panel-collapse">
+                <div class="panel-body">
+                    <div ng-if="user.player._id">
+                        <p>Thanks for listing yourself as the "Player".</p>
+
+                        <p><a href="{{quickSettings.players.url}}">Click Here</a> to manage your sports details.</p>
+                    </div>
+                    <div ng-if="!user.player._id">
+                        <p>Enlist yourself as "Player" and get to know about players in your area with common
+                            interests.</p>
+
+                        <p><a href="{{quickSettings.players.url}}">Click Here</a> to list yourself as "Player".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 form-group">
+            <div class="panel-heading coaching">
+                <a href="{{quickSettings.coaches.url}}">
+                    <h4 class="panel-title">{{quickSettings.coaches.title}}</h4>
+                </a>
+            </div>
+            <div class="panel-collapse">
+                <div class="panel-body">
+                    <div ng-if="user.coach._id">
+                        <p>Thanks for listing yourself as the "Coach".</p>
+
+                        <p><a href="{{quickSettings.coaches.url}}">Click Here</a> to manage your coaching details.</p>
+                    </div>
+                    <div ng-if="!user.coach._id">
+                        <p>Enlist yourself as "Coach" and expand your coaching with the huge justKhelo community.</p>
+
+                        <p><a href="{{quickSettings.coaches.url}}">Click Here</a> to list yourself as "Coach".</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 form-group">
+            <div class="panel-heading facilities">
+                <a href="/{{quickSettings.facilities.url}}">
+                    <h4 class="panel-title">{{quickSettings.facilities.title}}</h4>
+                </a>
+            </div>
+            <div class="panel-collapse">
+                <div class="panel-body">
+                    <div ng-if="user.facilities.length">
+                        <p>Thanks for listing your "Facilities".</p>
+
+                        <p>You have
+                            <ng-pluralize count="user.facilities.length"
+                                          when="{'one': '1 facility listed.','other': '{} facilities listed.'}">
+
+                            </ng-pluralize>
+                            <a href="{{quickSettings.facilities.url}}">Click Here</a> to manage your facilities.
+                        </p>
+                    </div>
+                    <div ng-if="!user.facilities.length">
+                        <p>Add your "Facilities" to justKhelo and expand your business with huge community.</p>
+
+                        <p><a href="{{quickSettings.coaches.url}}">Click Here</a> to list your "Facility" for free.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 form-group">
+            <div class="panel-heading suppliers">
+                <a href="{{quickSettings.suppliers.url}}">
+                    <h4 class="panel-title">{{quickSettings.suppliers.title}}</h4>
+                </a>
+            </div>
+            <div class="panel-collapse">
+                <div class="panel-body">
+                    <div ng-if="user.suppliers.length">
+                        <p>Thanks for listing you as "Supplier".</p>
+
+                        <p>You have
+                            <ng-pluralize count="user.suppliers.length"
+                                          when="{'one': '1 supplier listed.','other': '{} suppliers listed.'}">
+
+                            </ng-pluralize>
+                            <a href="{{quickSettings.suppliers.url}}">Click Here</a> to manage your suppliers.
+                        </p>
+                    </div>
+                    <div ng-if="!user.suppliers.length">
+                        <p>Add you as "Supplier" to justKhelo and expand your business with huge community.</p>
+
+                        <p><a href="{{quickSettings.suppliers.url}}">Click Here</a> to list you as "Supplier" for free.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 form-group">
+            <div class="panel-heading events">
+                <a href="{{quickSettings.events.url}}">
+                    <h4 class="panel-title">{{quickSettings.events.title}}</h4>
+                </a>
+            </div>
+            <div class="panel-collapse">
+                <div class="panel-body">
+                    <div ng-if="user.events.length">
+                        <p>Thanks for listing your "Events".</p>
+
+                        <p>You have
+                            <ng-pluralize count="user.events.length"
+                                          when="{'one': '1 event listed.','other': '{} events listed.'}">
+
+                            </ng-pluralize>
+                            <a href="{{quickSettings.events.url}}">Click Here</a> to manage your events.
+                        </p>
+                    </div>
+                    <div ng-if="!user.events.length">
+                        <p>Add your "Events" to justKhelo and reach with huge community.</p>
+
+                        <p><a href="{{quickSettings.events.url}}">Click Here</a> to list your "Events" for free.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 form-group">
+            <div class="panel-heading offers">
+                <a href="{{quickSettings.offers.url}}">
+                    <h4 class="panel-title">{{quickSettings.offers.title}}</h4>
+                </a>
+            </div>
+            <div class="panel-collapse">
+                <div class="panel-body">
+                    <div ng-if="user.offers.length">
+                        <p>Thanks for listing your "Offers".</p>
+
+                        <p>You have
+                            <ng-pluralize count="user.offers.length"
+                                          when="{'one': '1 offer listed.','other': '{} offers listed.'}">
+
+                            </ng-pluralize>
+                            <a href="{{quickSettings.offers.url}}">Click Here</a> to manage your offers.
+                        </p>
+                    </div>
+                    <div ng-if="!user.offers.length">
+                        <p>Add your "Offers" to justKhelo and reach with huge community.</p>
+
+                        <p><a href="{{quickSettings.offers.url}}">Click Here</a> to list your "Offers" for free.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
