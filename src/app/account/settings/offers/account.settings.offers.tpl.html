@@ -80,14 +80,14 @@
                            is-open="startDatePickerOpened"
                            placeholder="Offer Start Date"
                            datepicker-options="datePickerOptions"
-                           ng-change="datePickerDateChanged('startDatePickerOpened')"
+                           ng-change="dateTimePickerChanged('startDatePickerOpened')"
                            ng-required="true"/>
 
                     <div ng-if="offerForm.startDate.$dirty" ng-messages="offerForm.startDate.$error"
                          class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
                         <div ng-message="server">{{offerForm.startDate.$error.serverMessage}}</div>
                     </div>
-                    <span class="input-group-addon" ng-click="openDatePicker($event, 'startDatePickerOpened')"><i
+                    <span class="input-group-addon" ng-click="openDateTimePicker($event, 'startDatePickerOpened')"><i
                             class="glyphicon glyphicon-calendar"></i></span>
                 </div>
             </div>
@@ -102,14 +102,14 @@
                            is-open="endDatePickerOpened"
                            placeholder="Offer End Date"
                            datepicker-options="datePickerOptions"
-                           ng-change="datePickerDateChanged('endDatePickerOpened')"
+                           ng-change="dateTimePickerChanged('endDatePickerOpened')"
                            ng-required="true"/>
 
                     <div ng-if="offerForm.endDate.$dirty" ng-messages="offerForm.endDate.$error"
                          class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
                         <div ng-message="server">{{offerForm.endDate.$error.serverMessage}}</div>
                     </div>
-                    <span class="input-group-addon" ng-click="openDatePicker($event, 'endDatePickerOpened')"><i
+                    <span class="input-group-addon" ng-click="openDateTimePicker($event, 'endDatePickerOpened')"><i
                             class="glyphicon glyphicon-calendar"></i></span>
                 </div>
             </div>
@@ -149,11 +149,11 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-5 form-group">
+            <div class="col-sm-4 form-group">
                 <select name="city"
                         class="form-control"
                         ng-model="entity.city"
-                        ng-options="city.value as city.name for city in cities"
+                        ng-options="city as city for city in cities"
                         required>
                     <option value="">Select City</option>
                 </select>
@@ -163,14 +163,11 @@
                     <div ng-message="server">{{offerForm.city.$error.serverMessage}}</div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-5 form-group">
+            <div class="col-sm-4 form-group">
                 <select name="state"
                         class="form-control"
                         ng-model="entity.state"
-                        ng-options="state.value as state.name for state in states"
+                        ng-options="state as state for state in states"
                         required>
                     <option value="">Select State</option>
                 </select>
@@ -258,7 +255,7 @@
 
         <div class="row">
             <div class="col-sm-12 form-group">
-                <button type="submit" class="btn btn-primary" ng-click="uploadFileAws(image2.resized)">{{entity._id ? 'Update' : 'Save'}}</button>
+                <button type="submit" class="btn btn-primary">{{entity._id ? 'Update' : 'Save'}}</button>
                 <button type="submit" ng-if="entity._id" ng-click="remove(entity._id)"
                         class="btn btn-danger pull-right">Remove Listing
                 </button>
@@ -270,25 +267,43 @@
 
 <div ng-if="user.offers && user.offers.length">
     <div class="panel-heading manage-listing">
-        <h4 class="panel-title">Manage Offers</h4>
+        <h4 class="panel-title">Manage Offers
+            <ng-pluralize class="pull-right" count="user.offers.length"
+                          when="{'one': '1 offer listed','other': '{} offers listed'}"></ng-pluralize>
+        </h4>
     </div>
-    <div class="panel-body manage-list">
-        <ul class="border-bottom">
-            <li ng-repeat="offer in user.offers">
-                <div class="row">
-                    <div class="col-lg-6 form-group">
-                        <h4>{{offer.provider}}</h4>
-                        <h6>{{offer.heading}}</h6>
-                    </div>
-                    <div class="col-lg-3 form-group">
-                        <a href="/account/offers/{{offer._id}}" class="btn btn-sm btn-warning">Edit</a>
-                    </div>
-                    <div class="col-lg-3 form-group">
-                        <button ng-click="remove(offer._id)" class="btn btn-sm btn-danger">Remove</button>
-                    </div>
+    <div class="panel-body">
+        <div ng-repeat="offer in user.offers">
+            <div class="row form-group result manage-list">
+                <div class="col-sm-9 border-right-dotted">
+                    <h3>{{offer.provider}}</h3>
+                    <h6>{{offer.heading}}</h6>
+
+                    <p>Validity: {{offer.startDate | date}} - {{offer.endDate | date}}</p>
+                    <h6>Address :-</h6>
+
+                    <p>{{offer.streetOne}}</p>
+
+                    <p ng-if="offer.streetTwo">{{offer.streetTwo}}</p>
+
+                    <p>{{offer.city}} {{offer.state}} {{offer.pin}}</p>
+
+                    <p>Phone: {{offer.phoneOne}}<span ng-if="offer.phoneTwo"> / {{offer.phoneTwo}}</span></p>
+
+                    <p>Website: {{offer.url}}</p>
                 </div>
-            </li>
-        </ul>
+                <div class="col-sm-3">
+                    <ul class="nav">
+                        <li>
+                            <a href="/account/offers/{{offer._id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        </li>
+                        <li>
+                            <a href ng-click="remove(offer._id)"><span class="glyphicon glyphicon-remove"></span> Remove</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <a href="/account/offers/" class="btn btn-sm btn-info pull-right">Add</a>
         </div>

@@ -43,7 +43,7 @@ define(['angular'], function (angular) {
 
             $scope.remove = function (id) {
                 if ($window.confirm('Are you sure you want to remove this ' + $scope.entityType + ' listing ?')) {
-                    $scope.entity.$delete({id: id}).then(success, error);
+                    $scope.entity.$delete({id: id});
                 }
             };
 
@@ -52,7 +52,6 @@ define(['angular'], function (angular) {
             '<p>After approval, your listing will appear under "' + $scope.entityType + '" category on Zingy for free and will ' +
             'also appear on any relevant searches on Zingy.</p>');
 
-
             //datepicker options
             $scope.datePickerOptions = {
                 showWeeks: false,
@@ -60,30 +59,28 @@ define(['angular'], function (angular) {
                 startingDay: 1,
                 showButtonBar: false
             };
-            $scope.openDatePicker = function ($event, dateType) {
+            $scope.openDateTimePicker = function ($event, dateType) {
                 $event.preventDefault();
                 $event.stopPropagation();
                 $scope[dateType] = true;
             };
-            $scope.datePickerDateChanged = function (dateType) {
+            $scope.dateTimePickerChanged = function (dateType) {
                 $scope[dateType] = false;
             };
 
-
             //TODO move to service  - states list
             $scope.states = [
-                {name: 'Maharashtra', value: 'maharashtra'},
-                {name: 'Karnatak', value: 'karnatak'}
+                'Maharashtra',
+                'Karnatak'
             ];
 
 
             //TODO move to service  - cities list
             $scope.cities = [
-                {name: 'Pune', value: 'pune'},
-                {name: 'Mumbai', value: 'mumbai'},
-                {name: 'Banglore', value: 'banglore'}
+                'Pune',
+                'Mumbai',
+                'Banglore'
             ];
-
 
         }]);
 

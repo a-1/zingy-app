@@ -36,7 +36,7 @@ define(['angular',
             $authProvider.loginRedirect = '/';
             $authProvider.logoutRedirect = '/';
             $authProvider.signupRedirect = '/account/login';
-            $authProvider.loginUrl = 'api//auth/login';
+            $authProvider.loginUrl = 'api/auth/login';
             $authProvider.signupUrl = 'api/auth/signup';
             $authProvider.loginRoute = '/account/login';
             $authProvider.signupRoute = '/account/signup';

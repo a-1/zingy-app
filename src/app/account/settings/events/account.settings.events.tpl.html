@@ -1,57 +1,328 @@
 <div class="panel-heading events">
-    <h4 class="panel-title">Do you provide Sport Facility ?</h4>
+    <h4 class="panel-title">Are you hosting any sports event ?</h4>
 </div>
 
 <div class="panel-body">
     <form name="eventForm" role="form" ng-submit="submit(eventForm)">
         <div class="row">
             <div class="col-sm-5 form-group">
-                <input
-                        type="text"
-                        name="title"
-                        class="form-control"
-                        placeholder="Event Name ?"
-                        ng-model="entity.title"
-                        minlength="5"
-                        required/>
+                <input type="text"
+                       name="organiser"
+                       class="form-control"
+                       placeholder="Event Organiser"
+                       ng-model="entity.organiser"
+                       minlength="3"
+                       maxlength="40"
+                       required/>
 
-                <div ng-if="eventForm.title.$dirty" ng-messages="eventForm.title.$error"
+                <div ng-if="eventForm.organiser.$dirty" ng-messages="eventForm.organiser.$error"
                      class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                    <div ng-message="server">{{eventForm.title.$error.serverMessage}}</div>
+                    <div ng-message="server">{{eventForm.organiser.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-7 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" placeholder="Upload Event Pic - 100x50px" class="form-control">
+                    <span class="input-group-addon">Browse</span></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8 form-group">
+                <input type="text"
+                       name="heading"
+                       class="form-control"
+                       placeholder="Event Heading"
+                       ng-model="entity.heading"
+                       minlength="5"
+                       maxlength="70"
+                       required/>
+
+                <div ng-if="eventForm.heading.$dirty" ng-messages="eventForm.heading.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.heading.$error.serverMessage}}</div>
                 </div>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-sm-12 form-group">
-                <button type="submit" class="btn btn-primary">Save</button>
+            <div class="col-sm-8 form-group">
+                <textarea name="description"
+                          class="form-control"
+                          placeholder="Event Description"
+                          ng-model="entity.description"
+                          minlength="5"
+                          maxlength="200"
+                          required> </textarea>
+
+                <div ng-if="eventForm.description.$dirty" ng-messages="eventForm.description.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.description.$error.serverMessage}}</div>
+                </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <div class="input-group">
+                    <input type="text"
+                           name="date"
+                           class="form-control"
+                           datepicker-popup="dd-MMMM-yyyy"
+                           show-button-bar="false"
+                           ng-model="entity.date"
+                           is-open="datePickerOpened"
+                           placeholder="Event Date"
+                           datepicker-options="datePickerOptions"
+                           ng-change="dateTimePickerChanged('datePickerOpened')"
+                           ng-required="true"/>
+
+                    <div ng-if="eventForm.date.$dirty" ng-messages="eventForm.date.$error"
+                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                        <div ng-message="server">{{eventForm.date.$error.serverMessage}}</div>
+                    </div>
+                    <span class="input-group-addon" ng-click="openDateTimePicker($event, 'datePickerOpened')"><i
+                            class="glyphicon glyphicon-calendar"></i></span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-sm-5 form-group">
+                <div class="input-group">
+                    <input type="text"
+                           name="startTime"
+                           class="form-control"
+                           timepicker-popup="h:mm a"
+                           ng-model="entity.startTime"
+                           is-open="startTimePickerOpened"
+                           placeholder="Event Start Time"
+                           ng-change="dateTimePickerChanged('startTimePickerOpened')"
+                           ng-required="true"/>
+
+                    <div ng-if="eventForm.startTime.$dirty" ng-messages="eventForm.startTime.$error"
+                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                        <div ng-message="server">{{eventForm.startTime.$error.serverMessage}}</div>
+                    </div>
+                    <span class="input-group-addon" ng-click="openDateTimePicker($event, 'startTimePickerOpened')"><i
+                            class="glyphicon glyphicon-dashboard"></i></span>
+                </div>
+            </div>
+            <div class="col-sm-5 form-group">
+                <div class="input-group">
+                    <input type="text"
+                           name="endTime"
+                           class="form-control"
+                           timepicker-popup="h:mm a"
+                           ng-model="entity.endTime"
+                           is-open="endTimePickerOpened"
+                           placeholder="Event End Time"
+                           ng-change="dateTimePickerChanged('endTimePickerOpened')"
+                           ng-required="true"/>
+
+                    <div ng-if="eventForm.endTime.$dirty" ng-messages="eventForm.endTime.$error"
+                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                        <div ng-message="server">{{eventForm.endTime.$error.serverMessage}}</div>
+                    </div>
+                    <span class="input-group-addon" ng-click="openDateTimePicker($event, 'endTimePickerOpened')"><i
+                            class="glyphicon glyphicon-dashboard"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <input type="text"
+                       name="streetOne"
+                       class="form-control"
+                       placeholder="Address Line 1"
+                       ng-model="entity.streetOne"
+                       minlength="5"
+                       maxlength="70"
+                       required/>
+
+                <div ng-if="eventForm.streetOne.$dirty" ng-messages="eventForm.streetOne.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.streetOne.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <input type="text"
+                       name="streetTwo"
+                       class="form-control"
+                       placeholder="Address Line 2"
+                       ng-model="entity.streetTwo"/>
+
+                <div ng-if="eventForm.streetTwo.$dirty" ng-messages="eventForm.streetTwo.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.streetTwo.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <select name="city"
+                        class="form-control"
+                        ng-model="entity.city"
+                        ng-options="city as city for city in cities"
+                        required>
+                    <option value="">Select City</option>
+                </select>
+
+                <div ng-if="eventForm.city.$dirty" ng-messages="eventForm.city.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.city.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <select name="state"
+                        class="form-control"
+                        ng-model="entity.state"
+                        ng-options="state as state for state in states"
+                        required>
+                    <option value="">Select State</option>
+                </select>
+
+                <div ng-if="eventForm.state.$dirty" ng-messages="eventForm.state.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.state.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="text"
+                       name="pin"
+                       class="form-control"
+                       placeholder="PIN"
+                       ng-model="entity.pin"
+                       maxlength="6"
+                       minlength="6"
+                       required/>
+
+                <div ng-if="eventForm.pin.$dirty" ng-messages="eventForm.pin.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.pin.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <input type="email"
+                       name="email"
+                       class="form-control"
+                       placeholder="Contact Email"
+                       ng-model="entity.email"
+                       required/>
+
+                <div ng-if="eventForm.email.$dirty" ng-messages="eventForm.email.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.email.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="tel"
+                       name="phoneOne"
+                       class="form-control"
+                       placeholder="Contact Phone 1"
+                       ng-model="entity.phoneOne"
+                       minlength="10"
+                       required/>
+
+                <div ng-if="eventForm.phoneOne.$dirty" ng-messages="eventForm.phoneOne.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.phoneOne.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="tel"
+                       name="phoneTwo"
+                       class="form-control"
+                       placeholder="Contact Phone 2"
+                       ng-model="entity.phoneTwo"
+                       minlength="10"/>
+
+                <div ng-if="eventForm.phoneTwo.$dirty" ng-messages="eventForm.phoneTwo.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.phoneTwo.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row border-bottom form-group">
+            <div class="col-sm-8 form-group">
+                <input type="url"
+                       name="url"
+                       class="form-control"
+                       placeholder="Event url"
+                       ng-model="entity.url"
+                       required/>
+
+                <div ng-if="eventForm.url.$dirty" ng-messages="eventForm.url.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.url.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-12 form-group">
+                <button type="submit" class="btn btn-primary">{{entity._id ? 'Update' : 'Save'}}</button>
+                <button type="submit" ng-if="entity._id" ng-click="remove(entity._id)"
+                        class="btn btn-danger pull-right">Remove Listing
+                </button>
+            </div>
+        </div>
+
     </form>
 </div>
 
-
 <div ng-if="user.events && user.events.length">
     <div class="panel-heading manage-listing">
-        <h4 class="panel-title">Manage Events</h4>
+        <h4 class="panel-title">Manage Events
+            <ng-pluralize class="pull-right" count="user.events.length"
+                          when="{'one': '1 event listed','other': '{} events listed'}"></ng-pluralize>
+        </h4>
     </div>
-    <div class="panel-body manage-list">
-        <ul class="border-bottom">
-            <li ng-repeat="event in user.events">
-                <div class="row">
-                    <div class="col-lg-6 form-group">
-                        {{event.title}}
-                    </div>
-                    <div class="col-lg-3 form-group">
-                        <a href="/account/events/{{event._id}}" class="btn btn-sm btn-warning">Edit</a>
-                    </div>
-                    <div class="col-lg-3 form-group">
-                        <button ng-click="remove(event._id)" class="btn btn-sm btn-danger">Remove</button>
-                    </div>
+    <div class="panel-body">
+        <div ng-repeat="event in user.events">
+            <div class="row form-group result manage-list">
+                <div class="col-sm-9 border-right-dotted">
+                    <h3>{{event.organiser}}</h3>
+                    <h6>{{event.heading}}</h6>
+
+                    <p>Scheduled on {{event.date | date}} from {{event.startTime | date:'h:mm a'}} to {{event.endTime |
+                        date:'h:mm a'}}</p>
+                    <h6>Address :-</h6>
+
+                    <p>{{event.streetOne}}</p>
+
+                    <p ng-if="event.streetTwo">{{event.streetTwo}}</p>
+
+                    <p>{{event.city}} {{event.state}} {{event.pin}}</p>
+
+                    <p>Phone: {{event.phoneOne}}<span ng-if="event.phoneTwo"> / {{event.phoneTwo}}</span></p>
+
+                    <p>Website: {{event.url}}</p>
                 </div>
-            </li>
-        </ul>
+                <div class="col-sm-3">
+                    <ul class="nav">
+                        <li>
+                            <a href="/account/events/{{event._id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        </li>
+                        <li>
+                            <a href ng-click="remove(event._id)"><span class="glyphicon glyphicon-remove"></span> Remove</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
-            <a href="/account/events" class="btn btn-sm btn-info pull-right">Add</a>
+            <a href="/account/events/" class="btn btn-sm btn-info pull-right">Add</a>
         </div>
     </div>
 </div>
