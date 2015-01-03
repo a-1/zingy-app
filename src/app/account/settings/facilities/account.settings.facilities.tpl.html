@@ -6,24 +6,211 @@
     <form name="facilityForm" role="form" ng-submit="submit(facilityForm)">
         <div class="row">
             <div class="col-sm-5 form-group">
-                <input
-                        type="text"
-                        name="title"
-                        class="form-control"
-                        placeholder="Facility Name ?"
-                        ng-model="entity.title"
-                        minlength="5"
-                        required/>
+                <input type="text"
+                       name="name"
+                       class="form-control"
+                       placeholder="Facility Name"
+                       ng-model="entity.name"
+                       minlength="3"
+                       maxlength="40"
+                       required/>
 
-                <div ng-if="facilityForm.title.$dirty" ng-messages="facilityForm.title.$error"
+                <div ng-if="facilityForm.name.$dirty" ng-messages="facilityForm.name.$error"
                      class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                    <div ng-message="server">{{facilityForm.title.$error.serverMessage}}</div>
+                    <div ng-message="server">{{facilityForm.name.$error.serverMessage}}</div>
+                </div>
+                </div>
+            <div class="col-sm-7 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" placeholder="Upload Facility Pic - 100x50px" class="form-control">
+                    <span class="input-group-addon">Browse</span></div>
+            </div>
+            </div>
+
+        <div class="row">
+            <div class="col-sm-8 form-group">
+                <input type="text"
+                       name="speciality"
+                       class="form-control"
+                       placeholder="Facility Speciality"
+                       ng-model="entity.speciality"
+                       minlength="5"
+                       maxlength="70"
+                       required/>
+
+                <div ng-if="facilityForm.speciality.$dirty" ng-messages="facilityForm.speciality.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{facilityForm.speciality.$error.serverMessage}}</div>
+                </div>
+            </div>
+            </div>
+
+        <div class="row">
+            <div class="col-sm-8 form-group">
+                <textarea name="description"
+                          class="form-control"
+                          placeholder="Facility Description"
+                          ng-model="entity.description"
+                          minlength="5"
+                          maxlength="200"
+                          required> </textarea>
+
+                <div ng-if="facilityForm.description.$dirty" ng-messages="facilityForm.description.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{facilityForm.description.$error.serverMessage}}</div>
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <input type="text"
+                       name="streetOne"
+                       class="form-control"
+                       placeholder="Address Line 1"
+                       ng-model="entity.streetOne"
+                       minlength="5"
+                       maxlength="70"
+                       required/>
+
+                <div ng-if="facilityForm.streetOne.$dirty" ng-messages="facilityForm.streetOne.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{facilityForm.streetOne.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <input type="text"
+                       name="streetTwo"
+                       class="form-control"
+                       placeholder="Address Line 2"
+                       ng-model="entity.streetTwo"/>
+
+                <div ng-if="facilityForm.streetTwo.$dirty" ng-messages="facilityForm.streetTwo.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{facilityForm.streetTwo.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <select name="city"
+                        class="form-control"
+                        ng-model="entity.city"
+                        ng-options="city as city for city in cities"
+                        required>
+                    <option value="">Select City</option>
+                </select>
+
+                <div ng-if="facilityForm.city.$dirty" ng-messages="facilityForm.city.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{facilityForm.city.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <select name="state"
+                        class="form-control"
+                        ng-model="entity.state"
+                        ng-options="state as state for state in states"
+                        required>
+                    <option value="">Select State</option>
+                </select>
+
+                <div ng-if="facilityForm.state.$dirty" ng-messages="facilityForm.state.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{facilityForm.state.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="text"
+                       name="pin"
+                       class="form-control"
+                       placeholder="PIN"
+                       ng-model="entity.pin"
+                       maxlength="6"
+                       minlength="6"
+                       length="6"
+                       required/>
+
+                <div ng-if="facilityForm.pin.$dirty" ng-messages="facilityForm.pin.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{facilityForm.pin.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <input type="email"
+                       name="email"
+                       class="form-control"
+                       placeholder="Contact Email"
+                       ng-model="entity.email"
+                       required/>
+
+                <div ng-if="facilityForm.email.$dirty" ng-messages="facilityForm.email.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{facilityForm.email.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="tel"
+                       name="phoneOne"
+                       class="form-control"
+                       placeholder="Contact Phone 1"
+                       ng-model="entity.phoneOne"
+                       minlength="10"
+                       maxlength="10"
+                       length="10"
+                       required/>
+
+                <div ng-if="facilityForm.phoneOne.$dirty" ng-messages="facilityForm.phoneOne.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{facilityForm.phoneOne.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="tel"
+                       name="phoneTwo"
+                       class="form-control"
+                       placeholder="Contact Phone 2"
+                       ng-model="entity.phoneTwo"
+                       minlength="10"
+                       maxlength="10"
+                       length="10"/>
+
+                <div ng-if="facilityForm.phoneTwo.$dirty" ng-messages="facilityForm.phoneTwo.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{facilityForm.phoneTwo.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row border-bottom form-group">
+            <div class="col-sm-8 form-group">
+                <input type="url"
+                       name="url"
+                       class="form-control"
+                       placeholder="Supplier website"
+                       ng-model="entity.url"
+                       required/>
+
+                <div ng-if="facilityForm.url.$dirty" ng-messages="facilityForm.url.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{facilityForm.url.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-sm-12 form-group">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">{{entity._id ? 'Update' : 'Save'}}</button>
+                <button type="submit" ng-if="entity._id" ng-click="remove(entity._id)"
+                        class="btn btn-danger pull-right">Remove Listing
+                </button>
             </div>
         </div>
     </form>
@@ -32,24 +219,44 @@
 
 <div ng-if="user.facilities && user.facilities.length">
     <div class="panel-heading manage-listing">
-        <h4 class="panel-title">Manage Facilities</h4>
+        <h4 class="panel-title">Manage Suppliers
+            <ng-pluralize class="pull-right" count="user.facilities.length"
+                          when="{'one': '1 facility listed','other': '{} facilities listed'}"></ng-pluralize>
+        </h4>
     </div>
-    <div class="panel-body manage-list">
-        <ul class="border-bottom">
-            <li ng-repeat="facility in user.facilities">
-                <div class="row">
-                    <div class="col-lg-6 form-group">
-                        {{facility.title}}
-                    </div>
-                    <div class="col-lg-3 form-group">
-                        <a href="/account/facilities/{{facility._id}}" class="btn btn-sm btn-warning">Edit</a>
-                    </div>
-                    <div class="col-lg-3 form-group">
-                        <button ng-click="remove(facility._id)" class="btn btn-sm btn-danger">Remove</button>
-                    </div>
+    <div class="panel-body">
+        <div ng-repeat="facility in user.facilities">
+            <div class="row form-group result manage-list">
+                <div class="col-sm-9 border-right-dotted">
+                    <h3>{{facility.name}}</h3>
+                    <h6>{{facility.speciality}}</h6>
+                    <h6>Address :-</h6>
+
+                    <p>{{facility.streetOne}}</p>
+
+                    <p ng-if="facility.streetTwo">{{facility.streetTwo}}</p>
+
+                    <p>{{facility.city}}, {{facility.state}}, {{facility.pin}}</p>
+
+                    <p>Phone: {{facility.phoneOne}}<span ng-if="facility.phoneTwo"> / {{facility.phoneTwo}}</span></p>
+
+                    <p>Website: {{facility.url}}</p>
                 </div>
-            </li>
-        </ul>
+                <div class="col-sm-3">
+                    <ul class="nav">
+                        <li>
+                            <a href="/account/facilities/{{facility._id}}"><span
+                                    class="glyphicon glyphicon-edit"></span>
+                                Edit</a>
+                        </li>
+                        <li>
+                            <a href ng-click="remove(facility._id)"><span class="glyphicon glyphicon-remove"></span>
+                                Remove</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <a href="/account/facilities/" class="btn btn-sm btn-info pull-right">Add</a>
         </div>

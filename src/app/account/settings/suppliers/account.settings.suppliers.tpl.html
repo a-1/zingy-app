@@ -6,24 +6,211 @@
     <form name="supplierForm" role="form" ng-submit="submit(supplierForm)">
         <div class="row">
             <div class="col-sm-5 form-group">
-                <input
-                        type="text"
-                        name="title"
-                        class="form-control"
-                        placeholder="Supplier Name"
-                        ng-model="entity.title"
-                        minlength="5"
-                        required/>
+                <input type="text"
+                       name="name"
+                       class="form-control"
+                       placeholder="Supplier Name"
+                       ng-model="entity.name"
+                       minlength="3"
+                       maxlength="40"
+                       required/>
 
-                <div ng-if="supplierForm.title.$dirty" ng-messages="supplierForm.title.$error"
+                <div ng-if="supplierForm.name.$dirty" ng-messages="supplierForm.name.$error"
                      class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                    <div ng-message="server">{{supplierForm.title.$error.serverMessage}}</div>
+                    <div ng-message="server">{{supplierForm.name.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-7 form-group pull-right">
+                <div class="input-group">
+                    <input type="text" placeholder="Upload Supplier Pic - 100x50px" class="form-control">
+                    <span class="input-group-addon">Browse</span></div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8 form-group">
+                <input type="text"
+                       name="speciality"
+                       class="form-control"
+                       placeholder="Supplier Speciality"
+                       ng-model="entity.speciality"
+                       minlength="5"
+                       maxlength="70"
+                       required/>
+
+                <div ng-if="supplierForm.speciality.$dirty" ng-messages="supplierForm.speciality.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{supplierForm.speciality.$error.serverMessage}}</div>
                 </div>
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-sm-8 form-group">
+                <textarea name="description"
+                          class="form-control"
+                          placeholder="Supplier Description"
+                          ng-model="entity.description"
+                          minlength="5"
+                          maxlength="200"
+                          required> </textarea>
+
+                <div ng-if="supplierForm.description.$dirty" ng-messages="supplierForm.description.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{supplierForm.description.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <input type="text"
+                       name="streetOne"
+                       class="form-control"
+                       placeholder="Address Line 1"
+                       ng-model="entity.streetOne"
+                       minlength="5"
+                       maxlength="70"
+                       required/>
+
+                <div ng-if="supplierForm.streetOne.$dirty" ng-messages="supplierForm.streetOne.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{supplierForm.streetOne.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6 form-group">
+                <input type="text"
+                       name="streetTwo"
+                       class="form-control"
+                       placeholder="Address Line 2"
+                       ng-model="entity.streetTwo"/>
+
+                <div ng-if="supplierForm.streetTwo.$dirty" ng-messages="supplierForm.streetTwo.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{supplierForm.streetTwo.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <select name="city"
+                        class="form-control"
+                        ng-model="entity.city"
+                        ng-options="city as city for city in cities"
+                        required>
+                    <option value="">Select City</option>
+                </select>
+
+                <div ng-if="supplierForm.city.$dirty" ng-messages="supplierForm.city.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{supplierForm.city.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <select name="state"
+                        class="form-control"
+                        ng-model="entity.state"
+                        ng-options="state as state for state in states"
+                        required>
+                    <option value="">Select State</option>
+                </select>
+
+                <div ng-if="supplierForm.state.$dirty" ng-messages="supplierForm.state.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{supplierForm.state.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="text"
+                       name="pin"
+                       class="form-control"
+                       placeholder="PIN"
+                       ng-model="entity.pin"
+                       maxlength="6"
+                       minlength="6"
+                       length="6"
+                       required/>
+
+                <div ng-if="supplierForm.pin.$dirty" ng-messages="supplierForm.pin.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{supplierForm.pin.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-4 form-group">
+                <input type="email"
+                       name="email"
+                       class="form-control"
+                       placeholder="Contact Email"
+                       ng-model="entity.email"
+                       required/>
+
+                <div ng-if="supplierForm.email.$dirty" ng-messages="supplierForm.email.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{supplierForm.email.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="tel"
+                       name="phoneOne"
+                       class="form-control"
+                       placeholder="Contact Phone 1"
+                       ng-model="entity.phoneOne"
+                       minlength="10"
+                       maxlength="10"
+                       length="10"
+                       required/>
+
+                <div ng-if="supplierForm.phoneOne.$dirty" ng-messages="supplierForm.phoneOne.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{supplierForm.phoneOne.$error.serverMessage}}</div>
+                </div>
+            </div>
+            <div class="col-sm-4 form-group">
+                <input type="tel"
+                       name="phoneTwo"
+                       class="form-control"
+                       placeholder="Contact Phone 2"
+                       ng-model="entity.phoneTwo"
+                       minlength="10"
+                       maxlength="10"
+                       length="10"/>
+
+                <div ng-if="supplierForm.phoneTwo.$dirty" ng-messages="supplierForm.phoneTwo.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{supplierForm.phoneTwo.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row border-bottom form-group">
+            <div class="col-sm-8 form-group">
+                <input type="url"
+                       name="url"
+                       class="form-control"
+                       placeholder="Supplier website"
+                       ng-model="entity.url"
+                       required/>
+
+                <div ng-if="supplierForm.url.$dirty" ng-messages="supplierForm.url.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{supplierForm.url.$error.serverMessage}}</div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-sm-12 form-group">
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">{{entity._id ? 'Update' : 'Save'}}</button>
+                <button type="submit" ng-if="entity._id" ng-click="remove(entity._id)"
+                        class="btn btn-danger pull-right">Remove Listing
+                </button>
             </div>
         </div>
     </form>
@@ -32,24 +219,43 @@
 
 <div ng-if="user.suppliers && user.suppliers.length">
     <div class="panel-heading manage-listing">
-        <h4 class="panel-title">Manage Suppliers</h4>
+        <h4 class="panel-title">Manage Suppliers
+            <ng-pluralize class="pull-right" count="user.suppliers.length"
+                          when="{'one': '1 supplier listed','other': '{} suppliers listed'}"></ng-pluralize>
+        </h4>
     </div>
-    <div class="panel-body manage-list">
-        <ul class="border-bottom">
-            <li ng-repeat="supplier in user.suppliers">
-                <div class="row">
-                    <div class="col-lg-6 form-group">
-                        {{supplier.title}}
-                    </div>
-                    <div class="col-lg-3 form-group">
-                        <a href="/account/suppliers/{{supplier._id}}" class="btn btn-sm btn-warning">Edit</a>
-                    </div>
-                    <div class="col-lg-3 form-group">
-                        <button ng-click="remove(supplier._id)" class="btn btn-sm btn-danger">Remove</button>
-                    </div>
+    <div class="panel-body">
+        <div ng-repeat="supplier in user.suppliers">
+            <div class="row form-group result manage-list">
+                <div class="col-sm-9 border-right-dotted">
+                    <h3>{{supplier.name}}</h3>
+                    <h6>{{supplier.speciality}}</h6>
+                    <h6>Address :-</h6>
+
+                    <p>{{supplier.streetOne}}</p>
+
+                    <p ng-if="supplier.streetTwo">{{supplier.streetTwo}}</p>
+
+                    <p>{{supplier.city}}, {{supplier.state}}, {{supplier.pin}}</p>
+
+                    <p>Phone: {{supplier.phoneOne}}<span ng-if="supplier.phoneTwo"> / {{supplier.phoneTwo}}</span></p>
+
+                    <p>Website: {{supplier.url}}</p>
                 </div>
-            </li>
-        </ul>
+                <div class="col-sm-3">
+                    <ul class="nav">
+                        <li>
+                            <a href="/account/suppliers/{{supplier._id}}"><span class="glyphicon glyphicon-edit"></span>
+                                Edit</a>
+                        </li>
+                        <li>
+                            <a href ng-click="remove(supplier._id)"><span class="glyphicon glyphicon-remove"></span>
+                                Remove</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <a href="/account/suppliers/" class="btn btn-sm btn-info pull-right">Add</a>
         </div>

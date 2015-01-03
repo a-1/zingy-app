@@ -19,6 +19,9 @@ define(function (require) {
         //load components
         require('../components/components').name,
 
+        //load components
+        require('shared/directives/directives').name,
+
         //project modules
         //services first
         require('enthusiasts/enthusiasts').name,

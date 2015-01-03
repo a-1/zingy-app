@@ -22,11 +22,8 @@
             </div>
             <div class="col-sm-7 form-group pull-right">
                 <div class="input-group">
-                    <input type="text" placeholder="Upload Offer Pic" class="form-control">
+                    <input type="text" placeholder="Upload Offer Pic - 200x100px" class="form-control">
                     <span class="input-group-addon">Browse</span></div>
-                <div class="infoMessages">
-                    <div>(size 200px x 100px, format: jpg/png/gif)</div>
-                </div>
             </div>
         </div>
 
@@ -77,14 +74,14 @@
                            is-open="startDatePickerOpened"
                            placeholder="Offer Start Date"
                            datepicker-options="datePickerOptions"
-                           ng-change="datePickerDateChanged('startDatePickerOpened')"
+                           ng-change="dateTimePickerChanged('startDatePickerOpened')"
                            ng-required="true"/>
 
                     <div ng-if="offerForm.startDate.$dirty" ng-messages="offerForm.startDate.$error"
                          class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
                         <div ng-message="server">{{offerForm.startDate.$error.serverMessage}}</div>
                     </div>
-                    <span class="input-group-addon" ng-click="openDatePicker($event, 'startDatePickerOpened')"><i
+                    <span class="input-group-addon" ng-click="openDateTimePicker($event, 'startDatePickerOpened')"><i
                             class="glyphicon glyphicon-calendar"></i></span>
                 </div>
             </div>
@@ -99,14 +96,14 @@
                            is-open="endDatePickerOpened"
                            placeholder="Offer End Date"
                            datepicker-options="datePickerOptions"
-                           ng-change="datePickerDateChanged('endDatePickerOpened')"
+                           ng-change="dateTimePickerChanged('endDatePickerOpened')"
                            ng-required="true"/>
 
                     <div ng-if="offerForm.endDate.$dirty" ng-messages="offerForm.endDate.$error"
                          class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
                         <div ng-message="server">{{offerForm.endDate.$error.serverMessage}}</div>
                     </div>
-                    <span class="input-group-addon" ng-click="openDatePicker($event, 'endDatePickerOpened')"><i
+                    <span class="input-group-addon" ng-click="openDateTimePicker($event, 'endDatePickerOpened')"><i
                             class="glyphicon glyphicon-calendar"></i></span>
                 </div>
             </div>
@@ -146,11 +143,11 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-5 form-group">
+            <div class="col-sm-4 form-group">
                 <select name="city"
                         class="form-control"
                         ng-model="entity.city"
-                        ng-options="city.value as city.name for city in cities"
+                        ng-options="city as city for city in cities"
                         required>
                     <option value="">Select City</option>
                 </select>
@@ -160,14 +157,11 @@
                     <div ng-message="server">{{offerForm.city.$error.serverMessage}}</div>
                 </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-5 form-group">
+            <div class="col-sm-4 form-group">
                 <select name="state"
                         class="form-control"
                         ng-model="entity.state"
-                        ng-options="state.value as state.name for state in states"
+                        ng-options="state as state for state in states"
                         required>
                     <option value="">Select State</option>
                 </select>
@@ -267,7 +261,10 @@
 
 <div ng-if="user.offers && user.offers.length">
     <div class="panel-heading manage-listing">
-        <h4 class="panel-title">Manage Offers <span class="pull-right">{{user.offers.length}} offers listed</span></h4>
+        <h4 class="panel-title">Manage Offers
+            <ng-pluralize class="pull-right" count="user.offers.length"
+                          when="{'one': '1 offer listed','other': '{} offers listed'}"></ng-pluralize>
+        </h4>
     </div>
     <div class="panel-body">
         <div ng-repeat="offer in user.offers">
