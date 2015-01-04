@@ -11,7 +11,7 @@
 <body>
 
 <header ng-include="'app/shared/header/header.tpl.html'"></header>
-<section id="mainSection" ng-view ng-cloak></section>
+<section id="mainSection" ng-view ng-cloak autoscroll="true" ng-cloak></section>
 <footer ng-include="'app/shared/footer/footer.tpl.html'"></footer>
 
 <% if(isProduction) { %>

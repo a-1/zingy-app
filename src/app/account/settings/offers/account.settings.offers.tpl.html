@@ -255,9 +255,11 @@
 
         <div class="row">
             <div class="col-sm-12 form-group">
-                <button type="submit" class="btn btn-primary">{{entity._id ? 'Update' : 'Save'}}</button>
+                <button type="submit"
+                        class="btn btn-primary">{{entity._id ? 'Update' : 'Add Offer'}}
+                </button>
                 <button type="submit" ng-if="entity._id" ng-click="remove(entity._id)"
-                        class="btn btn-danger pull-right">Remove Listing
+                        class="btn btn-danger pull-right">Remove Offer
                 </button>
             </div>
         </div>
