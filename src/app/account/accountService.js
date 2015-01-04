@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular'], function (angular) {
+define(['angular', 'ramda'], function (angular, R) {
 
     return angular
         .module('accountService', [])
@@ -79,7 +79,141 @@ define(['angular'], function (angular) {
                 reset: function () {
                     this.account.user = {};
                     this.account.quickSettings = {};
-                }
+                },
+
+                //genders list
+                genders: [
+                    'Male',
+                    'Female'
+                ],
+
+                //tates list
+                states: [
+                    'Maharashtra',
+                    'Karnatak'
+                ],
+
+                //cities list
+                cities: [
+                    'Pune',
+                    'Mumbai',
+                    'Banglore'
+                ],
+
+                //frequencies list
+                playingFrequencies: [
+                    'Everyday',
+                    'Weekends',
+                    'Weekday'
+                ],
+
+                //years of experience list
+                experienceYears: R.range(1, 51),
+
+                //years of adultAges list
+                adultAges: R.range(11, 101),
+
+                //years of kidsAges list
+                kidsAges: R.range(1, 11),
+
+                //sports list
+                sports: [
+                    '​Aerobics​​',
+                    '​Australian football​​',
+                    '​Backcountry skiing​​',
+                    '​Badminton​​',
+                    '​Baseball​​',
+                    '​Basketball​​',
+                    '​Beach volleyball​​',
+                    '​Biathlon​​',
+                    '​Biking​​',
+                    '​Boxing​​',
+                    '​Calisthenics​​',
+                    '​Circuit training​​',
+                    '​Cricket​​',
+                    '​Cross skating​​',
+                    '​Cross-country skiing​​',
+                    '​Curling​​',
+                    '​Dancing​​',
+                    '​Diving​​',
+                    '​Downhill skiing​​',
+                    '​Elliptical​​',
+                    '​Ergometer​​',
+                    '​Fencing​​',
+                    '​Fitness walking​​',
+                    '​Football​​',
+                    '​Frisbee​​',
+                    '​Gardening​​',
+                    '​Golf​​',
+                    '​Gymnastics​​',
+                    '​Handball​​',
+                    '​Handcycling​​',
+                    '​Hiking​​',
+                    '​Hockey​​',
+                    '​Horseback riding​​',
+                    '​Ice skating​​',
+                    '​Indoor skating​​',
+                    '​Indoor volleyball​​',
+                    '​Inline skating​​',
+                    '​Jogging​​',
+                    '​Jumping rope​​',
+                    '​Kayaking​​',
+                    '​Kettlebell​​',
+                    '​Kickboxing​​',
+                    '​Kite skiing​​',
+                    '​Kitesurfing​​',
+                    '​Martial arts​​',
+                    '​Mixed martial arts​​',
+                    '​Mountain biking​​',
+                    '​Nordic walking​​',
+                    '​Open water swimming​​',
+                    '​Other​​',
+                    '​P90x​​',
+                    '​Paddle boarding​​',
+                    '​Paragliding​​',
+                    '​Pilates​​',
+                    '​Polo​​',
+                    '​Pool Swimming​​',
+                    '​Racquetball​​',
+                    '​Road biking​​',
+                    '​Rock climbing​​',
+                    '​Roller skiing​​',
+                    '​Rowing​​',
+                    '​Rowing machine​​',
+                    '​Rugby​​',
+                    '​Running​​',
+                    '​Sand running​​',
+                    '​Scuba diving​​',
+                    '​Skateboarding​​',
+                    '​Skating​​',
+                    '​Skiing​​',
+                    '​Sledding​​',
+                    '​Snowboarding​​',
+                    '​Snowshoeing​​',
+                    '​Soccer​​',
+                    '​Spinning​​',
+                    '​Squash​​',
+                    '​Stair climbing​​',
+                    '​Stair climbing machine​​',
+                    '​Stationary biking​​',
+                    '​Strength training​​',
+                    '​Surfing​​',
+                    '​Swimming​​',
+                    '​Table tennis​​',
+                    '​Tennis​​',
+                    '​Treadmill running​​',
+                    '​Treadmill walking​​',
+                    '​Utility biking​​',
+                    '​Volleyball​​',
+                    '​Walking​​',
+                    '​Wakeboarding​​',
+                    '​Water polo​​',
+                    '​Weight lifting​​',
+                    '​Wheelchair​​',
+                    '​Windsurfing​​',
+                    '​Yoga​​',
+                    '​Zumba'
+                ]
 
             };
 

@@ -1,6 +1,6 @@
 'use strict';
 
-define(['angular', 'ramda'], function (angular, R) {
+define(['angular'], function (angular) {
 
     return angular
         .module('account.settings.ctrl', [])
@@ -96,140 +96,21 @@ define(['angular', 'ramda'], function (angular, R) {
                 $scope[dateType] = false;
             };
 
-            //TODO move to service  - genders list
-            $scope.genders = [
-                'Male',
-                'Female'
-            ];
+            $scope.genders = accountService.genders;
 
-            //TODO move to service  - states list
-            $scope.states = [
-                'Maharashtra',
-                'Karnatak'
-            ];
+            $scope.states = accountService.states;
 
+            $scope.cities = accountService.cities;
 
-            //TODO move to service  - cities list
-            $scope.cities = [
-                'Pune',
-                'Mumbai',
-                'Banglore'
-            ];
+            $scope.playingFrequencies = accountService.playingFrequencies;
 
-            //TODO move to  service - frequencies list
-            $scope.playingFrequencies = [
-                'Everyday',
-                'Weekends',
-                'Weekday'
-            ];
+            $scope.experienceYears = accountService.experienceYears;
 
-            //TODO move to  service - years of experience list
-            $scope.experienceYears = R.range(1, 51);
+            $scope.adultAges = accountService.adultAges;
 
-            //TODO move to  service - years of menAges list
-            $scope.adultAges = R.range(11, 101);
+            $scope.kidsAges = accountService.kidsAges;
 
-            //TODO move to  service - years of menAges list
-            $scope.kidsAges = R.range(1, 11);
-
-            //TODO move to service  - sports list
-            $scope.sports = [
-                '​Aerobics​​',
-                '​Australian football​​',
-                '​Backcountry skiing​​',
-                '​Badminton​​',
-                '​Baseball​​',
-                '​Basketball​​',
-                '​Beach volleyball​​',
-                '​Biathlon​​',
-                '​Biking​​',
-                '​Boxing​​',
-                '​Calisthenics​​',
-                '​Circuit training​​',
-                '​Cricket​​',
-                '​Cross skating​​',
-                '​Cross-country skiing​​',
-                '​Curling​​',
-                '​Dancing​​',
-                '​Diving​​',
-                '​Downhill skiing​​',
-                '​Elliptical​​',
-                '​Ergometer​​',
-                '​Fencing​​',
-                '​Fitness walking​​',
-                '​Football​​',
-                '​Frisbee​​',
-                '​Gardening​​',
-                '​Golf​​',
-                '​Gymnastics​​',
-                '​Handball​​',
-                '​Handcycling​​',
-                '​Hiking​​',
-                '​Hockey​​',
-                '​Horseback riding​​',
-                '​Ice skating​​',
-                '​Indoor skating​​',
-                '​Indoor volleyball​​',
-                '​Inline skating​​',
-                '​Jogging​​',
-                '​Jumping rope​​',
-                '​Kayaking​​',
-                '​Kettlebell​​',
-                '​Kickboxing​​',
-                '​Kite skiing​​',
-                '​Kitesurfing​​',
-                '​Martial arts​​',
-                '​Mixed martial arts​​',
-                '​Mountain biking​​',
-                '​Nordic walking​​',
-                '​Open water swimming​​',
-                '​Other​​',
-                '​P90x​​',
-                '​Paddle boarding​​',
-                '​Paragliding​​',
-                '​Pilates​​',
-                '​Polo​​',
-                '​Pool Swimming​​',
-                '​Racquetball​​',
-                '​Road biking​​',
-                '​Rock climbing​​',
-                '​Roller skiing​​',
-                '​Rowing​​',
-                '​Rowing machine​​',
-                '​Rugby​​',
-                '​Running​​',
-                '​Sand running​​',
-                '​Scuba diving​​',
-                '​Skateboarding​​',
-                '​Skating​​',
-                '​Skiing​​',
-                '​Sledding​​',
-                '​Snowboarding​​',
-                '​Snowshoeing​​',
-                '​Soccer​​',
-                '​Spinning​​',
-                '​Squash​​',
-                '​Stair climbing​​',
-                '​Stair climbing machine​​',
-                '​Stationary biking​​',
-                '​Strength training​​',
-                '​Surfing​​',
-                '​Swimming​​',
-                '​Table tennis​​',
-                '​Tennis​​',
-                '​Treadmill running​​',
-                '​Treadmill walking​​',
-                '​Utility biking​​',
-                '​Volleyball​​',
-                '​Walking​​',
-                '​Wakeboarding​​',
-                '​Water polo​​',
-                '​Weight lifting​​',
-                '​Wheelchair​​',
-                '​Windsurfing​​',
-                '​Yoga​​',
-                '​Zumba'
-            ];
+            $scope.sports = accountService.sports;
 
         }]);
 
