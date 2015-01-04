@@ -65,15 +65,16 @@ define(['angular', 'ramda'], function (angular, R) {
 
             $scope.addTab = function (form, catagory) {
                 if (!form.$valid) {
-                    $window.alert('Please validate all fields in other tabs first');
                     $scope.entity[catagory][0].active = true;
+                    $window.alert('Please validate all fields in other tabs first');
                 } else {
+                    $scope.entity[catagory][0].active = true;
                     $scope.entity[catagory].push({active: true});
                 }
             };
 
             $scope.removeTab = function (index, catagory) {
-                if (index > 0) {
+                if (index > -1) {
                     $scope.entity[catagory].splice(index, 1);
                 }
                 $scope.entity[catagory] = $scope.entity[catagory] && $scope.entity[catagory].length ? $scope.entity[catagory] : [{active: true}];

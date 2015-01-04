@@ -15,6 +15,7 @@
                             ng-model="entity.firstName"
                             minlength="1"
                             required/>
+
                     <div ng-if="enthusiastForm.firstName.$dirty" ng-messages="enthusiastForm.firstName.$error"
                          class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
                         <div ng-message="server">{{enthusiastForm.firstName.$error.serverMessage}}</div>
@@ -295,8 +296,12 @@
 
             <div class="row">
                 <div class="col-sm-12 form-group">
-                    <button type="submit" class="btn btn-primary">{{entity._id ? 'Update' : 'Save'}}</button>
-                    <button type="submit" ng-if="entity._id" ng-click="remove(entity._id)"
+                    <button type="submit"
+                            class="btn btn-primary">{{entity._id ? 'Update' : 'Enlist as Enthusiasts'}}
+                    </button>
+                    <button type="submit"
+                            ng-if="entity._id"
+                            ng-click="remove(entity._id)"
                             class="btn btn-danger pull-right">Remove Listing
                     </button>
                 </div>

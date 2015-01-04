@@ -18,13 +18,13 @@
                      class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
                     <div ng-message="server">{{facilityForm.name.$error.serverMessage}}</div>
                 </div>
-                </div>
+            </div>
             <div class="col-sm-7 form-group pull-right">
                 <div class="input-group">
                     <input type="text" placeholder="Upload Facility Pic - 100x50px" class="form-control">
                     <span class="input-group-addon">Browse</span></div>
             </div>
-            </div>
+        </div>
 
         <div class="row">
             <div class="col-sm-8 form-group">
@@ -42,7 +42,7 @@
                     <div ng-message="server">{{facilityForm.speciality.$error.serverMessage}}</div>
                 </div>
             </div>
-            </div>
+        </div>
 
         <div class="row">
             <div class="col-sm-8 form-group">
@@ -206,9 +206,11 @@
 
         <div class="row">
             <div class="col-sm-12 form-group">
-                <button type="submit" class="btn btn-primary">{{entity._id ? 'Update' : 'Save'}}</button>
+                <button type="submit"
+                        class="btn btn-primary">{{entity._id ? 'Update' : 'Add Facility'}}
+                </button>
                 <button type="submit" ng-if="entity._id" ng-click="remove(entity._id)"
-                        class="btn btn-danger pull-right">Remove Listing
+                        class="btn btn-danger pull-right">Remove Facility
                 </button>
             </div>
         </div>
