@@ -5,7 +5,10 @@ define(['angular', 'ramda'], function (angular, R) {
     return angular
         .module('home.ctrl', [])
 
-        .controller('home.ctrl', ['$scope', '$window', 'offers', 'events', function ($scope, $window, offers, events) {
+        .controller('home.ctrl', ['$scope', '$window', 'Offer', 'Event', function ($scope, $window, Offer, Event) {
+
+            $scope.offers = [];
+            $scope.events = [];
 
             var detectGroupSize = function () {
                 var groupSize = 1;
@@ -34,13 +37,21 @@ define(['angular', 'ramda'], function (angular, R) {
                     groupSize = 2;
                 }
 
-                $scope.eventsSlides = groupBy(events);
-                $scope.offersSlides = groupBy(offers);
+                $scope.eventsSlides = groupBy($scope.events);
+                $scope.offersSlides = groupBy($scope.offers);
             };
 
-            $window.addEventListener('resize', detectGroupSize, false);
+            Offer.query(function (data) {
+                $scope.offers = data;
+                detectGroupSize();
+            });
 
-            detectGroupSize();
+            Event.query(function (data) {
+                $scope.events = data;
+                detectGroupSize();
+            });
+
+            $window.addEventListener('resize', detectGroupSize, false);
 
         }]);
 });
