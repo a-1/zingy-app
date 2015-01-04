@@ -10,9 +10,7 @@ define(['angular'], function (angular) {
 
             $scope.user = accountService.account.user;
             $scope.quickSettings = accountService.account.quickSettings;
-
             $scope.isAuthenticated = accountService.isAuthenticated;
-
             $scope.logout = accountService.logout;
 
         }]);

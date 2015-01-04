@@ -1,55 +1,45 @@
-<footer>
+<footer ng-controller="footer.ctrl">
+    <!--bottom sports img-->
+
     <div class="btm-img">
         <div class=" container"><img src="assets/images/bottom_img.jpg" class="img-responsive"/></div>
-        <div class="btm-bg">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-3 form-group">
-                        <h4>Most popular land sports</h4>
+    </div>
 
-                        <p>Lorem ipsum dolor sit amet</p>
+    <!--bottom popular sports section-->
+    <div class="btm-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2 form-group">
+                    <h4>Most popular land sports</h4>
 
-                        <p>consectetar adipising elit, sed do</p>
+                    <p ng-repeat="landSport in landSports">{{landSport}}</p>
+                </div>
+                <div class="col-sm-2 form-group">
+                    <h4>Most popular water sports</h4>
 
-                        <p>eiusmod tempor incididunt ut</p>
-                    </div>
-                    <div class="col-sm-2 form-group">
-                        <h4>Most popular water sports</h4>
+                    <p ng-repeat="waterSport in waterSports">{{waterSport}}</p>
+                </div>
+                <div class="col-sm-2 form-group">
+                    <h4>Most popular air sports</h4>
 
-                        <p>Lorem ipsum dolor sit amet</p>
+                    <p ng-repeat="airSport in airSports">{{airSport}}</p>
+                </div>
+                <div class="col-sm-2 form-group">
+                    <h4>Popular sports for kids</h4>
 
-                        <p>consectetar adipising elit, sed do</p>
+                    <p ng-repeat="kidsSport in kidsSports">{{kidsSport}}</p>
+                </div>
+                <div class="col-sm-2">
+                    <h4>Weekend sports getaways</h4>
 
-                        <p>eiusmod tempor incididunt ut</p>
-                    </div>
-                    <div class="col-sm-2 form-group">
-                        <h4>Most popular air sports</h4>
+                    <p ng-repeat="sportsGateway in sportsGateways">{{sportsGateway}}</p>
+                </div>
+                <div class="col-sm-2">
+                    <p><a href="#"><img src="assets/images/social-network.png"></a></p>
 
-                        <p>Lorem ipsum dolor sit amet</p>
+                    <p><a href="#"><img src="assets/images/google-play.gif"></a></p>
 
-                        <p>consectetar adipising elit, sed do</p>
-
-                        <p>eiusmod tempor incididunt ut</p>
-                    </div>
-                    <div class="col-sm-2 form-group">
-                        <h4>Popular sports for kids</h4>
-
-                        <p>Lorem ipsum dolor sit amet</p>
-
-                        <p>consectetar adipising elit, sed do</p>
-
-                        <p>eiusmod tempor incididunt ut</p>
-                    </div>
-                    <div class="col-sm-3">
-                        <h4>Weekend sports getaways</h4>
-
-                        <p>Lorem ipsum dolor sit amet</p>
-
-                        <p>consectetar adipising elit, sed do</p>
-
-                        <p>eiusmod tempor incididunt ut</p>
-                    </div>
-
+                    <p><a href="#"><img src="assets/images/app-store.gif"></a></p>
                 </div>
             </div>
         </div>
@@ -58,39 +48,40 @@
     <div class="panel-footer">
         <div class="container">
             <div class="row">
-                <div class="col-sm-10">
+                <div class="col-sm-12">
                     <div class="number">
-                        <h2>2237</h2>
+                        <h2>{{registeredEntitiesCount.enthusiasts}}</h2>
 
-                        <p>Registered<br>Facilities</p>
+                        <p>Registered<br>Enthusiasts</p>
                     </div>
                     <div class="number">
-                        <h2>1127</h2>
-
+                        <h2>{{registeredEntitiesCount.players}}</h2>
                         <p>Registered<br>Players</p>
                     </div>
                     <div class="number">
-                        <h2>664</h2>
-
+                        <h2>{{registeredEntitiesCount.coaches}}</h2>
                         <p>Registered<br>Coaches</p>
                     </div>
                     <div class="number">
-                        <h2>1276</h2>
+                        <h2>{{registeredEntitiesCount.facilities}}</h2>
 
-                        <p>Registered<br>Suppliers</p>
+                        <p>Listed<br>Facilities</p>
                     </div>
-                    <div class="number last">
-                        <h2>3325</h2>
+                    <div class="number">
+                        <h2>{{registeredEntitiesCount.suppliers}}</h2>
 
-                        <p>Registered<br>Sports enthusiasts</p>
+                        <p>Listed<br>Suppliers</p>
                     </div>
-                </div>
-                <div class="col-sm-2">
-                    <p><a href="#"><img src="assets/images/social-network.png"></a></p>
+                    <div class="number">
+                        <h2>{{registeredEntitiesCount.events}}</h2>
 
-                    <p><a href="#"><img src="assets/images/google-play.gif"></a></p>
+                        <p>Listed<br>Events</p>
+                    </div>
+                    <div class="number">
+                        <h2>{{registeredEntitiesCount.offers}}</h2>
 
-                    <p><a href="#"><img src="assets/images/app-store.gif"></a></p>
+                        <p>Listed<br>Offers</p>
+                    </div>
                 </div>
             </div>
         </div>

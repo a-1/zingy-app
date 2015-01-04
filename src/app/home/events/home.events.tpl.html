@@ -8,11 +8,19 @@
             <slide ng-repeat="slides in eventsSlides">
                 <div class="happening-box" ng-repeat="event in slides">
                     <div class="event-box">
-                        <img ng-src="{{event.imgUrl}}" class="pull-left"/>
-                        <span class="happening-txt">{{event.title}}</span>
+                        <img ng-src="{{'/assets/images/event.gif'}}" class="pull-left"/>
                     </div>
-                    <p>{{event.description}}</p>
-                    <p><a href="#"><img src="assets/images/share.png"></a></p>
+                    <h5>{{event.organiser}}</h5>
+
+                    <p>{{event.heading}}</p>
+
+                    <p>{{event.streetOne}} {{event.streetTwo}}, {{event.city}}, {{event.state}}, {{event.pin}}</p>
+
+                    <p>{{event.date | date:'MMM d yyyy'}}, {{event.startTime | date:'h:mm a'}} - {{event.endTime |
+                        date:'h:mm a'}}
+                    </p>
+
+                    <p><a class="share-right" href="#"><img src="assets/images/share.png"></a></p>
                 </div>
             </slide>
         </carousel>

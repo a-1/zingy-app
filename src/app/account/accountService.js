@@ -64,6 +64,10 @@ define(['angular', 'ramda'], function (angular, R) {
                     }
                 },
 
+                getRegisteredEntitiesCount: function () {
+                    return $http.get(config.apiBaseURL + '/registeredEntitiesCount');
+                },
+
                 isAuthenticated: function () {
                     return $auth.isAuthenticated();
                 },
@@ -213,7 +217,17 @@ define(['angular', 'ramda'], function (angular, R) {
                     '​Windsurfing​​',
                     '​Yoga​​',
                     '​Zumba'
-                ]
+                ],
+
+                landSports: ['Rock climbing', 'Golf', 'Football', 'Cricket'],
+
+                waterSports: ['Kayaking', 'Swimming', 'Scuba diving'],
+
+                airSports: ['Aerobatics', 'Paragliding', 'Kitesurfing'],
+
+                kidsSports: ['Soccer', 'Baseball', 'Skating', 'Tennis'],
+
+                sportsGateways: ['Mountain biking', 'Dancing', 'Surfing']
 
             };
 

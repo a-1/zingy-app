@@ -9,7 +9,7 @@ define(function (require) {
         //angular
         'ngRoute',
         'ngTouch',
-        'ngAnimate',
+        //'ngAnimate', // - its not working with carousel
         'ngMessages',
         'ngResource',
         'ngSanitize',
@@ -35,6 +35,7 @@ define(function (require) {
 
         //shared modules
         require('shared/header/header').name,
+        require('shared/footer/footer').name,
         require('shared/directives/imageupload').name,
 
         //require('results/results').name,
