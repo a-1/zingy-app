@@ -66,10 +66,8 @@ define(['angular'], function (angular) {
 
             $scope.addTab = function (form, catagory) {
                 if (!form.$valid) {
-                    $scope.entity[catagory][0].active = true;
                     $window.alert('Please validate all fields in other tabs first');
                 } else {
-                    $scope.entity[catagory][0].active = true;
                     $scope.entity[catagory].push({active: true});
                 }
             };

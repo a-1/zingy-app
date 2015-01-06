@@ -19,11 +19,10 @@ define(function (require) {
         //load components
         require('../components/components').name,
 
-        //load components
+        //load directives
         require('shared/directives/directives').name,
 
-        //project modules
-        //services first
+        //services
         require('enthusiasts/enthusiasts').name,
         require('players/players').name,
         require('coaches/coaches').name,
@@ -36,9 +35,9 @@ define(function (require) {
         //shared modules
         require('shared/header/header').name,
         require('shared/footer/footer').name,
-        require('shared/directives/imageupload').name,
 
-        //require('results/results').name,
+        //search
+        require('search/search').name,
 
         // home
         require('home/home').name

@@ -1,13 +1,13 @@
 'use strict';
 
-
 define(function (require) {
 
     var angular = require('angular');
 
     var dependencies = [
 
-        require('./timepickerPopup/timepickerPopup').name
+        require('./timepickerPopup/timepickerPopup').name,
+        require('./imageUpload/imageUpload').name
 
     ];
 
