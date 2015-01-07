@@ -1,0 +1,30 @@
+<div class="form-group result" ng-repeat="event in results.events">
+    <div class="col-sm-9 border-right-dotted">
+        <h3>{{event.organiser}}</h3>
+        <h6>{{event.heading}}</h6>
+        <p>{{event.streetOne}}</p>
+        <p ng-if="event.streetTwo">{{event.streetTwo}}</p>
+        <p>{{event.city}}, {{event.state}}, {{event.pin}}</p>
+        <p>Phone: {{event.phoneOne}}<span ng-if="event.phoneTwo"> / {{event.phoneTwo}}</span></p>
+        <p>Website: {{event.url}}</p>
+    </div>
+    <div class="col-sm-3">
+        <p class="form-group">
+            <span class="delivery">&nbsp;</span>
+            <span class="map"></span>
+            <span class="share"></span>
+            <span class="gallery"></span>
+        </p>
+        <p>
+            <br/><br/><br/>
+            <img src="assets/images/review.png"> <a href="#">(223)</a>
+        </p>
+        <p>
+            <span class="star-green"></span>
+            <span class="star-green"></span>
+            <span class="star-green"></span>
+            <span class="star-grey-green"></span>
+            <span class="star-grey"></span>
+        </p>
+    </div>
+</div>

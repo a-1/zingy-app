@@ -1,14 +1,21 @@
 <div class="container form-group banner border-btm">
+    <div class="col-lg-3 form-group">&nbsp;</div>
+    <div class="col-lg-7">
+        <ng-include src="'app/search/results/results.sort.tpl.html'"></ng-include>
+    </div>
+</div>
+<div class="container">
     <div class="row">
-        <div class="col-sm-3 col-lg-3">
-            <div class="welcome-block">Refine Search <span class="glyphicon glyphicon-repeat pull-right"></span>
-            </div>
+        <div class="col-lg-3">
+            <div class="welcome-block" ng-click="refineSearch()">Refine Search <span class="glyphicon glyphicon-repeat pull-right"></span></div>
+            <ng-include src="'app/search/results/results.category.tpl.html'"></ng-include>
+            <ng-include src="'app/search/results/results.location.tpl.html'"></ng-include>
         </div>
-        <div class="col-sm-7 col-lg-7">
-
+        <div class="col-lg-7">
+            <ng-include src="'app/search/results/results.content.tpl.html'"></ng-include>
         </div>
-        <div class="col-sm-2 col-lg-2 form-group snowlink">
-
+        <div class="col-lg-2 form-group">
         </div>
     </div>
 </div>
+

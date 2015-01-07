@@ -1,31 +1,34 @@
 <div class="settings form-group">
     <div class="row form-group">
         <div class="col-sm-12">
-            <input type="radio" class="pull-left"/>
-            <select class="form-control pull-left area-dd">
-                <option>All areas(Pune)</option>
-                <option>All areas(Mumbai)</option>
+            <input type="radio" name="searchWithin" ng-model="searchWithin" value="city" class="pull-left"/>
+            <select name="city"
+                    class="form-control pull-left area-dd"
+                    ng-model="searchCity"
+                    ng-options="city as city for city in cities"
+                    ng-change="updateLocation()">
             </select>
         </div>
     </div>
     <p align="center" class="form-group"><img src="assets/images/or.gif"/></p>
-
     <div class="row form-group">
         <div class="col-sm-12">
-            <input type="radio" class="pull-left"/> <span class="pull-left radius-txt"> Within radius of</span> <input
-                type="text" class="form-control pull-left radius-textbox"/> <span class="pull-left">km from</span>
+            <input type="radio" name="searchWithin" ng-model="searchWithin" value="radius" class="pull-left"/>
+            <span class="pull-left radius-txt"> Within radius of</span>
+            <input type="text" ng-model="searchRadius" class="form-control pull-left radius-textbox"/>
+            <span class="pull-left">km from</span>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <input type="radio" id="gps" name="location"/> <label for="gps">my GPS Location</label>
+            <input type="radio" id="gps" ng-model="searchLocation" value="gps" name="searchLocation"/> <label for="gps">my GPS Location</label>
         </div>
     </div>
     <div class="row">
         <div class="col-sm-1"></div>
         <div class="col-sm-10">
-            <input type="radio" id="registered" name="location"/> <label for="registered">my registered address</label>
+            <input type="radio" id="registered" ng-model="searchLocation" value="registeredAddress" name="searchLocation"/> <label for="registered">my registered address</label>
         </div>
     </div>
 </div>

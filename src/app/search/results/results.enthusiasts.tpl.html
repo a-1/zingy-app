@@ -1,0 +1,28 @@
+<div class="form-group result" ng-repeat="enthusiast in results.enthusiasts">
+    <div class="col-sm-9 border-right-dotted">
+        <h3>{{enthusiast.firstName}} {{enthusiast.lastName}}</h3>
+        <p>{{enthusiast.streetOne}}</p>
+        <p ng-if="enthusiast.streetTwo">{{enthusiast.streetTwo}}</p>
+        <p>{{enthusiast.city}}, {{enthusiast.state}}, {{enthusiast.pin}}</p>
+        <p ng-if="enthusiast.cellPhone">Phone: {{enthusiast.cellPhone}}<span ng-if="enthusiast.workPhone"> / {{enthusiast.workPhone}}</span></p>
+    </div>
+    <div class="col-sm-3">
+        <p class="form-group">
+            <span class="delivery">&nbsp;</span>
+            <span class="map"></span>
+            <span class="share"></span>
+            <span class="gallery"></span>
+        </p>
+        <p>
+            <br/><br/><br/>
+            <img src="assets/images/review.png"> <a href="#">(223)</a>
+        </p>
+        <p>
+            <span class="star-green"></span>
+            <span class="star-green"></span>
+            <span class="star-green"></span>
+            <span class="star-grey-green"></span>
+            <span class="star-grey"></span>
+        </p>
+    </div>
+</div>

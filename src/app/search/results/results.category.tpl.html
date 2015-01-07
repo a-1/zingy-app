@@ -1,17 +1,18 @@
 <div class="refine-search form-group">
     <div class="serach-btm">
-        <div class="inter-padding"><input type="checkbox" id="all"> <label for="all" class="width90Percent">All <span
-                class="glyphicon glyphicon-chevron-down pull-right"></span></label></div>
+        <div class="inter-padding">
+            <input type="checkbox" ng-model="searchCategoryAll" id="all">
+            <label for="all" class="width90Percent">All <span class="glyphicon glyphicon-chevron-down pull-right"></span></label>
+        </div>
     </div>
     <div class="serach-btm">
-        <div class="inter-padding bg-color"><input type="checkbox" id="COACHES"> <label for="COACHES"
-                                                                                        class="width90Percent">COACHES
-            (121) <span class="coaches glyphicon glyphicon-chevron-down pull-right"></span></label></div>
+        <div class="inter-padding bg-color">
+            <input type="checkbox" ng-model="searchCategoryCoaches" id="coaches">
+            <label for="coaches" class="width90Percent">COACHES ({{results.coaches.length}}) <span class="coaches glyphicon glyphicon-chevron-down pull-right"></span></label>
+        </div>
         <div class="search-details collapse">
             <div class="inter-padding">
-                <input type="checkbox" id="men"> <label for="men">Men</label>&nbsp;&nbsp; <input type="checkbox"
-                                                                                                 id="women"> <label
-                    for="women">Women</label>
+                <input type="checkbox" id="men"> <label for="men">Men</label>&nbsp;&nbsp; <input type="checkbox" id="women"> <label for="women">Women</label>
             </div>
             <div class="row inter-padding">
                 <div class="col-sm-6 ">
@@ -25,7 +26,6 @@
                 </div>
             </div>
             <label class="overflow inter-padding">Coaching requried for:</label>
-
             <div class="row inter-padding">
                 <div class="col-sm-4">
                     <input type="checkbox" id="age"> <label for="age">Age</label>
@@ -48,20 +48,33 @@
     </div>
 
     <div class="serach-btm">
-        <div class="inter-padding"><input type="checkbox" id="PLAYERS"> <label for="PLAYERS" class="width90Percent">PLAYERS
-            (354) <span class="glyphicon glyphicon-chevron-down pull-right"></span></label></div>
+        <div class="inter-padding">
+            <input type="checkbox" ng-model="searchCategoryPlayers" id="players">
+            <label for="players" class="width90Percent">PLAYERS ({{results.players.length}}) <span class="glyphicon glyphicon-chevron-down pull-right"></span></label>
+        </div>
     </div>
     <div class="serach-btm">
-        <div class="inter-padding"><input type="checkbox" id="FACILITIES"> <label for="FACILITIES"
-                                                                                  class="width90Percent">FACILITIES (79)
-            <span class="glyphicon glyphicon-chevron-down pull-right"></span></label></div>
+        <div class="inter-padding">
+            <input type="checkbox" ng-model="searchCategoryFacilities" id="facilities">
+            <label for="facilities" class="width90Percent">FACILITIES ({{results.facilities.length}}) <span class="glyphicon glyphicon-chevron-down pull-right"></span></label>
+        </div>
     </div>
     <div class="serach-btm">
-        <div class="inter-padding"><input type="checkbox" id="SUPPLIERS"> <label for="SUPPLIERS" class="width90Percent">SUPPLIERS/SHOPS
-            (26) <span class="glyphicon glyphicon-chevron-down pull-right"></span></label></div>
+        <div class="inter-padding">
+            <input type="checkbox" ng-model="searchCategorySuppliers" id="suppliers">
+            <label for="suppliers" class="width90Percent">SUPPLIERS/SHOPS ({{results.suppliers.length}}) <span class="glyphicon glyphicon-chevron-down pull-right"></span></label>
+        </div>
+    </div>
+    <div class="serach-btm">
+        <div class="inter-padding">
+            <input type="checkbox" ng-model="searchCategoryEvents" id="events">
+            <label for="events" class="width90Percent">EVENTS ({{results.events.length}}) <span class="glyphicon glyphicon-chevron-down pull-right"></span></label>
+        </div>
     </div>
     <div>
-        <div class="inter-padding"><input type="checkbox" id="EVENTS"> <label for="EVENTS" class="width90Percent">EVENTS
-            (27) <span class="glyphicon glyphicon-chevron-down pull-right"></span></label></div>
+        <div class="inter-padding">
+            <input type="checkbox" ng-model="searchCategoryOffers" id="offers">
+            <label for="offers" class="width90Percent">Offers ({{results.offers.length}}) <span class="glyphicon glyphicon-chevron-down pull-right"></span></label>
+        </div>
     </div>
 </div>
