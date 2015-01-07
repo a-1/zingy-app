@@ -10,51 +10,39 @@
                 <p class="desktop-logo">
                     <a href="/"><img src="assets/images/logo.png" class="logo"/></a>
                 </p>
-
                 <p class="mobile-logo">
                     <a href="/"><img src="assets/images/small_logo.png" class="logo"/></a>
                 </p>
-
                 <div class="bell" ng-if="!isAuthenticated()">
                     <a href="/account/login"><img src="assets/images/bell.png"/></a>
                 </div>
                 <ng-include ng-if="!isMobile" src="'app/search/bar/search.bar.tpl.html'"></ng-include>
             </div>
-            <div class="navbar-collapse" collapse="isCollapsed">
+            <div class="navbar-collapse header-settings" collapse="isCollapsed">
                 <ul class="nav navbar-nav navbar-right">
-                    <li dropdown>
-                        <a href dropdown-toggle>Pune <span class="location">(Change Location)</span></a>
-
-                        <div class="quick-setting dropdown-menu">
-                            <select>
-                                <option value="pune">Pune</option>
-                                <option value="mumbai">Mumbai</option>
-                                <option value="banglore">Banglore</option>
-                                <option value="chennai">Chennai</option>
+                    <li class="location">
+                        <div>
+                            <select name="city"
+                                    class="form-control"
+                                    ng-model="city"
+                                    ng-options="city as city for city in cities"
+                                    ng-change="updateLocation()">
                             </select>
                         </div>
                     </li>
-                    <li ng-if="isAuthenticated()" dropdown>
+                    <li ng-if="isAuthenticated() && user.displayName" dropdown>
                         <a href dropdown-toggle>{{user.displayName}} <span
                                 class="glyphicon glyphicon-cog"></span></a>
                         <div class="quick-setting dropdown-menu">
                             <ul>
-                                <li><a href="/account/manage" class="all search-img"><span>Manage Account</span></a>
-                                </li>
-                                <li><a href="{{quickSettings.enthusiasts.url}}" class="all search-img"><span>{{quickSettings.enthusiasts.title}}</span></a>
-                                </li>
-                                <li><a href="{{quickSettings.players.url}}" class="players search-img"><span>{{quickSettings.players.title}}</span></a>
-                                </li>
-                                <li><a href="{{quickSettings.coaches.url}}" class="coaches search-img"><span>{{quickSettings.coaches.title}}</span></a>
-                                </li>
-                                <li><a href="{{quickSettings.facilities.url}}" class="facilities search-img"><span>{{quickSettings.facilities.title}}</span></a>
-                                </li>
-                                <li><a href="{{quickSettings.suppliers.url}}" class="suppliers search-img"><span>{{quickSettings.suppliers.title}}</span></a>
-                                </li>
-                                <li><a href="{{quickSettings.events.url}}" class="events search-img"><span>{{quickSettings.events.title}}</span></a>
-                                </li>
-                                <li><a href="{{quickSettings.offers.url}}" class="all search-img"><span>{{quickSettings.offers.title}}</span></a>
-                                </li>
+                                <li><a href="/account/manage" class="all search-img"><span>Manage Account</span></a></li>
+                                <li><a href="{{quickSettings.enthusiasts.url}}" class="all search-img"><span>{{quickSettings.enthusiasts.title}}</span></a></li>
+                                <li><a href="{{quickSettings.players.url}}" class="players search-img"><span>{{quickSettings.players.title}}</span></a></li>
+                                <li><a href="{{quickSettings.coaches.url}}" class="coaches search-img"><span>{{quickSettings.coaches.title}}</span></a></li>
+                                <li><a href="{{quickSettings.facilities.url}}" class="facilities search-img"><span>{{quickSettings.facilities.title}}</span></a></li>
+                                <li><a href="{{quickSettings.suppliers.url}}" class="suppliers search-img"><span>{{quickSettings.suppliers.title}}</span></a></li>
+                                <li><a href="{{quickSettings.events.url}}" class="events search-img"><span>{{quickSettings.events.title}}</span></a></li>
+                                <li><a href="{{quickSettings.offers.url}}" class="all search-img"><span>{{quickSettings.offers.title}}</span></a></li>
                                 <li><a href class="pull-right" ng-click="logout()"><span>Logout</span></a></li>
                             </ul>
                         </div>

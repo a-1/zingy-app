@@ -7,7 +7,8 @@ define(['angular', 'ramda'], function (angular, R) {
         .service('accountService', ['$rootScope', '$http', '$q', '$auth', 'config', function ($rootScope, $http, $q, $auth, config) {
             var account = {
                 user: {},
-                quickSettings: {}
+                quickSettings: {},
+                location: 'Pune'
             };
 
             var prepareUrl = function (entity, url) {
@@ -83,6 +84,10 @@ define(['angular', 'ramda'], function (angular, R) {
                 reset: function () {
                     this.account.user = {};
                     this.account.quickSettings = {};
+                },
+
+                changeLocation: function (city) {
+                    account.location = city;
                 },
 
                 //genders list

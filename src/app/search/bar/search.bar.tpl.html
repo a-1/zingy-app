@@ -1,26 +1,28 @@
-<div class="search" dropdown>
-    <div class="input-group search-group pull-left">
-        <span class="input-group-addon searchFilter dropdown-toggle" dropdown-toggle>
+<form ng-submit="submit()" ng-controller="search.bar.ctrl">
+    <div class="search" dropdown>
+        <div class="input-group search-group pull-left">
+        <span class="input-group-addon searchFilter" dropdown-toggle>
             <i class="glyphicon glyphicon-align-justify"></i>
             <i class="glyphicon glyphicon-chevron-down"></i>
         </span>
-        <input type="text"
-               class="form-control typeahead"
-               id="search"
-               placeholder="Search for Players / Coach / Facilities / Events / Suppliers"/>
+            <input type="text"
+                   class="form-control"
+                   placeholder="{{searchPlaceHolder}}"
+                   ng-model="searchQuery"/>
+        </div>
+        <div>
+            <button class="btn btn-primary pull-left" type="submit">GO</button>
+        </div>
+        <div class="search-filters dropdown-menu">
+            <ul>
+                <li><a href class="all search-img" ng-click="setSearchType('all')"><span>All</span></a></li>
+                <li><a href class="coaches search-img" ng-click="setSearchType('coaches')"><span>Coaches</span></a></li>
+                <li><a href class="players search-img" ng-click="setSearchType('players')"><span>Players</span></a></li>
+                <li><a href class="facilities search-img" ng-click="setSearchType('facilities')"><span>Facilities</span></a></li>
+                <li><a href class="suppliers search-img" ng-click="setSearchType('suppliers')"><span>Suppliers</span></a></li>
+                <li><a href class="events search-img" ng-click="setSearchType('events')"><span>Events</span></a></li>
+                <li><a href class="offers search-img" ng-click="setSearchType('offers')"><span>Offers</span></a></li>
+            </ul>
+        </div>
     </div>
-    <div>
-        <button class="btn btn-primary pull-left">GO</button>
-    </div>
-    <div class="search-filters dropdown-menu">
-        <ul>
-            <li><a href class="all search-img"><span>All</span></a></li>
-            <li><a href class="coaches search-img"><span>Coaches</span></a></li>
-            <li><a href class="players search-img"><span>Players</span></a></li>
-            <li><a href class="facilities search-img"><span>Facilities</span></a></li>
-            <li><a href class="suppliers search-img"><span>Suppliers</span></a></li>
-            <li><a href class="events search-img"><span>Events</span></a></li>
-            <li><a href class="all search-img"><span>Offers</span></a></li>
-        </ul>
-    </div>
-</div>
+</form>
