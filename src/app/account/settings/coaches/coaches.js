@@ -21,6 +21,11 @@ define(['angular'], function (angular) {
                     }],
                     account: ['accountService', function (accountService) {
                         return accountService.fetch();
+                    }],
+                    googleMaps: ['googleMapsService', function (googleMapsService) {
+                        googleMapsService.init().then(function (googleMaps) {
+                            return googleMaps;
+                        });
                     }]
                 }
             }).when('/account/coaches/:id', {
@@ -45,6 +50,11 @@ define(['angular'], function (angular) {
                     }],
                     account: ['accountService', function (accountService) {
                         return accountService.fetch();
+                    }],
+                    googleMaps: ['googleMapsService', function (googleMapsService) {
+                        googleMapsService.init().then(function (googleMaps) {
+                            return googleMaps;
+                        });
                     }]
                 }
             });

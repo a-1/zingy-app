@@ -7,7 +7,6 @@
   }
 }
 
-
 .search-group {
   width: 81%;
   margin-right: 5px;
@@ -302,7 +301,6 @@ label.overflow {
   border-bottom: 2px dotted #979797;
 }
 
-
 .glyphicon {
   position: relative;
   top: 1px;
@@ -384,4 +382,32 @@ p {
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
+}
+
+.btn-file {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-file input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-width: 100%;
+  min-height: 100%;
+  font-size: 100px;
+  text-align: right;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  outline: none;
+  background: white;
+  cursor: inherit;
+  display: block;
+}
+
+.cropArea {
+  background: #E4E4E4;
+  overflow: hidden;
+  width: 300px;
+  height: 300px;
 }

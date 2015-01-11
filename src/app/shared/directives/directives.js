@@ -7,7 +7,7 @@ define(function (require) {
     var dependencies = [
 
         require('./timepickerPopup/timepickerPopup').name,
-        require('./imageUpload/imageUpload').name
+        require('./imageResize/imageResize').name
 
     ];
 

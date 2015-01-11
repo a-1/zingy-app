@@ -14,7 +14,8 @@
     "requirejs": "latest",
     "bootstrap": "latest",
     "almond": "latest",
-    "satellizer": "latest"
+    "satellizer": "latest",
+    "ngImgCrop": "latest"
   },
   "resolutions": {
     "angular": "1.3.8"

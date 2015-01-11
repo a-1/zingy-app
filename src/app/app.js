@@ -22,7 +22,11 @@ define(function (require) {
         //load directives
         require('shared/directives/directives').name,
 
+        // /load services
+        require('shared/services/services').name,
+
         //services
+        require('profiles/profiles').name,
         require('enthusiasts/enthusiasts').name,
         require('players/players').name,
         require('coaches/coaches').name,
@@ -76,6 +80,7 @@ define(function (require) {
 
             onResize();
             $window.addEventListener('resize', onResize, false);
+
         }]);
 
 });
