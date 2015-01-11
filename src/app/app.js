@@ -51,7 +51,7 @@ define(function (require) {
     return angular
         .module('app', dependencies)
         .constant('config', {
-            apiBaseURL: 'http://localhost:3000/api'
+            apiBaseURL: 'http://api.justkhelo.com/api'
         })
         .config(['$resourceProvider', '$routeProvider', '$locationProvider', function ($resourceProvider, $routeProvider, $locationProvider) {
 

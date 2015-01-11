@@ -31,13 +31,13 @@ define(['angular',
             // Facebook
             $authProvider.facebook({
                 clientId: '542735292530166',
-                url: 'http://localhost:3000/api/auth/facebook'
+                url: 'http://api.justkhelo.com/api/auth/facebook'
             });
 
             // Google
             $authProvider.google({
                 clientId: '127859079827-frmqmjp13dj5c3u93rkri0mebg4tdj3g.apps.googleusercontent.com',
-                url: 'http://localhost:3000/api/auth/google'
+                url: 'http://api.justkhelo.com/api/auth/google'
             });
 
         }]);

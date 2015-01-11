@@ -9,9 +9,8 @@
             <div class="panel-collapse">
                 <div class="panel-body">
                     <div>
-                        <p>Update your Personal and Contact Details, Profile Picture etc.</p>
-
-                        <p><a href="{{quickSettings.profile.url}}">Click Here</a> to manage your profile.</p>
+                        <p>Update your Personal and Contact Details, Registered Address, Phone numbers, Profile Picture etc.</p>
+                        <p><a href="{{quickSettings.profiles.url}}">Click Here</a> to update your profile information.</p>
                     </div>
                 </div>
             </div>
@@ -26,14 +25,12 @@
                 <div class="panel-body">
                     <div ng-if="user.enthusiast._id">
                         <p>Thanks for listing yourself as the "Sport Enthusiasts".</p>
-
                         <p><a href="{{quickSettings.enthusiasts.url}}">Click Here</a> to manage your Personal and
                             Contact details.</p>
                     </div>
                     <div ng-if="!user.enthusiast._id">
                         <p>Enlist yourself as "Sport Enthusiasts" and keep up-to date current sports events /
                             offers.</p>
-
                         <p><a href="{{quickSettings.enthusiasts.url}}">Click Here</a> to list yourself as "Sport
                             Enthusiast".</p>
                     </div>
@@ -100,7 +97,6 @@
                 <div class="panel-body">
                     <div ng-if="user.facilities.length">
                         <p>Thanks for listing your "Facilities".</p>
-
                         <p>You have
                             <ng-pluralize count="user.facilities.length"
                                           when="{'one': '1 facility listed.','other': '{} facilities listed.'}">
@@ -159,7 +155,6 @@
                 <div class="panel-body">
                     <div ng-if="user.events.length">
                         <p>Thanks for listing your "Events".</p>
-
                         <p>You have
                             <ng-pluralize count="user.events.length"
                                           when="{'one': '1 event listed.','other': '{} events listed.'}">
@@ -186,7 +181,6 @@
                 <div class="panel-body">
                     <div ng-if="user.offers.length">
                         <p>Thanks for listing your "Offers".</p>
-
                         <p>You have
                             <ng-pluralize count="user.offers.length"
                                           when="{'one': '1 offer listed.','other': '{} offers listed.'}">

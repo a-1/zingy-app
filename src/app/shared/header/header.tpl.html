@@ -30,7 +30,7 @@
                             </select>
                         </div>
                     </li>
-                    <li ng-if="isAuthenticated() && user.displayName" dropdown>
+                    <li ng-if="isAuthenticated()" dropdown>
                         <a href dropdown-toggle>{{user.displayName}} <span
                                 class="glyphicon glyphicon-cog"></span></a>
                         <div class="quick-setting dropdown-menu">
