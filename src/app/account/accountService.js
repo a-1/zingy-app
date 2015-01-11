@@ -17,9 +17,13 @@ define(['angular', 'ramda'], function (angular, R) {
 
             var updateAccountSettings = function () {
                 angular.extend(account.quickSettings, {
+                    profiles: {
+                        url: prepareUrl('profile', '/account/profiles'),
+                        title: 'Update Profile'
+                    },
                     enthusiasts: {
                         url: prepareUrl('enthusiast', '/account/enthusiasts'),
-                        title: account.user.enthusiast && account.user.enthusiast._id ? 'Personal Details' : 'Enlist as Enthusiast'
+                        title: account.user.enthusiast && account.user.enthusiast._id ? 'Subscription Details' : 'Enlist as Enthusiast'
                     },
                     coaches: {
                         url: prepareUrl('coach', '/account/coaches'),

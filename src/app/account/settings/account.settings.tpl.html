@@ -14,14 +14,17 @@
                         <h4 class="panel-title">Account Settings</h4>
                     </a>
                 </div>
+                <div class="panel-heading profile">
+                    <a href="{{quickSettings.profiles.url}}">
+                        <h4 class="panel-title">{{quickSettings.profiles.title}}</h4>
+                    </a>
+                </div>
                 <div class="panel-heading enthusiast">
                     <a href="{{quickSettings.enthusiasts.url}}">
                         <h4 class="panel-title">{{quickSettings.enthusiasts.title}}</h4>
                     </a>
                 </div>
-                <div class="panel-content" ng-if="entityType === 'Sport Enthusiast'"
-                     ng-bind-html="listingMessage"></div>
-
+                <div class="panel-content" ng-if="entityType === 'Sport Enthusiast'" ng-bind-html="listingMessage"></div>
                 <div class="panel-heading playing">
                     <a href="{{quickSettings.players.url}}">
                         <h4 class="panel-title">{{quickSettings.players.title}}</h4>

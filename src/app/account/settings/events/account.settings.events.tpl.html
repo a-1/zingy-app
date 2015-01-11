@@ -14,21 +14,12 @@
                        minlength="3"
                        maxlength="40"
                        required/>
-
                 <div ng-if="eventForm.organiser.$dirty" ng-messages="eventForm.organiser.$error"
                      class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
                     <div ng-message="server">{{eventForm.organiser.$error.serverMessage}}</div>
                 </div>
             </div>
-            <div class="col-sm-7 form-group pull-right">
-                <div class="input-group">
-                    <input type="text" placeholder="Upload Event Pic - 100x50px" class="form-control">
-                    <span class="input-group-addon">Browse</span></div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-8 form-group">
+            <div class="col-sm-7 form-group">
                 <input type="text"
                        name="heading"
                        class="form-control"
@@ -37,7 +28,6 @@
                        minlength="5"
                        maxlength="70"
                        required/>
-
                 <div ng-if="eventForm.heading.$dirty" ng-messages="eventForm.heading.$error"
                      class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
                     <div ng-message="server">{{eventForm.heading.$error.serverMessage}}</div>
@@ -54,7 +44,6 @@
                           minlength="5"
                           maxlength="200"
                           required> </textarea>
-
                 <div ng-if="eventForm.description.$dirty" ng-messages="eventForm.description.$error"
                      class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
                     <div ng-message="server">{{eventForm.description.$error.serverMessage}}</div>
@@ -76,17 +65,15 @@
                            datepicker-options="datePickerOptions"
                            ng-change="dateTimePickerChanged('datePickerOpened')"
                            ng-required="true"/>
-
-                    <div ng-if="eventForm.date.$dirty" ng-messages="eventForm.date.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{eventForm.date.$error.serverMessage}}</div>
-                    </div>
                     <span class="input-group-addon" ng-click="openDateTimePicker($event, 'datePickerOpened')"><i
                             class="glyphicon glyphicon-calendar"></i></span>
                 </div>
+                <div ng-if="eventForm.date.$dirty" ng-messages="eventForm.date.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.date.$error.serverMessage}}</div>
+                </div>
             </div>
         </div>
-
 
         <div class="row">
             <div class="col-sm-5 form-group">
@@ -100,13 +87,12 @@
                            placeholder="Event Start Time"
                            ng-change="dateTimePickerChanged('startTimePickerOpened')"
                            ng-required="true"/>
-
-                    <div ng-if="eventForm.startTime.$dirty" ng-messages="eventForm.startTime.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{eventForm.startTime.$error.serverMessage}}</div>
-                    </div>
                     <span class="input-group-addon" ng-click="openDateTimePicker($event, 'startTimePickerOpened')"><i
                             class="glyphicon glyphicon-dashboard"></i></span>
+                </div>
+                <div ng-if="eventForm.startTime.$dirty" ng-messages="eventForm.startTime.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.startTime.$error.serverMessage}}</div>
                 </div>
             </div>
             <div class="col-sm-5 form-group">
@@ -120,13 +106,12 @@
                            placeholder="Event End Time"
                            ng-change="dateTimePickerChanged('endTimePickerOpened')"
                            ng-required="true"/>
-
-                    <div ng-if="eventForm.endTime.$dirty" ng-messages="eventForm.endTime.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{eventForm.endTime.$error.serverMessage}}</div>
-                    </div>
                     <span class="input-group-addon" ng-click="openDateTimePicker($event, 'endTimePickerOpened')"><i
                             class="glyphicon glyphicon-dashboard"></i></span>
+                </div>
+                <div ng-if="eventForm.endTime.$dirty" ng-messages="eventForm.endTime.$error"
+                     class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                    <div ng-message="server">{{eventForm.endTime.$error.serverMessage}}</div>
                 </div>
             </div>
         </div>
@@ -211,6 +196,12 @@
         </div>
 
         <div class="row">
+            <div class="col.sm-12 form-group">
+                <div id="addr-map-canvas"></div>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-sm-4 form-group">
                 <input type="email"
                        name="email"
@@ -231,6 +222,8 @@
                        placeholder="Contact Phone 1"
                        ng-model="entity.phoneOne"
                        minlength="10"
+                       maxlength="10"
+                       length="10"
                        required/>
 
                 <div ng-if="eventForm.phoneOne.$dirty" ng-messages="eventForm.phoneOne.$error"
@@ -244,7 +237,9 @@
                        class="form-control"
                        placeholder="Contact Phone 2"
                        ng-model="entity.phoneTwo"
-                       minlength="10"/>
+                       minlength="10"
+                       maxlength="10"
+                       length="10"/>
 
                 <div ng-if="eventForm.phoneTwo.$dirty" ng-messages="eventForm.phoneTwo.$error"
                      class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
@@ -253,7 +248,7 @@
             </div>
         </div>
 
-        <div class="row border-bottom form-group">
+        <div class="row">
             <div class="col-sm-8 form-group">
                 <input type="url"
                        name="url"
@@ -266,6 +261,27 @@
                      class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
                     <div ng-message="server">{{eventForm.url.$error.serverMessage}}</div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row border-bottom form-group">
+            <div class="col-sm-5 form-group">
+                <div class="input-group">
+                    <input type="text" placeholder="Event Pic (200x50)" value="{{entityImage.name}}" class="form-control">
+                    <span class="input-group-addon btn btn-default btn-file">
+                        Browse
+                        <input type="file"
+                               accept="image/*"
+                               resize-type="image/jpg"
+                               image="entityImage"
+                               resize-max-width="200"
+                               resize-max-height="50"/>
+                    </span>
+                </div>
+                <div class="infoMessages">Size: 200x50px</div>
+            </div>
+            <div class="col-sm-6" ng-if="entityImage">
+                <img ng-src="{{entityImage.resized.dataURL}}"/>
             </div>
         </div>
 

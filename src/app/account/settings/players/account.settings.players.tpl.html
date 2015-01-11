@@ -5,12 +5,36 @@
     <div class="panel-body">
         <form name="playerForm" role="form" ng-submit="submit(playerForm)">
 
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    To update your personal & contact details in profile section please <a href="/account/profiles/{{user.profile._id}}">Click Here</a>.
+                </div>
+                <input type="hidden" name="profile" ng-init="entity.profile=user.profile._id" ng-model="entity.profile"/>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                <textarea name="aboutPlaying"
+                          class="form-control"
+                          placeholder="About your playing...."
+                          ng-model="entity.aboutPlaying"
+                          minlength="5"
+                          maxlength="400"
+                          required> </textarea>
+
+                    <div ng-if="playerForm.aboutPlaying.$dirty" ng-messages="playerForm.aboutPlaying.$error"
+                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                        <div ng-message="server">{{playerForm.aboutPlaying.$error.serverMessage}}</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row border-bottom form-group">
 
                 <div class="col-sm-12 form-group">
                     <tabset>
                         <tab ng-if="entity.sports.length" ng-repeat="sport in entity.sports"
-                             heading="{{sport.name || 'Sport '+($index+1)}}" active="sport.active">
+                             heading="{{sport.name || 'Sport '+($index+1)}}" active="sport.active" select="tabChanged($index)">
                             <div class="panel-body">
 
                                 <div class="row">
@@ -233,6 +257,12 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col.sm-12 form-group">
+                                        <div class="map-canvas" id="{{'addr-map-canvas'+$index}}"></div>
+                                    </div>
+                                </div>
+
                             </div>
                         </tab>
                         <tab-heading>
@@ -256,6 +286,7 @@
                     </button>
                 </div>
             </div>
+
         </form>
     </div>
 </div>

@@ -19,15 +19,7 @@
                     <div ng-message="server">{{facilityForm.name.$error.serverMessage}}</div>
                 </div>
             </div>
-            <div class="col-sm-7 form-group pull-right">
-                <div class="input-group">
-                    <input type="text" placeholder="Upload Facility Pic - 100x50px" class="form-control">
-                    <span class="input-group-addon">Browse</span></div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-sm-8 form-group">
+            <div class="col-sm-7 form-group">
                 <input type="text"
                        name="speciality"
                        class="form-control"
@@ -142,6 +134,12 @@
         </div>
 
         <div class="row">
+            <div class="col.sm-12 form-group">
+                <div id="addr-map-canvas"></div>
+            </div>
+        </div>
+
+        <div class="row">
             <div class="col-sm-4 form-group">
                 <input type="email"
                        name="email"
@@ -188,7 +186,7 @@
             </div>
         </div>
 
-        <div class="row border-bottom form-group">
+        <div class="row">
             <div class="col-sm-8 form-group">
                 <input type="url"
                        name="url"
@@ -201,6 +199,27 @@
                      class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
                     <div ng-message="server">{{facilityForm.url.$error.serverMessage}}</div>
                 </div>
+            </div>
+        </div>
+
+        <div class="row border-bottom form-group">
+            <div class="col-sm-5 form-group">
+                <div class="input-group">
+                    <input type="text" placeholder="Facility Pic" value="{{entityImage.name}}" class="form-control">
+                    <span class="input-group-addon btn btn-default btn-file">
+                        Browse
+                        <input type="file"
+                               accept="image/*"
+                               resize-type="image/jpg"
+                               image="entityImage"
+                               resize-max-width="800"
+                               resize-max-height="400"/>
+                    </span>
+                </div>
+                <div class="infoMessages">Size: 800pxx400px</div>
+            </div>
+            <div class="col-sm-6" ng-if="entityImage">
+                <img ng-src="{{entityImage.resized.dataURL}}" class="img-responsive"/>
             </div>
         </div>
 

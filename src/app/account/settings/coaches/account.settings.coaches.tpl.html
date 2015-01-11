@@ -4,11 +4,36 @@
 <div class="panel-collapse" id="aboutCoaching">
     <div class="panel-body">
         <form name="coachForm" role="form" ng-submit="submit(coachForm)">
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                    To update your personal & contact details in profile section please <a href="/account/profiles/{{user.profile._id}}">Click Here</a>.
+                </div>
+                <input type="hidden" name="profile" ng-init="entity.profile=user.profile._id" ng-model="entity.profile"/>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 form-group">
+                <textarea name="aboutCoaching"
+                          class="form-control"
+                          placeholder="About your coaching...."
+                          ng-model="entity.aboutCoaching"
+                          minlength="5"
+                          maxlength="400"
+                          required> </textarea>
+
+                    <div ng-if="coachForm.aboutCoaching.$dirty" ng-messages="coachForm.aboutCoaching.$error"
+                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                        <div ng-message="server">{{coachForm.aboutCoaching.$error.serverMessage}}</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row border-bottom form-group">
                 <div class="col-sm-12 form-group">
                     <tabset>
                         <tab ng-if="entity.sports.length" ng-repeat="sport in entity.sports"
-                             heading="{{sport.name || 'Sport '+($index+1)}}" active="sport.active">
+                             heading="{{sport.name || 'Sport '+($index+1)}}" active="sport.active" select="tabChanged($index)">
                             <div class="panel-body">
 
                                 <div class="row">
@@ -264,6 +289,22 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-sm-6 form-group">
+                                        <label for="privateCoaching">Do you provide private coaching ? </label>
+                                        <input id="privateCoaching"
+                                               name="privateCoaching"
+                                               type="checkbox"
+                                               ng-model="sport.privateCoaching"/>
+                                    </div>
+                                    <div class="col-sm-6 form-group">
+                                        <label for="freeTrialClasses">Do you provide free trial classes ? </label>
+                                        <input id="freeTrialClasses"
+                                               name="freeTrialClasses"
+                                               type="checkbox"
+                                               ng-model="sport.freeTrialClasses"/>
+                                    </div>
+                                </div>
 
                                 <div class="row">
                                     <div class="col-sm-6 form-group">
@@ -299,18 +340,17 @@
                                                    placeholder="Coaching Start Time"
                                                    ng-change="dateTimePickerChanged('startTimePickerOpened')"
                                                    ng-required="true"/>
-
-                                            <div ng-if="coachForm['startTime'+$index].$dirty"
-                                                 ng-messages="coachForm['startTime'+$index].$error"
-                                                 class="errorMessages"
-                                                 ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                                                <div ng-message="server">
-                                                    {{coachForm['startTime'+$index].$error.serverMessage}}
-                                                </div>
-                                            </div>
                                             <span class="input-group-addon"
                                                   ng-click="openDateTimePicker($event, 'startTimePickerOpened')"><i
                                                     class="glyphicon glyphicon-dashboard"></i></span>
+                                        </div>
+                                        <div ng-if="coachForm['startTime'+$index].$dirty"
+                                             ng-messages="coachForm['startTime'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['startTime'+$index].$error.serverMessage}}
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-5 form-group">
@@ -324,18 +364,17 @@
                                                    placeholder="Coaching End Time"
                                                    ng-change="dateTimePickerChanged('endTimePickerOpened')"
                                                    ng-required="true"/>
-
-                                            <div ng-if="coachForm['endTime'+$index].$dirty"
-                                                 ng-messages="coachForm['endTime'+$index].$error"
-                                                 class="errorMessages"
-                                                 ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                                                <div ng-message="server">
-                                                    {{coachForm['endTime'+$index].$error.serverMessage}}
-                                                </div>
-                                            </div>
                                             <span class="input-group-addon"
                                                   ng-click="openDateTimePicker($event, 'endTimePickerOpened')"><i
                                                     class="glyphicon glyphicon-dashboard"></i></span>
+                                        </div>
+                                        <div ng-if="coachForm['endTime'+$index].$dirty"
+                                             ng-messages="coachForm['endTime'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{coachForm['endTime'+$index].$error.serverMessage}}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -440,6 +479,12 @@
                                 </div>
 
                                 <div class="row">
+                                    <div class="col.sm-12 form-group">
+                                        <div class="map-canvas" id="{{'addr-map-canvas'+$index}}"></div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
                                     <div class="col-sm-6 form-group">
                                         <p>Certifications & Accolades:</p>
                                         <input type="text"
@@ -540,12 +585,24 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-sm-10 form-group">
+                                <div class="row  form-group">
+                                    <div class="col-sm-5 form-group">
                                         <div class="input-group">
-                                            <input type="text" placeholder="Upload Certificate Pic - 200x100px"
-                                                   class="form-control">
-                                            <span class="input-group-addon">Browse</span></div>
+                                            <input type="text" placeholder="Certificate Pic" value="{{entityImage.name}}" class="form-control">
+                                            <span class="input-group-addon btn btn-default btn-file">
+                                                Browse
+                                                <input type="file"
+                                                       accept="image/*"
+                                                       resize-type="image/jpg"
+                                                       image="entityImage"
+                                                       resize-max-width="200"
+                                                       resize-max-height="100"/>
+                                            </span>
+                                        </div>
+                                        <div class="infoMessages">Size: 200pxx100px</div>
+                                    </div>
+                                    <div class="col-sm-6" ng-if="entityImage">
+                                        <img ng-src="{{entityImage.resized.dataURL}}" class="img-responsive"/>
                                     </div>
                                 </div>
 

@@ -6,298 +6,118 @@
         <form name="enthusiastForm" role="form" ng-submit="submit(enthusiastForm)">
 
             <div class="row">
-                <div class="col-sm-4 form-group">
-                    <input
-                            type="text"
-                            name="firstName"
-                            class="form-control"
-                            placeholder="First Name"
-                            ng-model="entity.firstName"
-                            minlength="1"
-                            required/>
-
-                    <div ng-if="enthusiastForm.firstName.$dirty" ng-messages="enthusiastForm.firstName.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.firstName.$error.serverMessage}}</div>
-                    </div>
+                <div class="col-sm-12 form-group">
+                    To update your personal & contact details in profile section please <a href="/account/profiles/{{user.profile._id}}">Click Here</a>.
                 </div>
-                <div class="col-sm-4 form-group">
-                    <input
-                            type="text"
-                            name="lastName"
-                            class="form-control"
-                            placeholder="Last Name"
-                            ng-model="entity.lastName"
-                            minlength="1"
-                            required/>
-
-                    <div ng-if="enthusiastForm.lastName.$dirty" ng-messages="enthusiastForm.lastName.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.lastName.$error.serverMessage}}</div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-sm-4 form-group">
-                    <select name="gender"
-                            class="form-control"
-                            ng-model="entity.gender"
-                            ng-options="gender as gender for gender in genders"
-                            required>
-                        <option value="">Select Gender</option>
-                    </select>
-
-                    <div ng-if="enthusiastForm.gender.$dirty" ng-messages="enthusiastForm.gender.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.gender.$error.serverMessage}}</div>
-                    </div>
-                </div>
-                <div class="col-sm-4 form-group">
-                    <div class="input-group">
-                        <input type="text"
-                               name="birthDate"
-                               class="form-control"
-                               datepicker-popup="MMM d, y"
-                               show-button-bar="false"
-                               ng-model="entity.birthDate"
-                               is-open="birthDatePickerOpened"
-                               placeholder="Date of Birth"
-                               datepicker-options="datePickerOptions"
-                               ng-change="dateTimePickerChanged('birthDatePickerOpened')"
-                               ng-required="true"/>
-
-                        <div ng-if="enthusiastForm.birthDate.$dirty" ng-messages="enthusiastForm.birthDate.$error"
-                             class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                            <div ng-message="server">{{enthusiastForm.birthDate.$error.serverMessage}}</div>
-                        </div>
-                    <span class="input-group-addon" ng-click="openDateTimePicker($event, 'birthDatePickerOpened')"><i
-                            class="glyphicon glyphicon-calendar"></i></span>
-                    </div>
-                </div>
-                <div class="col-sm-4 form-group">
-                    <input
-                            type="text"
-                            name="nationality"
-                            class="form-control"
-                            placeholder="Nationality"
-                            ng-model="entity.nationality"
-                            minlength="1"
-                            required/>
-
-                    <div ng-if="enthusiastForm.nationality.$dirty" ng-messages="enthusiastForm.nationality.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.nationality.$error.serverMessage}}</div>
-                    </div>
-                </div>
+                <input type="hidden" name="profile" ng-init="entity.profile=user.profile._id" ng-model="entity.profile"/>
             </div>
 
             <div class="row">
-                <div class="col-sm-4 form-group">
-                    <input type="email"
-                           name="email"
-                           class="form-control"
-                           placeholder="Contact Email"
-                           ng-model="entity.email"
-                           required/>
+                <div class="col-sm-12 form-group">
+                <textarea name="aboutYourself"
+                          class="form-control"
+                          placeholder="About Yourself...."
+                          ng-model="entity.aboutYourself"
+                          minlength="5"
+                          maxlength="400"
+                          required> </textarea>
 
-                    <div ng-if="enthusiastForm.email.$dirty" ng-messages="enthusiastForm.email.$error"
+                    <div ng-if="enthusiastForm.aboutYourself.$dirty" ng-messages="enthusiastForm.aboutYourself.$error"
                          class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.email.$error.serverMessage}}</div>
-                    </div>
-                </div>
-                <div class="col-sm-4 form-group">
-                    <input type="tel"
-                           name="cellPhone"
-                           class="form-control"
-                           placeholder="Cell Phone"
-                           ng-model="entity.cellPhone"
-                           minlength="10"
-                           maxlength="10"
-                           length="10"
-                           required/>
-
-                    <div ng-if="enthusiastForm.cellPhone.$dirty" ng-messages="enthusiastForm.cellPhone.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.cellPhone.$error.serverMessage}}</div>
-                    </div>
-                </div>
-                <div class="col-sm-4 form-group">
-                    <input type="tel"
-                           name="workPhone"
-                           class="form-control"
-                           placeholder="Work Phone"
-                           ng-model="entity.workPhone"
-                           minlength="10"
-                           maxlength="10"
-                           length="10"/>
-
-                    <div ng-if="enthusiastForm.workPhone.$dirty" ng-messages="enthusiastForm.workPhone.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.workPhone.$error.serverMessage}}</div>
+                        <div ng-message="server">{{enthusiastForm.aboutYourself.$error.serverMessage}}</div>
                     </div>
                 </div>
             </div>
-
-            <div class="row">
-                <div class="col-sm-6 form-group">
-                    <input type="text"
-                           name="streetOne"
-                           class="form-control"
-                           placeholder="Address Line 1"
-                           ng-model="entity.streetOne"
-                           minlength="5"
-                           maxlength="70"
-                           required/>
-
-                    <div ng-if="enthusiastForm.streetOne.$dirty" ng-messages="enthusiastForm.streetOne.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.streetOne.$error.serverMessage}}</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-6 form-group">
-                    <input type="text"
-                           name="streetTwo"
-                           class="form-control"
-                           placeholder="Address Line 2"
-                           ng-model="entity.streetTwo"/>
-
-                    <div ng-if="enthusiastForm.streetTwo.$dirty" ng-messages="enthusiastForm.streetTwo.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.streetTwo.$error.serverMessage}}</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-4 form-group">
-                    <select name="city"
-                            class="form-control"
-                            ng-model="entity.city"
-                            ng-options="city as city for city in cities"
-                            required>
-                        <option value="">Select City</option>
-                    </select>
-
-                    <div ng-if="enthusiastForm.city.$dirty" ng-messages="enthusiastForm.city.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.city.$error.serverMessage}}</div>
-                    </div>
-                </div>
-                <div class="col-sm-4 form-group">
-                    <select name="state"
-                            class="form-control"
-                            ng-model="entity.state"
-                            ng-options="state as state for state in states"
-                            required>
-                        <option value="">Select State</option>
-                    </select>
-
-                    <div ng-if="enthusiastForm.state.$dirty" ng-messages="enthusiastForm.state.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.state.$error.serverMessage}}</div>
-                    </div>
-                </div>
-                <div class="col-sm-4 form-group">
-                    <input type="text"
-                           name="pin"
-                           class="form-control"
-                           placeholder="PIN"
-                           ng-model="entity.pin"
-                           maxlength="6"
-                           minlength="6"
-                           length="6"
-                           required/>
-
-                    <div ng-if="enthusiastForm.pin.$dirty" ng-messages="enthusiastForm.pin.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.pin.$error.serverMessage}}</div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="row">
-                <div class="col-sm-6 form-group">
-                    <input type="url"
-                           name="facebookUrl"
-                           class="form-control"
-                           placeholder="Facebook URL"
-                           ng-model="entity.facebookUrl"
-                            />
-
-                    <div ng-if="enthusiastForm.facebookUrl.$dirty" ng-messages="enthusiastForm.facebookUrl.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.facebookUrl.$error.serverMessage}}</div>
-                    </div>
-                </div>
-
-                <div class="col-sm-6 form-group">
-                    <input type="url"
-                           name="youtubeUrl"
-                           class="form-control"
-                           placeholder="Youtube URL"
-                           ng-model="entity.youtubeUrl"
-                            />
-
-                    <div ng-if="enthusiastForm.youtubeUrl.$dirty" ng-messages="enthusiastForm.youtubeUrl.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.youtubeUrl.$error.serverMessage}}</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-6 form-group">
-                    <input type="url"
-                           name="websiteUrl"
-                           class="form-control"
-                           placeholder="Website URL"
-                           ng-model="entity.websiteUrl"
-                            />
-
-                    <div ng-if="enthusiastForm.websiteUrl.$dirty" ng-messages="enthusiastForm.websiteUrl.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.websiteUrl.$error.serverMessage}}</div>
-                    </div>
-                </div>
-                <div class="col-sm-6 form-group">
-                    <input type="url"
-                           name="otherUrl"
-                           class="form-control"
-                           placeholder="Any other URL"
-                           ng-model="entity.otherUrl"
-                            />
-
-                    <div ng-if="enthusiastForm.otherUrl.$dirty" ng-messages="enthusiastForm.otherUrl.$error"
-                         class="errorMessages" ng-messages-include="app/shared/errors/errors.messages.tpl.html">
-                        <div ng-message="server">{{enthusiastForm.otherUrl.$error.serverMessage}}</div>
-                    </div>
-                </div>
-            </div>
-
 
             <div class="row border-bottom form-group">
-                <div class="col-sm-6 form-group">
-                    <div class="input-group">
-                        <input type="text" placeholder="Upload Profile Pic" class="form-control">
-                        <span class="input-group-addon">Browse</span></div>
+
+                <div class="col-sm-12 form-group">
+                    <tabset>
+                        <tab ng-if="entity.sports.length" ng-repeat="sport in entity.sports"
+                             heading="{{sport.name || 'Sport '+($index+1)}}" active="sport.active">
+                            <div class="panel-body">
+
+                                <div class="row">
+                                    <div class="col-sm-1 form-group pull-right">
+                                        <a href ng-click="removeTab($index, 'sports')"><span
+                                                class="glyphicon glyphicon-remove"></span></a>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-7 form-group">
+                                        <select name="{{'name'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.name"
+                                                ng-options="sport as sport for sport in sports"
+                                                required>
+                                            <option value="">Which Sport Activity you like ?</option>
+                                        </select>
+
+                                        <div ng-if="enthusiastForm['name'+$index].$dirty"
+                                             ng-messages="enthusiastForm['name'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{enthusiastForm['name'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 form-group">
+                                        <select name="{{'followingYears'+$index}}"
+                                                class="form-control"
+                                                ng-model="sport.followingYears"
+                                                ng-options="experienceYear as experienceYear for experienceYear in experienceYears"
+                                                required>
+                                            <option value="">Years of following</option>
+                                        </select>
+
+                                        <div ng-if="enthusiastForm['followingYears'+$index].$dirty"
+                                             ng-messages="enthusiastForm['followingYears'+$index].$error"
+                                             class="errorMessages"
+                                             ng-messages-include="app/shared/errors/errors.messages.tpl.html">
+                                            <div ng-message="server">
+                                                {{enthusiastForm['followingYears'+$index].$error.serverMessage}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <label for="subscribeEvents">Do you want to subscribe events for this sports ? </label>
+                                        <input id="subscribeEvents"
+                                               name="subscribeEvents"
+                                               type="checkbox"
+                                               ng-model="sport.subscribeEvents"/>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12 form-group">
+                                        <label for="subscribeOffers">Do you to get offers for this sport ? </label>
+                                        <input id="subscribeOffers"
+                                               name="subscribeOffers"
+                                               type="checkbox"
+                                               ng-model="sport.subscribeOffers"/>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </tab>
+                        <tab-heading>
+                            <a ng-click="addTab(enthusiastForm, 'sports')" class="add-sport"><i
+                                    class="glyphicon glyphicon-plus-sign"></i> Add Sport</a>
+                        </tab-heading>
+                    </tabset>
                 </div>
-                <div class="col-sm-6 form-group">
-                    <div class="input-group">
-                        <input type="text" placeholder="Upload Gallery Pic" class="form-control">
-                        <span class="input-group-addon">Browse</span></div>
-                </div>
+
             </div>
 
             <div class="row">
                 <div class="col-sm-12 form-group">
                     <button type="submit"
-                            class="btn btn-primary">{{entity._id ? 'Update' : 'Enlist as Enthusiasts'}}
+                            class="btn btn-primary">{{entity._id ? 'Update listing' : 'Enlist as Enthusiast'}}
                     </button>
                     <button type="submit"
                             ng-if="entity._id"
@@ -306,6 +126,7 @@
                     </button>
                 </div>
             </div>
+
         </form>
     </div>
 </div>

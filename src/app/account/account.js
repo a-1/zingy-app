@@ -2,32 +2,15 @@
 
 define(['angular',
     './accountService',
-    './login/login',
-    './signup/signup',
-    './settings/account.settings.ctrl',
-    './settings/manage/manage',
-    './settings/enthusiasts/enthusiasts',
-    './settings/players/players',
-    './settings/coaches/coaches',
-    './settings/facilities/facilities',
-    './settings/suppliers/suppliers',
-    './settings/events/events',
-    './settings/offers/offers'
+    './authentication/account.authentication',
+    './settings/account.settings',
 ], function (angular) {
 
     return angular
         .module('account', [
             'accountService',
-            'account.login',
-            'account.settings.ctrl',
-            'account.settings.manage',
-            'account.settings.enthusiasts',
-            'account.settings.players',
-            'account.settings.coaches',
-            'account.settings.facilities',
-            'account.settings.suppliers',
-            'account.settings.events',
-            'account.settings.offers'
+            'account.authentication',
+            'account.settings'
         ])
         .config(['$authProvider', function ($authProvider) {
 
@@ -41,7 +24,7 @@ define(['angular',
             $authProvider.loginRoute = '/account/login';
             $authProvider.signupRoute = '/account/signup';
             $authProvider.tokenName = 'token';
-            $authProvider.tokenPrefix = 'zingy'; // Local Storage name prefix
+            $authProvider.tokenPrefix = 'justKhelo';
             $authProvider.unlinkUrl = 'api/auth/unlink/';
             $authProvider.authHeader = 'Authorization';
 
