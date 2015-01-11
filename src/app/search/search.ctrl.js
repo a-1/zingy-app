@@ -4,7 +4,7 @@ define(['angular'], function (angular) {
 
     return angular
         .module('search.ctrl', [])
-        .controller('search.ctrl', ['$scope', 'accountService', '$http', 'config', function ($scope, accountService, $http, config) {
+        .controller('search.ctrl', ['$scope', 'accountService', '$http', 'appConfig', function ($scope, accountService, $http, appConfig) {
 
             //search - location settings
             $scope.cities = accountService.cities;
@@ -30,7 +30,7 @@ define(['angular'], function (angular) {
             //search - content
             $scope.search = {};
             $scope.refineSearch = function () {
-                $http.get(config.apiBaseURL + '/search', {params: {city: $scope.searchCity}}).then(function (data) {
+                $http.get(appConfig.apiBaseURL + '/search', {params: {city: $scope.searchCity}}).then(function (data) {
                     $scope.results = data.data;
                 });
             };

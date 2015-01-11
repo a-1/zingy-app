@@ -4,7 +4,7 @@ define(['angular', 'ramda'], function (angular, R) {
 
     return angular
         .module('accountService', [])
-        .service('accountService', ['$rootScope', '$http', '$q', '$auth', 'config', function ($rootScope, $http, $q, $auth, config) {
+        .service('accountService', ['$rootScope', '$http', '$q', '$auth', 'appConfig', function ($rootScope, $http, $q, $auth, appConfig) {
             var account = {
                 user: {},
                 quickSettings: {},
@@ -57,7 +57,7 @@ define(['angular', 'ramda'], function (angular, R) {
 
                 fetch: function () {
                     if ($auth.isAuthenticated() && !this.account.user._id) {
-                        $http.get(config.apiBaseURL + '/account').then(function (data) {
+                        $http.get(appConfig.apiBaseURL + '/account').then(function (data) {
                             angular.extend(account.user, data.data);
                             updateAccountSettings();
                             return data.data;
@@ -70,7 +70,7 @@ define(['angular', 'ramda'], function (angular, R) {
                 },
 
                 getRegisteredEntitiesCount: function () {
-                    return $http.get(config.apiBaseURL + '/registeredEntitiesCount');
+                    return $http.get(appConfig.apiBaseURL + '/registeredEntitiesCount');
                 },
 
                 isAuthenticated: function () {

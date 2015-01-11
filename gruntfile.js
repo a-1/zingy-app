@@ -5,8 +5,9 @@ module.exports = function (grunt) {
     grunt.initConfig({
 
         pkg: grunt.file.readJSON('package.json'),
-        isHybridApp: grunt.option('isHybridApp'),
+        isStaging: grunt.option('isStaging'),
         isProduction: grunt.option('isProduction'),
+        isHybridApp: grunt.option('isHybridApp'),
 
         jshint: {
             files: ['src/app/**/*.js'],
@@ -114,7 +115,12 @@ module.exports = function (grunt) {
             },
             distFromBuild: {
                 files: [
-                    {expand: true, src: ['src/**'], dest: 'build/'}
+                    {expand: true, src: ['build/**'], dest: 'dist/'}
+                ]
+            },
+            stagingFromBuild: {
+                files: [
+                    {expand: true, src: ['build/**'], dest: 'staging/'}
                 ]
             }
         },
@@ -167,8 +173,12 @@ module.exports = function (grunt) {
                 dest: 'build/index.html'
             },
             lessModules: {
-                src: 'build/main.tpl.less',
+                src: 'build/main.less.tpl',
                 dest: 'build/assets/less/main.less'
+            },
+            appConfig: {
+                src: 'build/app/appConfig.js.tpl',
+                dest: 'build/app/appConfig.js'
             }
         },
 
@@ -248,7 +258,6 @@ module.exports = function (grunt) {
 
     });
 
-
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -260,10 +269,18 @@ module.exports = function (grunt) {
     grunt.registerMultiTask('templatize', function () {
         grunt.file.copy(this.data.src, this.data.dest, {process: grunt.template.process});
     });
+    grunt.registerTask('configSet', function (key, val) {
+        grunt.config.set(key, val);
+    });
+
 
     grunt.registerTask('build', ['jshint', 'clean:build', 'copy:updateLibs', 'copy:buildFromSrc', 'templatize', 'less:dev']);
     grunt.registerTask('dist', ['build', 'clean:dist', 'less:prod', 'html2js', 'requirejs']);
+    grunt.registerTask('staging', ['configSet:isStaging:true', 'build', 'copy:stagingFromBuild']);
+    grunt.registerTask('production', ['configSet:isProduction:true', 'dist']);
     grunt.registerTask('test', ['karma:unit']);
     grunt.registerTask('default', ['build', 'watch']);
+
+    //:test=true
 
 };

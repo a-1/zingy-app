@@ -4,7 +4,14 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <% if(isProduction) { %>
     <base href="http://www.justkhelo.com/">
+    <% } else if(isStaging) { %>
+    <base href="http://justkhelo.herokuapp.com/">
+    <% } else { %>
+    <base href="http://localhost:9000/">
+    <% } %>
+
     <title>Just Khelo</title>
     <link href="assets/css/app.css" rel="stylesheet">
 </head>

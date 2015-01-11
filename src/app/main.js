@@ -59,9 +59,10 @@ require([
         'ui-bootstrap',
         'satellizer',
         'templateCache',
+        'appConfig',
         'app'],
     function (angular) {
         angular.element(document).ready(function () {
-            angular.bootstrap(document, ['app']);
+            angular.bootstrap(document, ['app', 'appConfig']);
         });
     });

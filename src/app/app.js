@@ -16,9 +16,6 @@ define(function (require) {
         'ui.bootstrap',
         'satellizer',
 
-        //load components
-        require('../components/components').name,
-
         //load directives
         require('shared/directives/directives').name,
 
@@ -50,9 +47,6 @@ define(function (require) {
 
     return angular
         .module('app', dependencies)
-        .constant('config', {
-            apiBaseURL: 'http://api.justkhelo.com/api'
-        })
         .config(['$resourceProvider', '$routeProvider', '$locationProvider', function ($resourceProvider, $routeProvider, $locationProvider) {
 
             // strip trailing slashes from calculated URLs
