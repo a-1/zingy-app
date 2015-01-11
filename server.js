@@ -2,7 +2,7 @@ var express = require('express');
 var path = require('path');
 var app = express();
 
-var dirPath = path.join(__dirname, '../build');
+var dirPath = path.join(__dirname, '/build');
 
 app.use(express.static(dirPath));
 
