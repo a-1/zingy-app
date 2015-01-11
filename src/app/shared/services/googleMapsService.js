@@ -71,7 +71,8 @@ define(['angular', 'ramda'], function (angular, R) {
                     return {
                         create: function (canvas, $scope, idx, isSports) {
                             var entity = isSports ? $scope.entity.sports[idx] : $scope.entity;
-                            var watchGroup = isSports ? ['entity.sports[' + idx + '].city', 'entity.sports[' + idx + '].state', 'entity.sports[' + idx + '].pin'] : ['entity.city', 'entity.state', 'entity.pin'];
+                            var watchGroup = isSports ? ['entity.sports[' + idx + '].city', 'entity.sports[' + idx + '].state', 'entity.sports[' + idx + '].pin']
+                                : ['entity.city', 'entity.state', 'entity.pin'];
 
                             var initialLocation = {'latLng': mapOptions.center};
 
