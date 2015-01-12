@@ -15,6 +15,7 @@ define(function (require) {
         'ngSanitize',
         'ui.bootstrap',
         'satellizer',
+        'templates-main',
 
         //load directives
         require('shared/directives/directives').name,

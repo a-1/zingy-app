@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === 'staging') {
 
 } else {
 
-    dirPath = path.join(__dirname, '/build');
+    dirPath = path.join(__dirname, '/dist');
     app.use(express.static(dirPath));
     app.use('/*', function (req, res) {
         res.sendFile(dirPath + '/index.html');
