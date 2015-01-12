@@ -5,11 +5,11 @@ var app = express();
 // Force HTTPS on Heroku
 if (process.env.NODE_ENV === 'staging') {
 
-    var dirPath = path.join(__dirname, '../staging');
-    app.use(express.static(dirPath));
-    app.use('/*', function (req, res) {
-        res.sendFile(dirPath + '/index.html');
-    });
+    // var dirPath = path.join(__dirname, '../staging');
+    app.use(express.static(__dirname + '/staging'));
+    //app.use('/*', function (req, res) {
+    //    res.sendFile(dirPath + '/index.html');
+    //});
 
 
     app.use(function (req, res, next) {

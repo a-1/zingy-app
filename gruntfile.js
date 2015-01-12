@@ -8,6 +8,7 @@ module.exports = function (grunt) {
         isStaging: grunt.option('isStaging'),
         isProduction: grunt.option('isProduction'),
         isHybridApp: grunt.option('isHybridApp'),
+        isDist: grunt.option('isDist'),
 
         jshint: {
             files: ['src/app/**/*.js'],
@@ -275,7 +276,7 @@ module.exports = function (grunt) {
 
 
     grunt.registerTask('build', ['jshint', 'clean:build', 'copy:updateLibs', 'copy:buildFromSrc', 'templatize', 'less:dev']);
-    grunt.registerTask('dist', ['build', 'clean:dist', 'less:prod', 'html2js', 'requirejs']);
+    grunt.registerTask('dist', ['configSet:isDist:true', 'build', 'clean:dist', 'less:prod', 'html2js', 'requirejs']);
     grunt.registerTask('staging', ['configSet:isStaging:true', 'build', 'copy:stagingFromBuild']);
     grunt.registerTask('production', ['configSet:isProduction:true', 'dist']);
     grunt.registerTask('test', ['karma:unit']);
