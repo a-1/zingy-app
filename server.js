@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'staging') {
     // var dirPath = path.join(__dirname, '../staging');
     app.use(express.static(__dirname + '/staging'));
     app.use('/*', function (req, res) {
-        res.sendFile(dirPath + '/index.html');
+        res.sendFile(__dirname + '/staging/index.html');
     });
 
 

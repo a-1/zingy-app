@@ -116,13 +116,19 @@ module.exports = function (grunt) {
             },
             distFromBuild: {
                 files: [
-                    {expand: true, src: ['build/**'], dest: 'dist/'}
+                    {expand: true, src: ['build/assets/**'], dest: 'dist/assets/'},
+                    {src: 'build/app.js', dest: 'dist/app.js'},
+                    {src: 'build/index.html', dest: 'dist/index.html'},
+                    {src: 'build/404.html', dest: 'dist/404.html'}
                 ]
             },
             stagingFromBuild: {
                 files: [
                     {expand: true, src: ['build/**'], dest: 'staging/'}
                 ]
+            },
+            productionFromDist: {
+
             }
         },
 
@@ -208,6 +214,18 @@ module.exports = function (grunt) {
             }
         },
 
+        compress: {
+            main: {
+                options: {
+                    mode: 'gzip'
+                },
+                expand: true,
+                cwd: 'dist/',
+                src: ['**/*'],
+                dest: 'production/'
+            }
+        },
+
         requirejs: {
             options: {
                 baseUrl: "./build/app",
@@ -265,6 +283,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-requirejs');
+    grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-karma');
     grunt.registerMultiTask('templatize', function () {
@@ -276,12 +295,10 @@ module.exports = function (grunt) {
 
 
     grunt.registerTask('build', ['jshint', 'clean:build', 'copy:updateLibs', 'copy:buildFromSrc', 'templatize', 'less:dev']);
-    grunt.registerTask('dist', ['configSet:isDist:true', 'build', 'clean:dist', 'less:prod', 'html2js', 'requirejs']);
+    grunt.registerTask('dist', ['configSet:isDist:true', 'build', 'clean:dist', 'less:prod', 'html2js', 'requirejs', 'copy:distFromBuild']);
     grunt.registerTask('staging', ['configSet:isStaging:true', 'build', 'copy:stagingFromBuild']);
-    grunt.registerTask('production', ['configSet:isProduction:true', 'dist']);
+    grunt.registerTask('production', ['configSet:isProduction:true', 'dist', 'compress']);
     grunt.registerTask('test', ['karma:unit']);
     grunt.registerTask('default', ['build', 'watch']);
-
-    //:test=true
 
 };
