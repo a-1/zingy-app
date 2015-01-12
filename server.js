@@ -3,9 +3,9 @@ var path = require('path');
 var app = express();
 
 // Force HTTPS on Heroku
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'staging') {
 
-    var dirPath = path.join(__dirname, '/staging');
+    var dirPath = path.join(__dirname, '../staging');
     app.use(express.static(dirPath));
     app.use('/*', function (req, res) {
         res.sendFile(dirPath + '/index.html');
