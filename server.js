@@ -1,7 +1,11 @@
 var express = require('express');
+var compress = require('compression');
 var path = require('path');
 var app = express();
 var dirPath;
+
+
+app.use(compress());
 
 // Force HTTPS on Heroku
 if (process.env.NODE_ENV === 'staging') {

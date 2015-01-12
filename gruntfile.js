@@ -118,6 +118,7 @@ module.exports = function (grunt) {
                 files: [
                     {expand: true, cwd: 'build/assets', src: ['**'], dest: 'dist/assets/'},
                     {src: 'build/app.js', dest: 'dist/app.js'},
+                    {src: 'build/app.js.map', dest: 'dist/app.js.map'},
                     {src: 'build/index.html', dest: 'dist/index.html'},
                     {src: 'build/404.html', dest: 'dist/404.html'}
                 ]
