@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" ng-strict-di>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <base href="http://www.justkhelo.com/">
+
+    <title>Just Khelo</title>
+    <link href="assets/css/app.css" rel="stylesheet">
+</head>
+<body>
+
+<header ng-include="'app/shared/header/header.tpl.html'"></header>
+<section id="mainSection" ng-view ng-cloak autoscroll="true" ng-cloak></section>
+<footer ng-include="'app/shared/footer/footer.tpl.html'"></footer>
+
+<script type="text/javascript" src="app.js"></script>
+
+</body>
+</html>

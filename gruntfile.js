@@ -116,7 +116,7 @@ module.exports = function (grunt) {
             },
             distFromBuild: {
                 files: [
-                    {expand: true, src: ['build/assets/**'], dest: 'dist/assets/'},
+                    {expand: true, cwd: 'build/assets', src: ['**'], dest: 'dist/assets/'},
                     {src: 'build/app.js', dest: 'dist/app.js'},
                     {src: 'build/index.html', dest: 'dist/index.html'},
                     {src: 'build/404.html', dest: 'dist/404.html'}
@@ -128,7 +128,9 @@ module.exports = function (grunt) {
                 ]
             },
             productionFromDist: {
-
+                files: [
+                    {expand: true, src: ['dist/**'], dest: 'production/'}
+                ]
             }
         },
 
@@ -297,7 +299,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', ['jshint', 'clean:build', 'copy:updateLibs', 'copy:buildFromSrc', 'templatize', 'less:dev']);
     grunt.registerTask('dist', ['configSet:isDist:true', 'build', 'clean:dist', 'less:prod', 'html2js', 'requirejs', 'copy:distFromBuild']);
     grunt.registerTask('staging', ['configSet:isStaging:true', 'build', 'copy:stagingFromBuild']);
-    grunt.registerTask('production', ['configSet:isProduction:true', 'dist', 'compress']);
+    grunt.registerTask('production', ['configSet:isProduction:true', 'dist']);
     grunt.registerTask('test', ['karma:unit']);
     grunt.registerTask('default', ['build', 'watch']);
 

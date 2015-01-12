@@ -1,16 +1,16 @@
 var express = require('express');
 var path = require('path');
 var app = express();
+var dirPath;
 
 // Force HTTPS on Heroku
 if (process.env.NODE_ENV === 'staging') {
 
-    // var dirPath = path.join(__dirname, '../staging');
-    app.use(express.static(__dirname + '/staging'));
+    dirPath = path.join(__dirname, '/dist');
+    app.use(express.static(dirPath));
     app.use('/*', function (req, res) {
-        res.sendFile(__dirname + '/staging/index.html');
+        res.sendFile(dirPath + '/index.html');
     });
-
 
     app.use(function (req, res, next) {
         var protocol = req.get('x-forwarded-proto');
@@ -18,7 +18,8 @@ if (process.env.NODE_ENV === 'staging') {
     });
 
 } else {
-    var dirPath = path.join(__dirname, '/build');
+
+    dirPath = path.join(__dirname, '/build');
     app.use(express.static(dirPath));
     app.use('/*', function (req, res) {
         res.sendFile(dirPath + '/index.html');
