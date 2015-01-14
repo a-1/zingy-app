@@ -118,14 +118,9 @@ module.exports = function (grunt) {
                 files: [
                     {expand: true, cwd: 'build/assets', src: ['**'], dest: 'dist/assets/'},
                     {src: 'build/app.js', dest: 'dist/app.js'},
-                    {src: 'build/app.js.map', dest: 'dist/app.js.map'},
+                    //{src: 'build/app.js.map', dest: 'dist/app.js.map'},
                     {src: 'build/index.html', dest: 'dist/index.html'},
                     {src: 'build/404.html', dest: 'dist/404.html'}
-                ]
-            },
-            stagingFromBuild: {
-                files: [
-                    {expand: true, src: ['build/**'], dest: 'staging/'}
                 ]
             }
         },
@@ -145,7 +140,8 @@ module.exports = function (grunt) {
             },
             prod: {
                 options: {
-                    compress: true
+                    compress: true,
+                    sourceMap: false
                 },
                 files: {
                     "build/assets/css/app.css": "build/assets/less/main.less"
@@ -235,10 +231,10 @@ module.exports = function (grunt) {
                 wrap: true,
                 almond: true,
                 optimize: "uglify2",
-                preserveLicenseComments: false,
+                preserveLicenseComments: true,
                 skipDirOptimize: true,
                 keepBuildDir: true,
-                generateSourceMaps: true,
+                generateSourceMaps: false,
                 uglify2: {
                     mangle: false
                 }
@@ -292,8 +288,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('build', ['jshint', 'clean:build', 'copy:updateLibs', 'copy:buildFromSrc', 'templatize', 'less:dev']);
-    grunt.registerTask('dist', ['configSet:isDist:true', 'build', 'clean:dist', 'less:prod', 'html2js', 'requirejs', 'copy:distFromBuild']);
-    grunt.registerTask('staging', ['configSet:isStaging:true', 'build', 'copy:stagingFromBuild']);
+    grunt.registerTask('dist', ['configSet:isDist:true', 'jshint', 'clean:build', 'copy:updateLibs', 'copy:buildFromSrc', 'templatize', 'clean:dist', 'less:prod', 'html2js', 'requirejs', 'copy:distFromBuild']);
     grunt.registerTask('prod', ['configSet:isProduction:true', 'dist']);
     grunt.registerTask('test', ['karma:unit']);
     grunt.registerTask('default', ['build', 'watch']);
