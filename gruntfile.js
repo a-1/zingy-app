@@ -225,7 +225,7 @@ module.exports = function (grunt) {
                 expand: true,
                 cwd: 'dist/',
                 src: ['**/*'],
-                dest: 'production/'
+                dest: 'prod/'
             }
         },
 
@@ -296,11 +296,10 @@ module.exports = function (grunt) {
         grunt.config.set(key, val);
     });
 
-
     grunt.registerTask('build', ['jshint', 'clean:build', 'copy:updateLibs', 'copy:buildFromSrc', 'templatize', 'less:dev']);
     grunt.registerTask('dist', ['configSet:isDist:true', 'build', 'clean:dist', 'less:prod', 'html2js', 'requirejs', 'copy:distFromBuild']);
     grunt.registerTask('staging', ['configSet:isStaging:true', 'build', 'copy:stagingFromBuild']);
-    grunt.registerTask('production', ['configSet:isProduction:true', 'dist']);
+    grunt.registerTask('prod', ['configSet:isProduction:true', 'dist', 'compress']);
     grunt.registerTask('test', ['karma:unit']);
     grunt.registerTask('default', ['build', 'watch']);
 
