@@ -27,6 +27,10 @@ define(['angular'], function (angular) {
                 var height = origImage.height;
                 var width = origImage.width;
 
+                //dont allow improper image size
+                if(width != maxWidth && height != maxHeight) {
+                    window.alert("Please select image of " + maxWidth + " X " + maxHeight);
+                }
                 // calculate the width and height, constraining the proportions
                 if (width > height) {
                     if (width > maxWidth) {

@@ -37,7 +37,11 @@
                         <h4 class="panel-title">{{quickSettings.coaches.title}}</h4>
                     </a>
                 </div>
-                <div class="panel-content" ng-if="entityType === 'Coach'" ng-bind-html="listingMessage"></div>
+                <div class="panel-content" ng-if="entityType === 'Coach'" ng-bind-html="listingMessage">
+                    <a href="{{quickSettings.coaches.url}}">
+                        <h4 class="panel-title">{{quickSettings.coaches.title}}</h4>
+                    </a>
+                </div>
 
                 <div class="panel-heading facilities">
                     <a href="/{{quickSettings.facilities.url}}">

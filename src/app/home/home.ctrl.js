@@ -5,7 +5,8 @@ define(['angular', 'ramda'], function (angular, R) {
     return angular
         .module('home.ctrl', [])
 
-        .controller('home.ctrl', ['$scope', '$window', 'Offer', 'Event', 'accountService', function ($scope, $window, Offer, Event, accountService) {
+        .controller('home.ctrl', ['$scope','$window', 'Offer','fileUploadService', 'accountService', 'Event',
+            function ($scope, $window, Offer,fileUploadService, accountService, Event) {
 
             var detectGroupSize = function () {
                 var groupSize = 1;
@@ -37,17 +38,22 @@ define(['angular', 'ramda'], function (angular, R) {
                 $scope.eventsSlides = groupBy($scope.events);
                 $scope.offersSlides = groupBy($scope.offers);
             };
-
+            $scope.getImages = function(data1,formName){
+                fileUploadService.getData(formName+'/'+data1._id).then(function(data){
+                    data1.imgUrl = data.data;
+                        return data1;
+                });
+            };
             $scope.offers = [];
             $scope.events = [];
 
             $scope.location = angular.lowercase(accountService.account.location);
 
             Offer.query(function (data) {
-                $scope.offers = data;
-                detectGroupSize();
-            });
+                    $scope.offers = data;
+                    detectGroupSize();
 
+            });
             Event.query(function (data) {
                 $scope.events = data;
                 detectGroupSize();

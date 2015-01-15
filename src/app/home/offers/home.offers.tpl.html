@@ -7,7 +7,7 @@
         <carousel>
             <slide ng-repeat="slides in offersSlides">
                 <div class="box" ng-repeat="offer in slides">
-                    <img ng-src="{{offer.imgUrl || '/assets/images/offer.jpg'}}" class="img-responsive">
+                    <img ng-src="{{'http://s3-us-west-2.amazonaws.com/demokheloapp/offerForm/'+offer._id+'.png' || '/assets/images/offer.jpg'}}" class="img-responsive">
                     <div class="box-content">
                         <h4>{{offer.provider}}</h4>
 

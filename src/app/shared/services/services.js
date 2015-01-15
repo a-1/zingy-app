@@ -6,7 +6,8 @@ define(function (require) {
 
     var dependencies = [
 
-        require('./googleMapsService').name
+        require('./googleMapsService').name,
+        require('./fileUploadService').name
 
     ];
 

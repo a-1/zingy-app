@@ -4,8 +4,8 @@ define(['angular'], function (angular) {
 
     return angular
         .module('account.settings.ctrl', [])
-        .controller('account.settings.ctrl', ['$scope', '$location', '$window', '$sce', '$timeout', 'googleMapsService', 'accountService', 'settings',
-            function ($scope, $location, $window, $sce, $timeout, googleMapsService, accountService, settings) {
+        .controller('account.settings.ctrl', ['$scope', '$location', '$window', '$sce', '$timeout', 'googleMapsService', 'fileUploadService','accountService', 'settings',
+            function ($scope, $location, $window, $sce, $timeout, googleMapsService, fileUploadService, accountService, settings) {
                 $scope.entity = settings.entity;
                 $scope.entityType = settings.entityType;
                 $scope.formTemplate = settings.formTemplate;
@@ -30,12 +30,22 @@ define(['angular'], function (angular) {
                     });
                 };
 
-                $scope.submit = function (form) {
+                $scope.submit = function (form, image2) {
+                    console.log(image2.file);
                     if (form.$valid) {
+                        var uploadSuccess;
+                        if(image2) {
+                            uploadSuccess = function(data)  {
+                                var fileData = fileUploadService.uploadImage(image2.file,form.$name+'/'+data._id);
+                                success(fileData);
+                            };
+                        }else{
+                            success();
+                        }
                         if (settings.operation === 'save') {
-                            $scope.entity.$save().then(success, error);
+                            $scope.entity.$save().then(uploadSuccess, error);
                         } else {
-                            $scope.entity.$update({id: $scope.entity._id}).then(success, error);
+                            $scope.entity.$update({id: $scope.entity._id}).then(uploadSuccess, error);
                         }
                     }
                 };
