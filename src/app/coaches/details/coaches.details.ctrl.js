@@ -13,16 +13,7 @@ define(['angular'], function (angular) {
                 fileUploadService.getData('profileForm'+'/'+coach.profile._id).then(function(data){
                    $scope.profileImage = data.data;
                 });
-               // createMap('coachAdressMap', data.loc.coordinates);
             };
-
-           /* var createMap = function (documentId, coordinates) {
-                var googleMaps = googleMapsService.googleMaps();
-                var canvas = $window.document.getElementById(documentId);
-                if (canvas) {
-                    googleMaps.display(canvas,coordinates);
-                }
-            };*/
 
         }]
     );
