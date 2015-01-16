@@ -3,8 +3,8 @@
 define(['angular'], function (angular) {
 
     return angular.module('imageResize', [])
-        .directive('image', function ($q) {
-            var URL = window.URL || window.webkitURL;
+        .directive('image', ['$q', '$window', function ($q, $window) {
+            var URL = $window.URL || $window.webkitURL;
 
             var getResizeArea = function () {
                 var resizeAreaId = 'fileupload-resize-area';
@@ -28,8 +28,9 @@ define(['angular'], function (angular) {
                 var width = origImage.width;
 
                 //dont allow improper image size
-                if(width != maxWidth && height != maxHeight) {
-                    window.alert("Please select image of " + maxWidth + " X " + maxHeight);
+                if (width !== maxWidth && height !== maxHeight) {
+                    $window.alert('Please select image of ' + maxWidth + ' X ' + maxHeight);
+                    return;
                 }
                 // calculate the width and height, constraining the proportions
                 if (width > height) {
@@ -90,7 +91,7 @@ define(['angular'], function (angular) {
                             var dataURL = resizeImage(image, scope);
                             imageResult.resized = {
                                 dataURL: dataURL,
-                                type: dataURL.match(/:(.+\/.+);/)[1]
+                                type: dataURL && dataURL.match(/:(.+\/.+);/)[1]
                             };
                             callback(imageResult);
                         });
@@ -98,11 +99,12 @@ define(['angular'], function (angular) {
 
                     var applyScope = function (imageResult) {
                         scope.$apply(function () {
-                            //console.log(imageResult);
-                            if (attrs.multiple)
+                            if (attrs.multiple) {
                                 scope.image.push(imageResult);
-                            else
+                            }
+                            else {
                                 scope.image = imageResult;
+                            }
                         });
                     };
 
@@ -137,6 +139,6 @@ define(['angular'], function (angular) {
                     });
                 }
             };
-        });
+        }]);
 });
 

@@ -7,10 +7,11 @@
         <carousel>
             <slide ng-repeat="slides in offersSlides">
                 <div class="box" ng-repeat="offer in slides">
-                    <img ng-src="{{'http://s3-us-west-2.amazonaws.com/demokheloapp/offerForm/'+offer._id+'.png' || '/assets/images/offer.jpg'}}" class="img-responsive">
+                    <img class="img-responsive"
+                         ng-src="{{imageBaseURL + '/offerForm/'+offer._id+'.jpg'}}"
+                         img-err-src="/assets/images/offer.jpg"/>
                     <div class="box-content">
                         <h4>{{offer.provider}}</h4>
-
                         <p>{{offer.heading}}</p>
                         <p class="pull-right">
                             <a href="">

@@ -44,7 +44,7 @@ require.config({
         'ui-bootstrap': '../vendor/angular/ui-bootstrap-tpls',
         'ramda': '../vendor/ramda/ramda',
         'satellizer': '../vendor/satellizer/satellizer',
-        'templateCache': 'templateCache'
+        'templateCache': './templateCache'
     }
 });
 

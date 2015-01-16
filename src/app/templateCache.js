@@ -2,6 +2,6 @@
 
 define(['angular'], function (angular) {
 
-    return angular.module('template-main', []);
+    return angular.module('templates-main', []);
 
 });

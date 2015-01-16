@@ -53,6 +53,9 @@ define(['angular'], function (angular) {
                 url: apiBaseURL + '/auth/google'
             });
 
+        }])
+        .run(['$rootScope', function($rootScope) {
+            $rootScope.imageBaseURL = 'http://s3-us-west-2.amazonaws.com/demokheloapp';
         }]);
 
 });
