@@ -19,9 +19,9 @@ define(['angular'], function (angular) {
             };
 
             var resizeImage = function (origImage, options) {
-                var maxHeight = options.resizeMaxHeight || 200;
-                var maxWidth = options.resizeMaxWidth || 50;
-                var quality = options.resizeQuality || 0.7;
+                var maxHeight = +options.resizeMaxHeight || 200;
+                var maxWidth = +options.resizeMaxWidth || 50;
+                var quality = +options.resizeQuality || 0.7;
                 var type = options.resizeType || 'image/jpg';
                 var canvas = getResizeArea();
                 var height = origImage.height;
