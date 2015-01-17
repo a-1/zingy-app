@@ -7,6 +7,7 @@ define(['angular'], function (angular) {
         .controller('coaches.details.ctrl', ['$scope','fileUploadService', 'coach',  function ($scope, fileUploadService, coach ) {
             $scope.profileDetails = coach.profile;
             $scope.sports = coach.sports;
+            $scope.coach = coach;
 
 
             $scope.getImageFromS3 = function(){
